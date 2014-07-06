@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DansTesComs.WebSite", "Dans
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DansTesComs.WebSite.Tests", "DansTesComs.WebSite.Tests\DansTesComs.WebSite.Tests.csproj", "{5372002B-0926-453B-9553-06080A27A2FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DansTesComs.DAL", "DansTesComs.DAL\DansTesComs.DAL.csproj", "{657C227E-4B6E-4007-844A-CD21ED682AEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DansTesComs.WebAPI", "DansTesComs.WebAPI\DansTesComs.WebAPI.csproj", "{D67885A3-5B83-4E43-BC97-E8460D528BB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DansTesComs.WebAPI.Tests", "DansTesComs.WebAPI.Tests\DansTesComs.WebAPI.Tests.csproj", "{6A1A5525-AE72-4DAC-A17F-61E8A184627A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "testUnitaire", "testUnitaire", "{D3124FC8-855F-49ED-A4E2-A15D71A05636}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +29,24 @@ Global
 		{5372002B-0926-453B-9553-06080A27A2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5372002B-0926-453B-9553-06080A27A2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5372002B-0926-453B-9553-06080A27A2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{657C227E-4B6E-4007-844A-CD21ED682AEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{657C227E-4B6E-4007-844A-CD21ED682AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{657C227E-4B6E-4007-844A-CD21ED682AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{657C227E-4B6E-4007-844A-CD21ED682AEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D67885A3-5B83-4E43-BC97-E8460D528BB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D67885A3-5B83-4E43-BC97-E8460D528BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D67885A3-5B83-4E43-BC97-E8460D528BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D67885A3-5B83-4E43-BC97-E8460D528BB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A1A5525-AE72-4DAC-A17F-61E8A184627A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A1A5525-AE72-4DAC-A17F-61E8A184627A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A1A5525-AE72-4DAC-A17F-61E8A184627A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A1A5525-AE72-4DAC-A17F-61E8A184627A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5372002B-0926-453B-9553-06080A27A2FF} = {D3124FC8-855F-49ED-A4E2-A15D71A05636}
+		{6A1A5525-AE72-4DAC-A17F-61E8A184627A} = {D3124FC8-855F-49ED-A4E2-A15D71A05636}
 	EndGlobalSection
 EndGlobal
