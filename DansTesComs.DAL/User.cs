@@ -12,11 +12,11 @@ namespace DansTesComs.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class UsersTable
+    public partial class User
     {
-        public UsersTable()
+        public User()
         {
-            this.CommentaireExterneTables = new HashSet<CommentaireExterneTable>();
+            this.CommentaireExternes = new HashSet<CommentaireExterne>();
         }
     
         public int id { get; set; }
@@ -27,6 +27,6 @@ namespace DansTesComs.DAL
         public Nullable<System.DateTime> InscriptionDate { get; set; }
         public bool isAdmin { get; set; }
     
-        public virtual ICollection<CommentaireExterneTable> CommentaireExterneTables { get; set; }
+        public virtual ICollection<CommentaireExterne> CommentaireExternes { get; set; }
     }
 }

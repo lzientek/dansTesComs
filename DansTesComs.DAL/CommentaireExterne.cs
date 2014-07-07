@@ -12,13 +12,13 @@ namespace DansTesComs.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class CommentaireExterneTable
+    public partial class CommentaireExterne
     {
         public int id { get; set; }
         public int poster_user_id { get; set; }
         public string Contenu { get; set; }
         public System.DateTime date_post { get; set; }
     
-        public virtual UsersTable UsersTable { get; set; }
+        public virtual User User { get; set; }
     }
 }

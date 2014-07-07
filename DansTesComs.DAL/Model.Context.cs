@@ -25,7 +25,7 @@ namespace DansTesComs.DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CommentaireExterneTable> CommentaireExterneTables { get; set; }
-        public virtual DbSet<UsersTable> UsersTables { get; set; }
+        public virtual DbSet<CommentaireExterne> CommentaireExternes { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }
