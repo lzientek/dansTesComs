@@ -328,9 +328,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DansTesComs.DAL\DansTesComs.DAL.csproj">
-      <Project>{657c227e-4b6e-4007-844a-cd21ed682aef}</Project>
-      <Name>DansTesComs.DAL</Name>
+    <ProjectReference Include="..\DansTesComs.Core\DansTesComs.Core.csproj">
+      <Project>{a3255fe3-4dc6-44cf-b489-b7b7447797c4}</Project>
+      <Name>DansTesComs.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

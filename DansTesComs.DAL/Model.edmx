@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DansTesComsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CommentaireExterneTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="poster_user_id" Type="int" Nullable="false" />
+          <Property Name="Contenu" Type="text" />
+          <Property Name="date_post" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="80" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="80" />
+          <Property Name="Anniversaire" Type="date" />
+          <Property Name="InscriptionDate" Type="date" />
+          <Property Name="isAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CommentaireExterneTable_ToTable">
+          <End Role="UsersTable" Type="Self.UsersTable" Multiplicity="1" />
+          <End Role="CommentaireExterneTable" Type="Self.CommentaireExterneTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersTable">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CommentaireExterneTable">
+              <PropertyRef Name="poster_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DansTesComsModelStoreContainer">
+          <EntitySet Name="CommentaireExterneTable" EntityType="Self.CommentaireExterneTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersTable" EntityType="Self.UsersTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CommentaireExterneTable_ToTable" Association="Self.FK_CommentaireExterneTable_ToTable">
+            <End Role="UsersTable" EntitySet="UsersTable" />
+            <End Role="CommentaireExterneTable" EntitySet="CommentaireExterneTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DansTesComsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CommentaireExterneTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="poster_user_id" Type="Int32" Nullable="false" />
+          <Property Name="Contenu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date_post" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="UsersTable" Relationship="DansTesComsModel.FK_CommentaireExterneTable_ToTable" FromRole="CommentaireExterneTable" ToRole="UsersTable" />
+        </EntityType>
+        <EntityType Name="UsersTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="prenom" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Anniversaire" Type="DateTime" Precision="0" />
+          <Property Name="InscriptionDate" Type="DateTime" Precision="0" />
+          <Property Name="isAdmin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CommentaireExterneTables" Relationship="DansTesComsModel.FK_CommentaireExterneTable_ToTable" FromRole="UsersTable" ToRole="CommentaireExterneTable" />
+        </EntityType>
+        <EntityContainer Name="DansTesComsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CommentaireExterneTables" EntityType="Self.CommentaireExterneTable" />
+          <EntitySet Name="UsersTables" EntityType="Self.UsersTable" />
+          <AssociationSet Name="FK_CommentaireExterneTable_ToTable" Association="DansTesComsModel.FK_CommentaireExterneTable_ToTable">
+            <End Role="UsersTable" EntitySet="UsersTables" />
+            <End Role="CommentaireExterneTable" EntitySet="CommentaireExterneTables" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_CommentaireExterneTable_ToTable">
+          <End Type="DansTesComsModel.UsersTable" Role="UsersTable" Multiplicity="1" />
+          <End Type="DansTesComsModel.CommentaireExterneTable" Role="CommentaireExterneTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersTable">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CommentaireExterneTable">
+              <PropertyRef Name="poster_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DansTesComsModelStoreContainer" CdmEntityContainer="DansTesComsEntities">
+          <EntitySetMapping Name="CommentaireExterneTables">
+            <EntityTypeMapping TypeName="DansTesComsModel.CommentaireExterneTable">
+              <MappingFragment StoreEntitySet="CommentaireExterneTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="poster_user_id" ColumnName="poster_user_id" />
+                <ScalarProperty Name="Contenu" ColumnName="Contenu" />
+                <ScalarProperty Name="date_post" ColumnName="date_post" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersTables">
+            <EntityTypeMapping TypeName="DansTesComsModel.UsersTable">
+              <MappingFragment StoreEntitySet="UsersTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="Anniversaire" ColumnName="Anniversaire" />
+                <ScalarProperty Name="InscriptionDate" ColumnName="InscriptionDate" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

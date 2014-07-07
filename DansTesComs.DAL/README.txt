@@ -1,0 +1,1 @@
+﻿vous pouvez créer la bdd grace au model (click droit dans le edmx)
