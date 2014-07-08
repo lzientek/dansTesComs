@@ -7,26 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DansTesComs.DAL
+namespace DansTesComs.WebSite.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class CommentaireExterne
     {
-        public User()
-        {
-            this.CommentaireExternes = new HashSet<CommentaireExterne>();
-        }
-    
         public int id { get; set; }
-        public string mail { get; set; }
-        public string nom { get; set; }
-        public string prenom { get; set; }
-        public Nullable<System.DateTime> Anniversaire { get; set; }
-        public Nullable<System.DateTime> InscriptionDate { get; set; }
-        public bool isAdmin { get; set; }
+        public int poster_user_id { get; set; }
+        public string Contenu { get; set; }
+        public System.DateTime date_post { get; set; }
     
-        public virtual ICollection<CommentaireExterne> CommentaireExternes { get; set; }
+        public virtual User User { get; set; }
     }
 }

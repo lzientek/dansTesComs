@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DansTesComsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DansTesComsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CommentaireExterne">
           <Key>
             <PropertyRef Name="id" />
@@ -25,6 +25,7 @@
           <Property Name="Anniversaire" Type="date" />
           <Property Name="InscriptionDate" Type="date" />
           <Property Name="isAdmin" Type="bit" Nullable="false" />
+          <Property Name="pass" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_CommentaireExterne_ToUser">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
@@ -46,8 +47,7 @@
             <End Role="CommentaireExterne" EntitySet="CommentaireExterne" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DansTesComsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -73,6 +73,7 @@
           <Property Name="InscriptionDate" Type="DateTime" Precision="0" />
           <Property Name="isAdmin" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="CommentaireExternes" Relationship="Self.FK_CommentaireExterne_ToUser" FromRole="Users" ToRole="CommentaireExterne" />
+          <Property Name="pass" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_CommentaireExterne_ToUser">
           <End Role="Users" Type="Self.User" Multiplicity="1" />
@@ -113,6 +114,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="DansTesComsModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="pass" ColumnName="pass" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="mail" ColumnName="mail" />
                 <ScalarProperty Name="nom" ColumnName="nom" />
