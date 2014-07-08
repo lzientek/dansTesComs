@@ -17,7 +17,7 @@ namespace DansTesComs.WebSite.Controllers
         // GET: User
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View();
         }
 
         // GET: User/Details/5
