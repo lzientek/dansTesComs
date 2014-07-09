@@ -1,4 +1,7 @@
-﻿using System.Web;
+﻿// DansTesComs -> DansTesComs.WebSite ->FilterConfig.cs
+// fichier créée le 06/07/2014 a 16:21
+// par lucas zientek ( lucas )
+
 using System.Web.Mvc;
 
 namespace DansTesComs.WebSite

@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿// DansTesComs -> DansTesComs.WebSite ->Global.asax.cs
+// fichier créée le 06/07/2014 a 16:21
+// par lucas zientek ( lucas )
+
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -12,7 +13,7 @@ namespace DansTesComs.WebSite
     // Remarque : pour obtenir des instructions sur l'activation du mode classique IIS6 ou IIS7, 
     // visitez http://go.microsoft.com/?LinkId=9394801
 
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {

@@ -7,7 +7,7 @@
       <Diagram DiagramId="309263cd268047faa8f4e497615d22b4" Name="Diagram1">
         <EntityTypeShape EntityType="DansTesComsModel.CommentaireExterne" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DansTesComsModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="DansTesComsModel.FK_CommentaireExterne_ToUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DansTesComsModel.FK_CommentaireExterne_ToUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

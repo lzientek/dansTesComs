@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Web.WebPages.OAuth;
-using DansTesComs.WebSite.Models;
+﻿// DansTesComs -> DansTesComs.WebSite ->AuthConfig.cs
+// fichier créée le 06/07/2014 a 16:21
+// par lucas zientek ( lucas )
 
 namespace DansTesComs.WebSite
 {

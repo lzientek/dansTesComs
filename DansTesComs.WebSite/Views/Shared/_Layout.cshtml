@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
     <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta charset="utf-8" />
         <title>@ViewBag.Title - Mon application ASP.NET MVC</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -31,7 +31,7 @@
             </div>
         </header>
         <div id="body">
-            @RenderSection("featured", required: false)
+            @RenderSection("featured", false)
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
@@ -45,6 +45,6 @@
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
+        @RenderSection("scripts", false)
     </body>
 </html>

@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿// DansTesComs -> DansTesComs.WebSite ->HomeController.cs
+// fichier créée le 06/07/2014 a 16:21
+// par lucas zientek ( lucas )
+
 using System.Web.Mvc;
 
 namespace DansTesComs.WebSite.Controllers

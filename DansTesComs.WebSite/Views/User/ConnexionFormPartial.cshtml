@@ -1,0 +1,35 @@
+﻿@model DansTesComs.WebSite.Models.User
+
+<h2>Connexion</h2>
+@using (Html.BeginForm("Connexion", "User"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Pass, htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.Pass, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.RememberMe, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-offset-4 col-md-8">
+            <input type="submit" value="Connexion" class="btn btn-default" />
+        </div>
+    </div>
+}

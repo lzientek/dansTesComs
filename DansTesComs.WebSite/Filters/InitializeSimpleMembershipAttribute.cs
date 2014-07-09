@@ -25,20 +25,12 @@ namespace DansTesComs.WebSite.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<DansTesComsEntities>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
-                    {
-                        if (!context.Database.Exists())
-                        {
-                            // Créer la base de données SimpleMembership sans schéma de migration Entity Framework
-                            ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
-                        }
-                    }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("DansTesComsSqlServeur", "Users", "id", "Pseudo", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {

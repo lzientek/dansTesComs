@@ -14,10 +14,10 @@ namespace DansTesComs.WebSite.Models
     
     public partial class CommentaireExterne
     {
-        public int id { get; set; }
-        public int poster_user_id { get; set; }
+        public int Id { get; set; }
         public string Contenu { get; set; }
-        public System.DateTime date_post { get; set; }
+        public int PosterUserId { get; set; }
+        public System.DateTime DatePost { get; set; }
     
         public virtual User User { get; set; }
     }

@@ -19,14 +19,15 @@ namespace DansTesComs.WebSite.Models
             this.CommentaireExternes = new HashSet<CommentaireExterne>();
         }
     
-        public int id { get; set; }
-        public string mail { get; set; }
-        public string nom { get; set; }
-        public string prenom { get; set; }
+        public int Id { get; set; }
+        public string Mail { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
         public Nullable<System.DateTime> Anniversaire { get; set; }
         public Nullable<System.DateTime> InscriptionDate { get; set; }
-        public bool isAdmin { get; set; }
-        public string pass { get; set; }
+        public bool IsAdmin { get; set; }
+        public string Pass { get; set; }
+        public string Pseudo { get; set; }
     
         public virtual ICollection<CommentaireExterne> CommentaireExternes { get; set; }
     }
