@@ -23,7 +23,7 @@
           <Property Name="nom" Type="nvarchar" MaxLength="80" />
           <Property Name="prenom" Type="nvarchar" MaxLength="80" />
           <Property Name="Anniversaire" Type="date" />
-          <Property Name="InscriptionDate" Type="date" />
+          <Property Name="InscriptionDate" Type="datetime" Nullable="false" />
           <Property Name="isAdmin" Type="bit" Nullable="false" />
           <Property Name="Pseudo" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -70,7 +70,7 @@
           <Property Name="Nom" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="Prenom" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="Anniversaire" Type="DateTime" Precision="0" />
-          <Property Name="InscriptionDate" Type="DateTime" Precision="0" />
+          <Property Name="InscriptionDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
           <Property Name="Pseudo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CommentaireExternes" Relationship="DansTesComsModel.FK_CommentaireExterne_ToUser" FromRole="User" ToRole="CommentaireExterne" />

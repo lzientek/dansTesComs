@@ -26,14 +26,10 @@ namespace DansTesComs.WebSite.Controllers
             return View();
         }
 
-        // GET: User/Details/5
-        public ActionResult Details(int? id)
+        // GET: User/Details
+        public ActionResult Details()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
+            User user = db.Users.Find(WebSecurity.CurrentUserId);
             if (user == null)
             {
                 return HttpNotFound();
@@ -64,14 +60,10 @@ namespace DansTesComs.WebSite.Controllers
             return View(user);
         }
 
-        // GET: User/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: User/Edit
+        public ActionResult Edit()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
+            User user = db.Users.Find(WebSecurity.CurrentUserId);
             if (user == null)
             {
                 return HttpNotFound();
@@ -85,7 +77,7 @@ namespace DansTesComs.WebSite.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(
-            [Bind(Include = "id,mail,nom,prenom,Anniversaire,InscriptionDate,isAdmin,pass")] User user)
+            [Bind(Include = "id,mail,nom,prenom,Anniversaire")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -114,6 +106,13 @@ namespace DansTesComs.WebSite.Controllers
             if(userToConnect != null && WebSecurity.Login(userToConnect,user.Pass,user.RememberMe))
                 return RedirectToAction("Index","Home");
             return RedirectToAction("Connexion");
+        }
+
+
+        public ActionResult Deconnexion()
+        {
+            WebSecurity.Logout();
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

@@ -24,7 +24,7 @@ namespace DansTesComs.WebSite.Models
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public Nullable<System.DateTime> Anniversaire { get; set; }
-        public Nullable<System.DateTime> InscriptionDate { get; set; }
+        public System.DateTime InscriptionDate { get; set; }
         public bool IsAdmin { get; set; }
         public string Pseudo { get; set; }
     
