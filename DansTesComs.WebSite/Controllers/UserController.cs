@@ -55,6 +55,7 @@ namespace DansTesComs.WebSite.Controllers
             user.IsAdmin = false;
             if (ModelState.IsValid)
             {
+                WebSecurity.CreateAccount(user.Pseudo, user.Pass);
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -109,13 +110,10 @@ namespace DansTesComs.WebSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Connexion([Bind(Include = "Mail,Pass,RememberMe")] User user)
         {
-            var userToConnect = db.Users.First(u => u.Mail == user.Mail && u.Pass == user.Pass);
-            if(userToConnect != null && WebSecurity.Login(userToConnect.Pseudo,userToConnect.Pass,user.RememberMe))
+            var userToConnect = db.Users.First(u => u.Mail == user.Mail).Pseudo;
+            if(userToConnect != null && WebSecurity.Login(userToConnect,user.Pass,user.RememberMe))
                 return RedirectToAction("Index","Home");
-            else
-            {
-                return RedirectToAction("Connexion");
-            }
+            return RedirectToAction("Connexion");
         }
 
         protected override void Dispose(bool disposing)

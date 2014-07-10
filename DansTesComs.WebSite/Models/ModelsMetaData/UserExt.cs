@@ -12,6 +12,7 @@ namespace DansTesComs.WebSite.Models
     public partial class User
     {
         public bool RememberMe { get; set; }
+        public string Pass { get; set; }
     }
 
 

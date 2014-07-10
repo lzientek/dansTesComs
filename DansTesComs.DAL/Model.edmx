@@ -25,7 +25,6 @@
           <Property Name="Anniversaire" Type="date" />
           <Property Name="InscriptionDate" Type="date" />
           <Property Name="isAdmin" Type="bit" Nullable="false" />
-          <Property Name="pass" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Pseudo" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_CommentaireExterne_ToUser">
@@ -73,7 +72,6 @@
           <Property Name="Anniversaire" Type="DateTime" Precision="0" />
           <Property Name="InscriptionDate" Type="DateTime" Precision="0" />
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
-          <Property Name="Pass" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Pseudo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CommentaireExternes" Relationship="DansTesComsModel.FK_CommentaireExterne_ToUser" FromRole="User" ToRole="CommentaireExterne" />
         </EntityType>
@@ -117,7 +115,6 @@
             <EntityTypeMapping TypeName="DansTesComsModel.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="Pseudo" ColumnName="Pseudo" />
-                <ScalarProperty Name="Pass" ColumnName="pass" />
                 <ScalarProperty Name="Id" ColumnName="id" />
                 <ScalarProperty Name="Mail" ColumnName="mail" />
                 <ScalarProperty Name="Nom" ColumnName="nom" />

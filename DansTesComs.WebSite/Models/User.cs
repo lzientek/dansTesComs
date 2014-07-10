@@ -26,7 +26,6 @@ namespace DansTesComs.WebSite.Models
         public Nullable<System.DateTime> Anniversaire { get; set; }
         public Nullable<System.DateTime> InscriptionDate { get; set; }
         public bool IsAdmin { get; set; }
-        public string Pass { get; set; }
         public string Pseudo { get; set; }
     
         public virtual ICollection<CommentaireExterne> CommentaireExternes { get; set; }
