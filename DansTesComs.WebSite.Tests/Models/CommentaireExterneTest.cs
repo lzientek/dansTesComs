@@ -22,18 +22,41 @@ namespace DansTesComs.WebSite.Tests.Models
             };
             foreach (var tuple in coms)
             {
-                CommentaireExterne commentaire  = new CommentaireExterne();
+                CommentaireExterne commentaire = new CommentaireExterne();
                 List<CommentaireParse> result = new List<CommentaireParse>(commentaire.ParseContent(tuple.Item1));
                 if (tuple.Item2)
                 {
                     Assert.IsNotNull(result[0]);
-                    Assert.AreEqual(tuple.Item3,result[0].Niveau);
+                    Assert.AreEqual(tuple.Item3, result[0].Niveau);
                 }
                 else
                 {
-                    Assert.AreEqual(result.Count,0);
+                    Assert.AreEqual(result.Count, 0);
                 }
-                
+
+            }
+        }
+
+
+        [TestMethod]
+        public void CommentAndPseudoTest()
+        {
+            var coms = new List<Tuple<string, string, string>>
+            {
+                new Tuple<string, string, string>("    coucou > je suis belle", "coucou", "je suis belle"),
+                new Tuple<string, string, string>("couou > ejaezij", "couou", "ejaezij"),
+                new Tuple<string, string, string>(@"couou > eja@&#{[|`\ezij", "couou", @"eja@&#{[|`\ezij"),
+
+            };
+            foreach (var tuple in coms)
+            {
+                CommentaireExterne commentaire = new CommentaireExterne();
+                List<CommentaireParse> result = new List<CommentaireParse>(commentaire.ParseContent(tuple.Item1));
+
+                Assert.AreEqual(result[0].Pseudo, tuple.Item2);
+                Assert.AreEqual(result[0].Commentaire, tuple.Item3);
+
+
             }
         }
 

@@ -28,8 +28,8 @@ namespace DansTesComs.WebSite.Models
 
                     yield return new CommentaireParse
                     {
-                        Pseudo = splitedString[0],
-                        Commentaire = splitedString[1],
+                        Pseudo = splitedString[0].Trim(),
+                        Commentaire = splitedString[1].Trim(),
                         Niveau = niveau
                     };
                 }
