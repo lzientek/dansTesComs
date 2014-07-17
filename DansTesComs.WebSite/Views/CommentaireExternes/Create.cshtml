@@ -1,0 +1,76 @@
+﻿@using System.Web.UI.WebControls
+@model DansTesComs.WebSite.Models.CommentaireExterne
+
+@{
+    ViewBag.Title = "Create";
+
+
+}
+@section AddToHead
+{
+    @Scripts.Render("~/bundles/jquery");
+    @Scripts.Render("~/bundles/com/add");
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>CommentaireExterne</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Titre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Titre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Titre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CommentairesExterneContents, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="ajoutdecoms">
+                <div class="row">
+                    <div class="col-md-3">
+                        <input class="form-control text-box single-line" id="CommentairesExterneContents_0__Pseudo" name="CommentairesExterneContents[0].Pseudo" type="text" placeholder="Pseudo">
+                        <input id="CommentairesExterneContents_0__Niveau" name="CommentairesExterneContents[0].Niveau" type="hidden" value="0">
+                    </div>
+                    <div class="col-md-6">
+                        <textarea class="form-control" id="CommentairesExterneContents_0__Commentaire" name="CommentairesExterneContents[0].Commentaire" placeholder="commentaire"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="btn btn-default" type="button" id="addCommentButton">+</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

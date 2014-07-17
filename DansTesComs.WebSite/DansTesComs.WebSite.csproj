@@ -188,6 +188,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CommentaireExternesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -195,6 +196,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CommentaireExterne.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CommentairesExterneContent.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Models.Context.cs">
@@ -208,6 +212,7 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelsMetaData\CommentaireExterneExt.cs" />
+    <Compile Include="Models\ModelsMetaData\CommentairesExterneContent.cs" />
     <Compile Include="Models\User.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -302,6 +307,7 @@
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Commentaire.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -350,6 +356,11 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Connexion.cshtml" />
     <Content Include="Views\User\ConnexionFormPartial.cshtml" />
+    <Content Include="Views\CommentaireExternes\Create.cshtml" />
+    <Content Include="Views\CommentaireExternes\Delete.cshtml" />
+    <Content Include="Views\CommentaireExternes\Details.cshtml" />
+    <Content Include="Views\CommentaireExternes\Edit.cshtml" />
+    <Content Include="Views\CommentaireExternes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

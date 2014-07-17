@@ -11,8 +11,18 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PosterUserId" Type="int" Nullable="false" />
-          <Property Name="Contenu" Type="text" />
           <Property Name="DatePost" Type="date" Nullable="false" />
+          <Property Name="Titre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CommentairesExterneContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pseudo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Commentaire" Type="text" Nullable="false" />
+          <Property Name="Niveau" Type="int" Nullable="false" />
+          <Property Name="CommentaireExterneID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -39,12 +49,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CommentairesExterneContent_ToCommentairesExternes">
+          <End Role="CommentaireExterne" Type="Self.CommentaireExterne" Multiplicity="1" />
+          <End Role="CommentairesExterneContent" Type="Self.CommentairesExterneContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommentaireExterne">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CommentairesExterneContent">
+              <PropertyRef Name="CommentaireExterneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DansTesComsModelStoreContainer">
           <EntitySet Name="CommentaireExterne" EntityType="Self.CommentaireExterne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentairesExterneContent" EntityType="Self.CommentairesExterneContent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CommentaireExterne_ToUser" Association="Self.FK_CommentaireExterne_ToUser">
             <End Role="Users" EntitySet="Users" />
             <End Role="CommentaireExterne" EntitySet="CommentaireExterne" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentairesExterneContent_ToCommentairesExternes" Association="Self.FK_CommentairesExterneContent_ToCommentairesExternes">
+            <End Role="CommentaireExterne" EntitySet="CommentaireExterne" />
+            <End Role="CommentairesExterneContent" EntitySet="CommentairesExterneContent" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -56,10 +83,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Contenu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PosterUserId" Type="Int32" Nullable="false" />
           <Property Name="DatePost" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="User" Relationship="DansTesComsModel.FK_CommentaireExterne_ToUser" FromRole="CommentaireExterne" ToRole="User" />
+          <Property Name="Titre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CommentairesExterneContents" Relationship="DansTesComsModel.FK_CommentairesExterneContent_ToCommentairesExternes" FromRole="CommentaireExterne" ToRole="CommentairesExterneContent" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -82,6 +110,11 @@
             <End Role="User" EntitySet="Users" />
             <End Role="CommentaireExterne" EntitySet="CommentaireExternes" />
           </AssociationSet>
+          <EntitySet Name="CommentairesExterneContents" EntityType="DansTesComsModel.CommentairesExterneContent" />
+          <AssociationSet Name="FK_CommentairesExterneContent_ToCommentairesExternes" Association="DansTesComsModel.FK_CommentairesExterneContent_ToCommentairesExternes">
+            <End Role="CommentaireExterne" EntitySet="CommentaireExternes" />
+            <End Role="CommentairesExterneContent" EntitySet="CommentairesExterneContents" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_CommentaireExterne_ToUser">
           <End Type="DansTesComsModel.User" Role="User" Multiplicity="1" />
@@ -95,6 +128,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CommentairesExterneContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pseudo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Commentaire" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Niveau" Type="Int32" Nullable="false" />
+          <Property Name="CommentaireExterneID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CommentaireExterne" Relationship="DansTesComsModel.FK_CommentairesExterneContent_ToCommentairesExternes" FromRole="CommentairesExterneContent" ToRole="CommentaireExterne" />
+        </EntityType>
+        <Association Name="FK_CommentairesExterneContent_ToCommentairesExternes">
+          <End Type="DansTesComsModel.CommentaireExterne" Role="CommentaireExterne" Multiplicity="1" />
+          <End Type="DansTesComsModel.CommentairesExterneContent" Role="CommentairesExterneContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommentaireExterne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CommentairesExterneContent">
+              <PropertyRef Name="CommentaireExterneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -104,10 +160,10 @@
           <EntitySetMapping Name="CommentaireExternes">
             <EntityTypeMapping TypeName="DansTesComsModel.CommentaireExterne">
               <MappingFragment StoreEntitySet="CommentaireExterne">
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
                 <ScalarProperty Name="DatePost" ColumnName="DatePost" />
                 <ScalarProperty Name="PosterUserId" ColumnName="PosterUserId" />
                 <ScalarProperty Name="Id" ColumnName="id" />
-                <ScalarProperty Name="Contenu" ColumnName="Contenu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -122,6 +178,17 @@
                 <ScalarProperty Name="Anniversaire" ColumnName="Anniversaire" />
                 <ScalarProperty Name="InscriptionDate" ColumnName="InscriptionDate" />
                 <ScalarProperty Name="IsAdmin" ColumnName="isAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentairesExterneContents">
+            <EntityTypeMapping TypeName="DansTesComsModel.CommentairesExterneContent">
+              <MappingFragment StoreEntitySet="CommentairesExterneContent">
+                <ScalarProperty Name="CommentaireExterneID" ColumnName="CommentaireExterneID" />
+                <ScalarProperty Name="Niveau" ColumnName="Niveau" />
+                <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+                <ScalarProperty Name="Pseudo" ColumnName="Pseudo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -651,3 +651,10 @@ tr.pager td { padding: 0 0.25em 0 0; }
 
     footer p { margin: 0; }
 }
+
+/* Perso
+    -------------------------------------------------------*/
+#ajoutdecoms .row {
+    margin-bottom: 10px;
+}
+

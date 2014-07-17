@@ -27,5 +27,6 @@ namespace DansTesComs.WebSite.Models
     
         public virtual DbSet<CommentaireExterne> CommentaireExternes { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<CommentairesExterneContent> CommentairesExterneContents { get; set; }
     }
 }

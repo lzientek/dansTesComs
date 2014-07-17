@@ -30,7 +30,7 @@ namespace DansTesComs.WebSite.Filters
                 try
                 {
 
-                    WebSecurity.InitializeDatabaseConnection("DansTesComsSqlServeur", "Users", "id", "Pseudo", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("DansTesComsSqlServeur", "Users", "id", "Pseudo", true);
                 }
                 catch (Exception ex)
                 {

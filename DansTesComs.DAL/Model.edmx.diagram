@@ -8,6 +8,8 @@
         <EntityTypeShape EntityType="DansTesComsModel.CommentaireExterne" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DansTesComsModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DansTesComsModel.FK_CommentaireExterne_ToUser" />
+        <EntityTypeShape EntityType="DansTesComsModel.CommentairesExterneContent" Width="1.5" PointX="5.25" PointY="1.375" />
+        <AssociationConnector Association="DansTesComsModel.FK_CommentairesExterneContent_ToCommentairesExternes" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
