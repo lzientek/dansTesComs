@@ -52,7 +52,7 @@ namespace DansTesComs.WebSite.Controllers
         //[Authorize(Roles = "Modo")]
         //[Authorize(Roles = "ADVuser")]        
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentairesExterneContents,Titre")] CommentaireExterne commentaireExterne)
+        public ActionResult Create([Bind(Include = "CommentairesExterneContents,Lien,Titre")] CommentaireExterne commentaireExterne)
         {
             commentaireExterne.DatePost = DateTime.Now;
             commentaireExterne.PosterUserId = WebSecurity.CurrentUserId;

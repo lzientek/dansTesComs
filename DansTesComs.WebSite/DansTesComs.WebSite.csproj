@@ -202,21 +202,25 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Models.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Models.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\Models.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelsMetaData\CommentaireExterneExt.cs" />
-    <Compile Include="Models\ModelsMetaData\CommentairesExterneContent.cs" />
+    <Compile Include="Models\ModelsExtentions\CommentaireExterneExt.cs" />
+    <Compile Include="Models\ModelsExtentions\CommentairesExterneContent.cs" />
+    <Compile Include="Models\ModelsExtentions\Note.cs" />
+    <Compile Include="Models\Note.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelsMetaData\UserExt.cs" />
+    <Compile Include="Models\ModelsExtentions\UserExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

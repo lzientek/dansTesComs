@@ -21,6 +21,9 @@ namespace DansTesComs.WebSite.Models
         [Required(ErrorMessage = "Titre obligatoire.")]
         public string Titre { get; set; }
 
+        [MaxLength(200,ErrorMessage = "Url trop longue...")]
+        [DataType(DataType.Url,ErrorMessage = "Doit etre sous forme d'un lien...")]
+        public string Lien { get; set; }
     }
 
 }

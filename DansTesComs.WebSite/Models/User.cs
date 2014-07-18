@@ -17,6 +17,7 @@ namespace DansTesComs.WebSite.Models
         public User()
         {
             this.CommentaireExternes = new HashSet<CommentaireExterne>();
+            this.Notes = new HashSet<Note>();
         }
     
         public int Id { get; set; }
@@ -29,5 +30,6 @@ namespace DansTesComs.WebSite.Models
         public string Pseudo { get; set; }
     
         public virtual ICollection<CommentaireExterne> CommentaireExternes { get; set; }
+        public virtual ICollection<Note> Notes { get; set; }
     }
 }
