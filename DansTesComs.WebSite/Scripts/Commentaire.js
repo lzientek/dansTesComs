@@ -11,9 +11,10 @@ function newRow(id) {
 }
 
 function buttonAdd() {
-    actualId += 1;
+    
     var newhtml = newRow(actualId);
     $("#ajoutdecoms").append(newhtml);
+    actualId += 1;
 }
 
 $().ready(function () {

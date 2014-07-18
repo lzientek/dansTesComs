@@ -11,7 +11,18 @@ namespace DansTesComs.WebSite.Models
     [MetadataType(typeof(CommentaireExterneMetaData))]
     public partial class CommentaireExterne
     {
-  
+        public void removeEmptyComs()
+        {
+            //on parcours a l'envers normal on supprime! si tu sais pas pourquoi google
+            for (int i = CommentairesExterneContents.Count - 1; i >=0; i--)
+            {
+                var item = CommentairesExterneContents.ElementAt(i);
+                if (string.IsNullOrEmpty(item.Commentaire) || string.IsNullOrEmpty(item.Pseudo))
+                {
+                    CommentairesExterneContents.Remove(item);
+                }
+            }
+        }
     }
 
 

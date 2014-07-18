@@ -56,6 +56,7 @@ namespace DansTesComs.WebSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CommentairesExterneContents,Lien,Titre")] CommentaireExterne commentaireExterne)
         {
+            commentaireExterne.removeEmptyComs();
             commentaireExterne.DatePost = DateTime.Now;
             commentaireExterne.PosterUserId = WebSecurity.CurrentUserId;
             if (ModelState.IsValid)

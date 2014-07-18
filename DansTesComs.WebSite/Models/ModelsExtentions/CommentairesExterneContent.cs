@@ -9,6 +9,7 @@ namespace DansTesComs.WebSite.Models
     [MetadataType(typeof(CommentairesExterneContentMetaData))]
     public partial class CommentairesExterneContent
     {
+        
     }
 
     public class CommentairesExterneContentMetaData
