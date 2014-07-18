@@ -17,6 +17,7 @@ namespace DansTesComs.WebSite.Models
         public CommentaireExterne()
         {
             this.CommentairesExterneContents = new HashSet<CommentairesExterneContent>();
+            
             this.Notes = new HashSet<Note>();
         }
     

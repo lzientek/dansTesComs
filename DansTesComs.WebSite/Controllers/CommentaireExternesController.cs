@@ -13,7 +13,7 @@ using WebMatrix.WebData;
 
 namespace DansTesComs.WebSite.Controllers
 {
-     [InitializeSimpleMembership]
+    [InitializeSimpleMembership]
     public class CommentaireExternesController : Controller
     {
         private DansTesComsEntities db = new DansTesComsEntities();
@@ -44,13 +44,15 @@ namespace DansTesComs.WebSite.Controllers
         //[Authorize(Roles = "ADVuser")]
         public ActionResult Create()
         {
-            return View();
+            var com = new CommentaireExterne();
+            com.CommentairesExterneContents.Add(new CommentairesExterneContent{Commentaire = string.Empty,Pseudo = string.Empty,Niveau = 0});
+            return View(com);
         }
 
-        
+
         [HttpPost]
         //[Authorize(Roles = "Modo")]
-        //[Authorize(Roles = "ADVuser")]        
+        [Authorize]        
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CommentairesExterneContents,Lien,Titre")] CommentaireExterne commentaireExterne)
         {
@@ -58,8 +60,16 @@ namespace DansTesComs.WebSite.Controllers
             commentaireExterne.PosterUserId = WebSecurity.CurrentUserId;
             if (ModelState.IsValid)
             {
-                db.CommentaireExternes.Add(commentaireExterne);
-                db.SaveChanges();
+                try
+                {
+                    db.CommentaireExternes.Add(commentaireExterne);
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    return View(commentaireExterne);
+                }
+
                 return RedirectToAction("Index");
             }
 

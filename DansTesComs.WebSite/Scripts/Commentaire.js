@@ -17,5 +17,6 @@ function buttonAdd() {
 }
 
 $().ready(function () {
+    actualId = parseInt($("#lastIndexCom").val());
     $("#addCommentButton").click(buttonAdd);
 });

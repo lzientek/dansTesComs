@@ -1,4 +1,6 @@
 ﻿@using System.Web.UI.WebControls
+@using DansTesComs.WebSite.Models
+@using Microsoft.Ajax.Utilities
 @model DansTesComs.WebSite.Models.CommentaireExterne
 
 @{
@@ -40,24 +42,9 @@
             </div>
         </div>
 
+
         <div class="form-group">
-            @Html.LabelFor(model => model.CommentairesExterneContents, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10" id="ajoutdecoms">
-                <div class="row">
-                    <div class="col-md-3">
-                        <input class="form-control text-box single-line" id="CommentairesExterneContents_0__Pseudo" name="CommentairesExterneContents[0].Pseudo" type="text" placeholder="Pseudo">
-                        <input id="CommentairesExterneContents_0__Niveau" name="CommentairesExterneContents[0].Niveau" type="hidden" value="0">
-                    </div>
-                    <div class="col-md-6">
-                        <textarea class="form-control" id="CommentairesExterneContents_0__Commentaire" name="CommentairesExterneContents[0].Commentaire" placeholder="commentaire"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <button class="btn btn-default" type="button" id="addCommentButton">+</button>
-                </div>
-            </div>
+@Html.Partial("_PartialCommentaireContentEdit",Model.CommentairesExterneContents)
             <div class="form-group">
                 <div class="col-md-10">
 

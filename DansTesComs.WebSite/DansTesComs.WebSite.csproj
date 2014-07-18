@@ -365,6 +365,7 @@
     <Content Include="Views\CommentaireExternes\Details.cshtml" />
     <Content Include="Views\CommentaireExternes\Edit.cshtml" />
     <Content Include="Views\CommentaireExternes\Index.cshtml" />
+    <Content Include="Views\CommentaireExternes\_PartialCommentaireContentEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
