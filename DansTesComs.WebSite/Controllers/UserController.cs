@@ -26,7 +26,6 @@ namespace DansTesComs.WebSite.Controllers
             return View();
         }
 
-        // GET: User/Details
         public ActionResult Details()
         {
             User user = db.Users.Find(WebSecurity.CurrentUserId);
@@ -96,7 +95,6 @@ namespace DansTesComs.WebSite.Controllers
             return View();
         }
 
-        // POST: User/Delete/5
         [HttpPost, ActionName("Connexion")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

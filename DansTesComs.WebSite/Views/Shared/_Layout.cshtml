@@ -25,6 +25,11 @@
                     </section>
                     <nav>
                         <ul id="menu">
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li>@Html.ActionLink("Commentaires", "Index", "CommentaireExternes")</li>
+
+                            }
                             <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
                             <li>@Html.ActionLink("À propos de", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>

@@ -20,7 +20,7 @@ namespace DansTesComs.WebSite.Controllers
 
         public ActionResult Index()
         {
-            var commentaireExternes = db.CommentaireExternes.Include(c => c.User);
+            var commentaireExternes = db.CommentaireExternes;
             return View(commentaireExternes.ToList());
         }
 
@@ -41,7 +41,7 @@ namespace DansTesComs.WebSite.Controllers
         }
 
         //[Authorize(Roles = "Modo")]
-        //[Authorize(Roles = "ADVuser")]
+        [Authorize]
         public ActionResult Create()
         {
             var com = new CommentaireExterne();
