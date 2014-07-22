@@ -17,7 +17,6 @@ namespace DansTesComs.WebSite.Models
         public CommentaireExterne()
         {
             this.CommentairesExterneContents = new HashSet<CommentairesExterneContent>();
-            
             this.Notes = new HashSet<Note>();
         }
     
@@ -26,6 +25,7 @@ namespace DansTesComs.WebSite.Models
         public System.DateTime DatePost { get; set; }
         public string Titre { get; set; }
         public string Lien { get; set; }
+        public string Publication { get; set; }
     
         public virtual User User { get; set; }
         public virtual ICollection<CommentairesExterneContent> CommentairesExterneContents { get; set; }

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using DansTesComs.WebSite.Filters;
 using DansTesComs.WebSite.Models;
+using PagedList;
 using WebMatrix.WebData;
 
 namespace DansTesComs.WebSite.Controllers
@@ -18,12 +19,20 @@ namespace DansTesComs.WebSite.Controllers
     {
         private DansTesComsEntities db = new DansTesComsEntities();
 
-        public ActionResult Index()
+
+        public ActionResult Index(int page =1)
+        {
+            var commentaireExternes = db.CommentaireExternes.ToList()
+                .OrderByDescending(com=>com.DatePost).ToPagedList(page,5);
+
+            return View(commentaireExternes);
+        }
+
+        public ActionResult Admin()
         {
             var commentaireExternes = db.CommentaireExternes;
             return View(commentaireExternes.ToList());
         }
-
 
         //[Authorize(Roles = "Modo")]
         public ActionResult Details(int? id)
@@ -54,7 +63,7 @@ namespace DansTesComs.WebSite.Controllers
         //[Authorize(Roles = "Modo")]
         [Authorize]        
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentairesExterneContents,Lien,Titre")] CommentaireExterne commentaireExterne)
+        public ActionResult Create([Bind(Include = "CommentairesExterneContents,Lien,Titre,Publication")] CommentaireExterne commentaireExterne)
         {
             commentaireExterne.removeEmptyComs();
             commentaireExterne.DatePost = DateTime.Now;

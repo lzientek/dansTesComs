@@ -14,6 +14,7 @@
           <Property Name="DatePost" Type="date" Nullable="false" />
           <Property Name="Titre" Type="nvarchar" MaxLength="50" />
           <Property Name="lien" Type="nvarchar" MaxLength="200" />
+          <Property Name="Publication" Type="nvarchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="CommentairesExterneContent">
           <Key>
@@ -133,6 +134,7 @@
           <NavigationProperty Name="CommentairesExterneContents" Relationship="DansTesComsModel.FK_CommentairesExterneContent_ToCommentairesExternes" FromRole="CommentaireExterne" ToRole="CommentairesExterneContent" />
           <Property Name="Lien" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Notes" Relationship="DansTesComsModel.FK_Note_CommentairesExterne" FromRole="CommentaireExterne" ToRole="Note" />
+          <Property Name="Publication" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -250,6 +252,7 @@
           <EntitySetMapping Name="CommentaireExternes">
             <EntityTypeMapping TypeName="DansTesComsModel.CommentaireExterne">
               <MappingFragment StoreEntitySet="CommentaireExterne">
+                <ScalarProperty Name="Publication" ColumnName="Publication" />
                 <ScalarProperty Name="Lien" ColumnName="lien" />
                 <ScalarProperty Name="Titre" ColumnName="Titre" />
                 <ScalarProperty Name="DatePost" ColumnName="DatePost" />
