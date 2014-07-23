@@ -15,7 +15,7 @@ namespace DansTesComs.WebSite
                 "~/Scripts/jquery-2.1.1.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                "~/Scripts/jquery-ui-2.1.1.min.js"));
+                "~/Scripts/jquery-ui-{version}.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                 "~/Scripts/jquery.unobtrusive*",

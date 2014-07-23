@@ -1,0 +1,17 @@
+﻿@model IPagedList<Commentaire>
+
+@Html.Partial("Create", new Commentaire { PostId = ViewBag.commentid })
+
+
+
+
+<div class="comment-block">
+    @foreach (var com in Model)
+    {
+        @Html.Partial("_PartialViewCommentaire",com)
+    }
+    <div id="more comments">
+        
+    </div>
+</div>
+

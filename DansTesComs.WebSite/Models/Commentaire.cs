@@ -12,25 +12,15 @@ namespace DansTesComs.WebSite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CommentaireExterne
+    public partial class Commentaire
     {
-        public CommentaireExterne()
-        {
-            this.CommentairesExterneContents = new HashSet<CommentairesExterneContent>();
-            this.Notes = new HashSet<Note>();
-            this.Commentaires = new HashSet<Commentaire>();
-        }
-    
         public int Id { get; set; }
-        public int PosterUserId { get; set; }
+        public int UserId { get; set; }
+        public string Texte { get; set; }
         public System.DateTime DatePost { get; set; }
-        public string Titre { get; set; }
-        public string Lien { get; set; }
-        public string Publication { get; set; }
+        public int PostId { get; set; }
     
         public virtual User User { get; set; }
-        public virtual ICollection<CommentairesExterneContent> CommentairesExterneContents { get; set; }
-        public virtual ICollection<Note> Notes { get; set; }
-        public virtual ICollection<Commentaire> Commentaires { get; set; }
+        public virtual CommentaireExterne CommentaireExterne { get; set; }
     }
 }

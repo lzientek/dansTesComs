@@ -11,10 +11,20 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PosterUserId" Type="int" Nullable="false" />
-          <Property Name="DatePost" Type="date" Nullable="false" />
+          <Property Name="DatePost" Type="datetime" Nullable="false" />
           <Property Name="Titre" Type="nvarchar" MaxLength="50" />
           <Property Name="lien" Type="nvarchar" MaxLength="200" />
-          <Property Name="Publication" Type="nvarchar" MaxLength="300" />
+          <Property Name="Publication" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Commentaires">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Texte" Type="text" Nullable="false" />
+          <Property Name="DatePost" Type="datetime" Nullable="false" />
+          <Property Name="PostId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CommentairesExterneContent">
           <Key>
@@ -60,6 +70,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Commentaires_CommentaireExterne">
+          <End Role="CommentaireExterne" Type="Self.CommentaireExterne" Multiplicity="1" />
+          <End Role="Commentaires" Type="Self.Commentaires" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommentaireExterne">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Commentaires">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commentaires_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Commentaires" Type="Self.Commentaires" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Commentaires">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CommentairesExterneContent_ToCommentairesExternes">
           <End Role="CommentaireExterne" Type="Self.CommentaireExterne" Multiplicity="1" />
           <End Role="CommentairesExterneContent" Type="Self.CommentairesExterneContent" Multiplicity="*" />
@@ -98,12 +132,21 @@
         </Association>
         <EntityContainer Name="DansTesComsModelStoreContainer">
           <EntitySet Name="CommentaireExterne" EntityType="Self.CommentaireExterne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Commentaires" EntityType="Self.Commentaires" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommentairesExterneContent" EntityType="Self.CommentairesExterneContent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Note" EntityType="Self.Note" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CommentaireExterne_ToUser" Association="Self.FK_CommentaireExterne_ToUser">
             <End Role="Users" EntitySet="Users" />
             <End Role="CommentaireExterne" EntitySet="CommentaireExterne" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commentaires_CommentaireExterne" Association="Self.FK_Commentaires_CommentaireExterne">
+            <End Role="CommentaireExterne" EntitySet="CommentaireExterne" />
+            <End Role="Commentaires" EntitySet="Commentaires" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commentaires_User" Association="Self.FK_Commentaires_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Commentaires" EntitySet="Commentaires" />
           </AssociationSet>
           <AssociationSet Name="FK_CommentairesExterneContent_ToCommentairesExternes" Association="Self.FK_CommentairesExterneContent_ToCommentairesExternes">
             <End Role="CommentaireExterne" EntitySet="CommentaireExterne" />
@@ -128,13 +171,14 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PosterUserId" Type="Int32" Nullable="false" />
-          <Property Name="DatePost" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DatePost" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="User" Relationship="DansTesComsModel.FK_CommentaireExterne_ToUser" FromRole="CommentaireExterne" ToRole="User" />
           <Property Name="Titre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CommentairesExterneContents" Relationship="DansTesComsModel.FK_CommentairesExterneContent_ToCommentairesExternes" FromRole="CommentaireExterne" ToRole="CommentairesExterneContent" />
           <Property Name="Lien" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Notes" Relationship="DansTesComsModel.FK_Note_CommentairesExterne" FromRole="CommentaireExterne" ToRole="Note" />
-          <Property Name="Publication" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Publication" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Commentaires" Relationship="DansTesComsModel.FK_Commentaires_CommentaireExterne" FromRole="CommentaireExterne" ToRole="Commentaire" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -150,6 +194,7 @@
           <Property Name="Pseudo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CommentaireExternes" Relationship="DansTesComsModel.FK_CommentaireExterne_ToUser" FromRole="User" ToRole="CommentaireExterne" />
           <NavigationProperty Name="Notes" Relationship="DansTesComsModel.FK_Note_ToUser" FromRole="User" ToRole="Note" />
+          <NavigationProperty Name="Commentaires" Relationship="DansTesComsModel.FK_Commentaires_User" FromRole="User" ToRole="Commentaire" />
         </EntityType>
         <EntityContainer Name="DansTesComsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CommentaireExternes" EntityType="Self.CommentaireExterne" />
@@ -171,6 +216,15 @@
           <AssociationSet Name="FK_Note_ToUser" Association="DansTesComsModel.FK_Note_ToUser">
             <End Role="User" EntitySet="Users" />
             <End Role="Note" EntitySet="Notes" />
+          </AssociationSet>
+          <EntitySet Name="Commentaires" EntityType="DansTesComsModel.Commentaire" />
+          <AssociationSet Name="FK_Commentaires_User" Association="DansTesComsModel.FK_Commentaires_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Commentaire" EntitySet="Commentaires" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commentaires_CommentaireExterne" Association="DansTesComsModel.FK_Commentaires_CommentaireExterne">
+            <End Role="CommentaireExterne" EntitySet="CommentaireExternes" />
+            <End Role="Commentaire" EntitySet="Commentaires" />
           </AssociationSet>
         </EntityContainer>
         <Association Name="FK_CommentaireExterne_ToUser">
@@ -243,6 +297,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Commentaire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Texte" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DatePost" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="DansTesComsModel.FK_Commentaires_User" FromRole="Commentaire" ToRole="User" />
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CommentaireExterne" Relationship="DansTesComsModel.FK_Commentaires_CommentaireExterne" FromRole="Commentaire" ToRole="CommentaireExterne" />
+        </EntityType>
+        <Association Name="FK_Commentaires_User">
+          <End Type="DansTesComsModel.User" Role="User" Multiplicity="1" />
+          <End Type="DansTesComsModel.Commentaire" Role="Commentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Commentaire">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commentaires_CommentaireExterne">
+          <End Type="DansTesComsModel.CommentaireExterne" Role="CommentaireExterne" Multiplicity="1" />
+          <End Type="DansTesComsModel.Commentaire" Role="Commentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommentaireExterne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Commentaire">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -292,6 +382,17 @@
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="IdCommentaire" ColumnName="IdCommentaire" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Commentaires">
+            <EntityTypeMapping TypeName="DansTesComsModel.Commentaire">
+              <MappingFragment StoreEntitySet="Commentaires">
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="DatePost" ColumnName="DatePost" />
+                <ScalarProperty Name="Texte" ColumnName="Texte" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -215,11 +215,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CommentaireExternesController.cs" />
+    <Compile Include="Controllers\CommentairesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Commentaire.cs">
+      <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CommentaireExterne.cs">
       <DependentUpon>Models.tt</DependentUpon>
@@ -237,6 +241,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelsExtentions\Commentaire.cs" />
     <Compile Include="Models\ModelsExtentions\CommentaireExterneExt.cs" />
     <Compile Include="Models\ModelsExtentions\CommentairesExterneContent.cs" />
     <Compile Include="Models\ModelsExtentions\Note.cs" />
@@ -340,12 +345,18 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Commentaire.js" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-3.1.0.debug.js" />
     <Content Include="Scripts\knockout-3.1.0.js" />
@@ -399,6 +410,9 @@
     <Content Include="Views\CommentaireExternes\PartialView\_PartialCommentaireContentView.cshtml" />
     <Content Include="Views\CommentaireExternes\PartialView\_PartialCommentaireContentEdit.cshtml" />
     <Content Include="Views\CommentaireExternes\PartialView\_PartialCommentairesExternes.cshtml" />
+    <Content Include="Views\Commentaires\Index.cshtml" />
+    <Content Include="Views\Commentaires\Create.cshtml" />
+    <Content Include="Views\Commentaires\_PartialViewCommentaire.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

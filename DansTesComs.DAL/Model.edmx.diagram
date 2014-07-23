@@ -13,6 +13,9 @@
         <EntityTypeShape EntityType="DansTesComsModel.Note" Width="1.5" PointX="5.25" PointY="4.375" />
         <AssociationConnector Association="DansTesComsModel.FK_Note_CommentairesExterne" />
         <AssociationConnector Association="DansTesComsModel.FK_Note_ToUser" />
+        <EntityTypeShape EntityType="DansTesComsModel.Commentaire" Width="1.5" PointX="3" PointY="5.625" />
+        <AssociationConnector Association="DansTesComsModel.FK_Commentaires_User" />
+        <AssociationConnector Association="DansTesComsModel.FK_Commentaires_CommentaireExterne" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
