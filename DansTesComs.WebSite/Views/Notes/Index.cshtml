@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Note>
+
+
+    @{ AjaxOptions opt = new AjaxOptions() {
+        AllowCache = false,
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "NoteCommentaireExterne-" + ViewBag.commentaireId
+       }; }
+
+@if (Request.IsAuthenticated)
+{
+    @Ajax.ActionLink("+", "Plus", new {commentaireExterneId = ViewBag.commentaireId}, opt)
+}
+
+
+@Model.Count(n => n.NoteValue == NoteValue.Plus)
+
+
+@if (Request.IsAuthenticated)
+{
+    @Ajax.ActionLink("-", "Moins", new {commentaireExterneId = ViewBag.commentaireId}, opt)
+}
+@Model.Count(n => n.NoteValue == NoteValue.Moins)
+
+

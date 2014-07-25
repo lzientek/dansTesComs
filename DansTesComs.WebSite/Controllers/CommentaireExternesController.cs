@@ -28,6 +28,7 @@ namespace DansTesComs.WebSite.Controllers
             return View(commentaireExternes);
         }
 
+        [Authorize]
         public ActionResult Admin()
         {
             var commentaireExternes = db.CommentaireExternes;

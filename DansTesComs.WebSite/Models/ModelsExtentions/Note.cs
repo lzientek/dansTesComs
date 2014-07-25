@@ -15,13 +15,13 @@ namespace DansTesComs.WebSite.Models
 
     public enum NoteValue
     {
-        moins = -1,
-        plus = 1,
+        Moins = 0,
+        Plus = 1,
     }
 
     public class NoteMetaData
     {
-        [Range(-1,1)]
+        [Range(0,1)]
         public int Value { get; set; }
     }
 }

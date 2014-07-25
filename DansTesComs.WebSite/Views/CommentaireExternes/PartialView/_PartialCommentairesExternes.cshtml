@@ -13,6 +13,9 @@
                 @Html.Partial("PartialView/_PartialCommentaireContentView", coment)
             }
             <p class="commentaire-poster">Publier par @com.User.Pseudo le @com.DatePost</p>
+            <div id="NoteCommentaireExterne-@com.Id">
+                @Html.Action("Index", "Notes", new { commentaireExterneId = com.Id })
+            </div>
         </div>
     }
     

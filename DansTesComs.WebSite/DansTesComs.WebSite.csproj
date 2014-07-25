@@ -217,6 +217,7 @@
     <Compile Include="Controllers\CommentaireExternesController.cs" />
     <Compile Include="Controllers\CommentairesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NotesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -413,6 +414,7 @@
     <Content Include="Views\Commentaires\Index.cshtml" />
     <Content Include="Views\Commentaires\Create.cshtml" />
     <Content Include="Views\Commentaires\_PartialViewCommentaire.cshtml" />
+    <Content Include="Views\Notes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
