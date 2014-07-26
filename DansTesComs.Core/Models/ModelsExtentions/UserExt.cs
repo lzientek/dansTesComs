@@ -6,7 +6,7 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace DansTesComs.WebSite.Models
+namespace DansTesComs.Core.Models
 {
     [MetadataType(typeof (UserMetadata))]
     public partial class User

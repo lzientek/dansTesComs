@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DansTesComs.WebSite.Models;
+using DansTesComs.Core.Models;
 using Microsoft.Ajax.Utilities;
 using PagedList;
 using WebMatrix.WebData;

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.RegularExpressions;
-using DansTesComs.Core;
+using DansTesComs.Core.Models;
 
-namespace DansTesComs.WebSite.Models
+namespace DansTesComs.Core.Models
 {
     [MetadataType(typeof(CommentaireExterneMetaData))]
     public partial class CommentaireExterne

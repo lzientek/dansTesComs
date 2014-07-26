@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
 using DansTesComs.WebSite.Controllers;
-using DansTesComs.WebSite.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DansTesComs.WebSite.Tests.Controllers

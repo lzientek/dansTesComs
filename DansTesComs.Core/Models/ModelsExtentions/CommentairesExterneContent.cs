@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace DansTesComs.WebSite.Models
+namespace DansTesComs.Core.Models
 {
     [MetadataType(typeof(CommentairesExterneContentMetaData))]
     public partial class CommentairesExterneContent

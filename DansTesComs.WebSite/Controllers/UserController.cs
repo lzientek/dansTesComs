@@ -8,7 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using DansTesComs.WebSite.Filters;
-using DansTesComs.WebSite.Models;
+using DansTesComs.Core.Models;
 using WebMatrix.WebData;
 
 namespace DansTesComs.WebSite.Controllers

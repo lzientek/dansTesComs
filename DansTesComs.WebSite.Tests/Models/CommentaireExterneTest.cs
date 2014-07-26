@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DansTesComs.WebSite.Models;
+using DansTesComs.Core.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DansTesComs.WebSite.Tests.Models

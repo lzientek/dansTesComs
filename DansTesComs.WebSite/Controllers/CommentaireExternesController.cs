@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using DansTesComs.WebSite.Filters;
-using DansTesComs.WebSite.Models;
+using DansTesComs.Core.Models;
 using PagedList;
 using WebMatrix.WebData;
 

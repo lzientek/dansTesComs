@@ -223,36 +223,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Commentaire.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CommentaireExterne.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CommentairesExterneContent.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Models.Context.cs">
-      <DependentUpon>Models.Context.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Models\Models.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModelsExtentions\Commentaire.cs" />
-    <Compile Include="Models\ModelsExtentions\CommentaireExterneExt.cs" />
-    <Compile Include="Models\ModelsExtentions\CommentairesExterneContent.cs" />
-    <Compile Include="Models\ModelsExtentions\Note.cs" />
-    <Compile Include="Models\Note.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModelsExtentions\UserExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -327,16 +297,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Models.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Models.Context.cs</LastGenOutput>
-      <CustomToolNamespace>DansTesComs.WebSite.Models</CustomToolNamespace>
-    </Content>
-    <Content Include="Models\Models.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Models.cs</LastGenOutput>
-      <CustomToolNamespace>DansTesComs.WebSite.Models</CustomToolNamespace>
-    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -418,6 +378,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -426,6 +387,7 @@
     <ProjectReference Include="..\DansTesComs.Core\DansTesComs.Core.csproj">
       <Project>{a3255fe3-4dc6-44cf-b489-b7b7447797c4}</Project>
       <Name>DansTesComs.Core</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
     <ProjectReference Include="..\DansTesComs.DAL\DansTesComs.DAL.csproj">
       <Project>{657c227e-4b6e-4007-844a-cd21ed682aef}</Project>

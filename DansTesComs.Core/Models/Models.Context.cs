@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DansTesComs.WebSite.Models
+namespace DansTesComs.Core.Models
 {
     using System;
     using System.Data.Entity;

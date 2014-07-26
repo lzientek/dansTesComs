@@ -7,20 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DansTesComs.WebSite.Models
+namespace DansTesComs.Core.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Commentaire
+    public partial class CommentairesExterneContent
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public string Texte { get; set; }
-        public System.DateTime DatePost { get; set; }
-        public int PostId { get; set; }
+        public string Pseudo { get; set; }
+        public string Commentaire { get; set; }
+        public int Niveau { get; set; }
+        public int CommentaireExterneID { get; set; }
     
-        public virtual User User { get; set; }
         public virtual CommentaireExterne CommentaireExterne { get; set; }
     }
 }
