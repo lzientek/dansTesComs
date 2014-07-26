@@ -10,9 +10,8 @@ namespace DansTesComs.WebSite.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
-            return View();
+            return RedirectToActionPermanent("Index","CommentaireExternes");
         }
 
         public ActionResult About()

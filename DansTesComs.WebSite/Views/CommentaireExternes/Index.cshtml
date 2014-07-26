@@ -1,10 +1,10 @@
 ﻿@model IPagedList<CommentaireExterne>
 
 @{
-    ViewBag.Title = "commentaires";
+    ViewBag.Title = CommentaireExterneRessources.Title;
 }
 
-<h2>Nouveaux commentaire</h2>
+<h2>@CommentaireExterneRessources.NouveauCommentaires</h2>
 
 @Html.Partial("PartialView/_PartialCommentairesExternes",Model)
 

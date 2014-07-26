@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using DansTesComs.Ressources.CommentaireExterne;
 
 namespace DansTesComs.Core.Models
 {
@@ -14,11 +15,13 @@ namespace DansTesComs.Core.Models
 
     public class CommentairesExterneContentMetaData
     {
-        [MaxLength(50, ErrorMessage = "Pseudo trop long!")]
+        [MaxLength(50, ErrorMessageResourceType = typeof(CommentaireExterneRessources),ErrorMessageResourceName = "LongueurMax50")]
         [Required]
+        [Display(ResourceType = typeof(CommentaireExterneRessources), Name = "Pseudo")]
         public string Pseudo { get; set; }
 
         [Required]
+        [Display(ResourceType = typeof(CommentaireExterneRessources), Name = "CommentaireLabel")]
         public string Commentaire { get; set; }
 
         [Range(0,4)]

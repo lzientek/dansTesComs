@@ -14,10 +14,10 @@ namespace DansTesComs.WebSite
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute("pageRoute", "{controller}/page/{page}",
-                new {action = "Index", page = UrlParameter.Optional});
+                new {action = "Index"});
 
             routes.MapRoute("Default", "{controller}/{action}/{id}",
-                new {controller = "Home", action = "Index", id = UrlParameter.Optional}
+                new { controller = "CommentaireExternes", action = "Index", id = UrlParameter.Optional }
                 );
         }
     }

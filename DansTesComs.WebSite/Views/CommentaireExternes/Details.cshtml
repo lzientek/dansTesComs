@@ -1,39 +1,24 @@
 ﻿@model CommentaireExterne
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Titre;
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>CommentaireExterne</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CommentairesExterneContents)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CommentairesExterneContents.Count)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DatePost)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DatePost)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Mail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.Mail)
-        </dd>
-
-    </dl>
+<div class="row">
+    <h3>@Html.ActionLink(Model.Titre, "Details", new { id = Model.Id }) </h3>
+    <p class="commentaire-publication">@Model.Publication</p>
+    @foreach (var coment in Model.CommentairesExterneContents)
+    {
+        @Html.Partial("PartialView/_PartialCommentaireContentView", coment)
+    }
+    <p class="commentaire-poster">@CommentaireExterneRessources.PublierPar @Model.User.Pseudo | @Model.DatePost</p>
+    <div id="NoteCommentaireExterne-@Model.Id">
+        @Html.Action("Index", "Notes", new { commentaireExterneId = Model.Id })
+    </div>
 </div>
+
+
+
+@*Affichage des commentaires*@
 @Html.Action("Index", "Commentaires", new { extCommentId = Model.Id})

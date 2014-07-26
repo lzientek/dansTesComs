@@ -12,14 +12,23 @@
 {
     @Ajax.ActionLink("+", "Plus", new {commentaireExterneId = ViewBag.commentaireId}, opt)
 }
+else
+{
+    @: +
+}
 
 
 @Model.Count(n => n.NoteValue == NoteValue.Plus)
 
+|
 
 @if (Request.IsAuthenticated)
 {
     @Ajax.ActionLink("-", "Moins", new {commentaireExterneId = ViewBag.commentaireId}, opt)
+}
+else
+{
+  @: -
 }
 @Model.Count(n => n.NoteValue == NoteValue.Moins)
 

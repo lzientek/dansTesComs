@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attribute\Authorize\AdvancedAuthorize.cs" />
+    <Compile Include="Attribute\DateValidator\AgeMinimumAttribute.cs" />
+    <Compile Include="Attribute\DateValidator\DateMinAttribute.cs" />
     <Compile Include="Models\Commentaire.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -68,10 +70,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Models\ModelsExtentions\Commentaire.cs" />
-    <Compile Include="Models\ModelsExtentions\CommentaireExterneExt.cs" />
+    <Compile Include="Models\ModelsExtentions\CommentaireExterne.cs" />
     <Compile Include="Models\ModelsExtentions\CommentairesExterneContent.cs" />
     <Compile Include="Models\ModelsExtentions\Note.cs" />
-    <Compile Include="Models\ModelsExtentions\UserExt.cs" />
+    <Compile Include="Models\ModelsExtentions\User.cs" />
     <Compile Include="Models\Note.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -90,6 +92,10 @@
     <ProjectReference Include="..\DansTesComs.DAL\DansTesComs.DAL.csproj">
       <Project>{657c227e-4b6e-4007-844a-cd21ed682aef}</Project>
       <Name>DansTesComs.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DansTesComs.Ressources\DansTesComs.Ressources.csproj">
+      <Project>{af036a44-4b1f-4fff-81cb-00ced0a9348e}</Project>
+      <Name>DansTesComs.Ressources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +119,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

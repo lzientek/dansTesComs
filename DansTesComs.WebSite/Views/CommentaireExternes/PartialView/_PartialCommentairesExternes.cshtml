@@ -12,10 +12,11 @@
             {
                 @Html.Partial("PartialView/_PartialCommentaireContentView", coment)
             }
-            <p class="commentaire-poster">Publier par @com.User.Pseudo le @com.DatePost</p>
+            <p class="commentaire-poster">@CommentaireExterneRessources.PublierPar @com.User.Pseudo | @com.DatePost</p>
             <div id="NoteCommentaireExterne-@com.Id">
                 @Html.Action("Index", "Notes", new { commentaireExterneId = com.Id })
             </div>
+            <div class="nbCommentaire">@com.Commentaires.Count @CommentaireExterneRessources.Title</div>
         </div>
     }
     

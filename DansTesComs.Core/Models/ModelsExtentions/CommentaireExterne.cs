@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.RegularExpressions;
 using DansTesComs.Core.Models;
+using DansTesComs.Ressources.CommentaireExterne;
 
 namespace DansTesComs.Core.Models
 {
@@ -28,16 +29,19 @@ namespace DansTesComs.Core.Models
 
     public class CommentaireExterneMetaData
     {
-        [MaxLength(50, ErrorMessage = "Titre trop long!")]
-        [Required(ErrorMessage = "Titre obligatoire.")]
+        [MaxLength(50, ErrorMessageResourceType = typeof(CommentaireExterneRessources),ErrorMessageResourceName = "LongueurMax50")]
+        [Required(ErrorMessageResourceType = typeof(CommentaireExterneRessources), ErrorMessageResourceName = "TitreObligatoire")]
+        [Display(ResourceType = typeof(CommentaireExterneRessources) ,Name ="TitreLabel")]
         public string Titre { get; set; }
 
-        [MaxLength(500,ErrorMessage = "Ne peut pas dépacer 500 caractères.")]
+        [MaxLength(500, ErrorMessageResourceType = typeof(CommentaireExterneRessources), ErrorMessageResourceName = "LongueurMax500")]
         [DataType(DataType.MultilineText)]
+        [Display(ResourceType = typeof(CommentaireExterneRessources), Name = "PublicationLabel")]
         public string Publication { get; set; }
 
-        [MaxLength(200,ErrorMessage = "Url trop longue...")]
-        [DataType(DataType.Url,ErrorMessage = "Doit etre sous forme d'un lien...")]
+        [MaxLength(200, ErrorMessageResourceType = typeof(CommentaireExterneRessources), ErrorMessageResourceName = "LongueurMax200Url")]
+        [DataType(DataType.Url, ErrorMessageResourceType = typeof(CommentaireExterneRessources), ErrorMessageResourceName = "DoitEtreUnLien")]
+        [Display(ResourceType = typeof(CommentaireExterneRessources), Name = "LienLabel")]
         public string Lien { get; set; }
     }
 

@@ -9,6 +9,6 @@ namespace DansTesComs.Core
     public class RegexPattern
     {
         public const string CommentaireExtRegex = "(.+) > (.+)";
-        public const string CommentaireExtReponse = "    ";
+        public const string PseudoValidRegex = "[a-zA-Z0-9]+";
     }
 }
