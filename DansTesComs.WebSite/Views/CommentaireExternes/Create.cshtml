@@ -5,13 +5,10 @@
 
 @{
     ViewBag.Title = "Create";
-
-
 }
-@section AddToHead
+@section scripts
 {
-    @Scripts.Render("~/bundles/jquery");
-    @Scripts.Render("~/bundles/com/add");
+    @Scripts.Render("~/bundles/com/add")
 }
 
 <h2>Create</h2>
@@ -51,11 +48,10 @@
         </div>
 
         <div class="form-group">
-@Html.Partial("PartialView/_PartialCommentaireContentEdit",Model.CommentairesExterneContents)
-            <div class="form-group">
-                <div class="col-md-10">
+            @Html.Partial("PartialView/_PartialCommentaireContentEdit", Model.CommentairesExterneContents)
 
-                </div>
+            <div class="col-md-10">
+                <span class="text-danger">@ViewBag.ErreurCommentaireContent</span>
             </div>
         </div>
 
@@ -73,6 +69,3 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

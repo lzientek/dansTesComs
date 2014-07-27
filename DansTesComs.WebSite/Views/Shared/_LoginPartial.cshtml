@@ -1,17 +1,17 @@
 ﻿@if (Request.IsAuthenticated)
 {
-    <text>
-        Bonjour, @Html.ActionLink(User.Identity.Name, "Edit", "User", null, new { @class = "username", title = "Gérer" })!
-        @using (Html.BeginForm("Deconnexion", "User", FormMethod.Post, new {id = "logoutForm"}))
+    <span>
+        <span class="pull-left">
+            Bonjour, @Html.ActionLink(User.Identity.Name, "Edit", "User", null, new { @class = "username", title = "Gérer" }) |
+        </span>
+        @using (Html.BeginForm("Deconnexion", "User", FormMethod.Post, new { id = "logoutForm", @class = "pull-left" }))
         {
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a>
         }
-    </text>
+    </span>
 }
 else
 {
-    <ul>
-        <li>@Html.ActionLink("S'inscrire / Se connecter", "Index", "User", null, new { id = "registerLink" })</li>
-    </ul>
+@Html.ActionLink("S'inscrire / Se connecter", "Index", "User", null, new { id = "registerLink" })
 }

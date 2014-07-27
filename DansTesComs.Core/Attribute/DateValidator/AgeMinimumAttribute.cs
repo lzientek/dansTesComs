@@ -22,8 +22,12 @@ namespace DansTesComs.Core.Attribute.DateValidator
 
         public override bool IsValid(object value)
         {
-            DateTime naissance = (DateTime)value;
-            return (naissance <= DateTime.Now.AddYears(0-Age));
+            DateTime? naissance = value as DateTime?;
+            if (naissance!=null)
+            {
+                return (naissance <= DateTime.Now.AddYears(0 - Age));                
+            }
+            return false;
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using DansTesComs.Ressources.CommentaireExterne;
 using DansTesComs.WebSite.Filters;
 using DansTesComs.Core.Models;
 using PagedList;
@@ -66,7 +67,7 @@ namespace DansTesComs.WebSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CommentairesExterneContents,Lien,Titre,Publication")] CommentaireExterne commentaireExterne)
         {
-            commentaireExterne.removeEmptyComs();
+            commentaireExterne.RemoveEmptyComs();
             commentaireExterne.DatePost = DateTime.Now;
             commentaireExterne.PosterUserId = WebSecurity.CurrentUserId;
             if (ModelState.IsValid)
@@ -82,6 +83,11 @@ namespace DansTesComs.WebSite.Controllers
                 }
 
                 return RedirectToAction("Index");
+            }
+            
+            if (commentaireExterne.CommentairesExterneContents.Count == 0)
+            {
+                ViewBag.ErreurCommentaireContent = CommentaireExterneRessources.CommentairesContentMin;
             }
 
             return View(commentaireExterne);

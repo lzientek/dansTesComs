@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.RegularExpressions;
+using DansTesComs.Core.Attribute.CollectionValidator;
 using DansTesComs.Core.Models;
 using DansTesComs.Ressources.CommentaireExterne;
 
@@ -12,13 +13,13 @@ namespace DansTesComs.Core.Models
     [MetadataType(typeof(CommentaireExterneMetaData))]
     public partial class CommentaireExterne
     {
-        public void removeEmptyComs()
+        public void RemoveEmptyComs()
         {
             //on parcours a l'envers normal on supprime! si tu sais pas pourquoi google
             for (int i = CommentairesExterneContents.Count - 1; i >=0; i--)
             {
                 var item = CommentairesExterneContents.ElementAt(i);
-                if (string.IsNullOrEmpty(item.Commentaire) || string.IsNullOrEmpty(item.Pseudo))
+                if (string.IsNullOrWhiteSpace(item.Commentaire) || string.IsNullOrWhiteSpace(item.Pseudo))
                 {
                     CommentairesExterneContents.Remove(item);
                 }
@@ -43,6 +44,9 @@ namespace DansTesComs.Core.Models
         [DataType(DataType.Url, ErrorMessageResourceType = typeof(CommentaireExterneRessources), ErrorMessageResourceName = "DoitEtreUnLien")]
         [Display(ResourceType = typeof(CommentaireExterneRessources), Name = "LienLabel")]
         public string Lien { get; set; }
+
+        //[CollectionMinValue(MinimumCount = 1, ErrorMessageResourceType = typeof(CommentaireExterneRessources), ErrorMessageResourceName = "CommentairesContentMin")]
+        public ICollection<CommentairesExterneContent> CommentairesExterneContents { get; set; }
     }
 
 }

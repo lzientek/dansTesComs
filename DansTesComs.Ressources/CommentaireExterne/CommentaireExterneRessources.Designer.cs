@@ -88,6 +88,15 @@ namespace DansTesComs.Ressources.CommentaireExterne {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Il faut au moins un commentaire valide..
+        /// </summary>
+        public static string CommentairesContentMin {
+            get {
+                return ResourceManager.GetString("CommentairesContentMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à &quot;Doit etre sous forme d&apos;un lien...&quot;.
         /// </summary>
         public static string DoitEtreUnLien {

@@ -1,21 +1,18 @@
 ﻿@model ICollection< CommentairesExterneContent>
 @Html.Label("Commentaires", htmlAttributes: new { @class = "control-label col-md-2" })
 <div class="col-md-10" id="ajoutdecoms">
-   @{ int i = 0; }
+   @{ int i; }
     @for ( i = 0; i < Model.Count; i++)
     {
-
         var elem = Model.ElementAt(i);
 
         <div class="row" >
             <div class="col-md-3">
-                <input class="form-control" id="CommentairesExterneContents_@i __Pseudo" value="@elem.Pseudo" name="CommentairesExterneContents[@i].Pseudo" type="text" placeholder="@CommentaireExterneRessources.Pseudo">
-                <input id="CommentairesExterneContents_@i __Niveau" name="CommentairesExterneContents[@i].Niveau" value="@elem.Niveau" type="hidden" value="0">
-
-
+                <input class="form-control" id="CommentairesExterneContents_@(i)__Pseudo" value="@elem.Pseudo" name="CommentairesExterneContents[@i].Pseudo" type="text" placeholder="@CommentaireExterneRessources.Pseudo">
+                <input id="CommentairesExterneContents_@(i)__Niveau" name="CommentairesExterneContents[@i].Niveau" value="@elem.Niveau" type="hidden" >
             </div>
             <div class="col-md-6">
-                <textarea class="form-control" id="CommentairesExterneContents_@i __Commentaire" name="CommentairesExterneContents[@i].Commentaire" placeholder="@CommentaireExterneRessources.Title">@elem.Commentaire</textarea>
+                <textarea class="form-control" id="CommentairesExterneContents_@(i)__Commentaire" name="CommentairesExterneContents[@i].Commentaire" placeholder="@CommentaireExterneRessources.Title">@elem.Commentaire</textarea>
             </div>
         </div>
     }

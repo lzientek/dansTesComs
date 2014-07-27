@@ -126,6 +126,9 @@
   <data name="CommentaireNonVide" xml:space="preserve">
     <value>Le commentaire ne peux pas être vide.</value>
   </data>
+  <data name="CommentairesContentMin" xml:space="preserve">
+    <value>Il faut au moins un commentaire valide.</value>
+  </data>
   <data name="DoitEtreUnLien" xml:space="preserve">
     <value>"Doit etre sous forme d'un lien..."</value>
   </data>

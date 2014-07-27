@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attribute\Authorize\AdvancedAuthorize.cs" />
+    <Compile Include="Attribute\CollectionValidator\CollectionMinValueAttribute.cs" />
     <Compile Include="Attribute\DateValidator\AgeMinimumAttribute.cs" />
     <Compile Include="Attribute\DateValidator\DateMinAttribute.cs" />
     <Compile Include="Models\Commentaire.cs">
