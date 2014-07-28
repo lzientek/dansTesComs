@@ -41,15 +41,20 @@
         </div>
     </header>
     <div id="body">
-        @RenderSection("featured", required:false)
+        @RenderSection("featured", required: false)
         <section class="container">
             @RenderBody()
         </section>
     </div>
     <footer>
         <div class="container">
-            <div class="pull-left">
-                <p>&copy; @DateTime.Now.Year - Dans tes coms</p>
+            <div class="text-center">
+                <p>
+                    &copy; @DateTime.Now.Year - Dans tes coms <span class="separator">|</span>
+                    @Html.ActionLink(GeneralResource.Accueil, "Index", "CommentaireExternes") <span class="separator">|</span>
+                    @Html.ActionLink(GeneralResource.About, "About", "Home") <span class="separator">|</span>
+                    @Html.ActionLink(GeneralResource.Contact, "Contact", "Home")
+                </p>
             </div>
         </div>
     </footer>
