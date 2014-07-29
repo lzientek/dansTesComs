@@ -43,7 +43,16 @@
     <div id="body">
         @RenderSection("featured", required: false)
         <section class="container">
-            @RenderBody()
+            <div class="row">
+                <div id="theContainer" class="col-md-8 ">
+                    <div class="backgroundWhite row">
+                        @RenderBody()
+                    </div>
+                </div>
+                <div id="rightMenu" class="col-md-4 ">
+                    @Html.Partial("_MenuDroite")
+                </div>
+            </div>
         </section>
     </div>
     <footer>

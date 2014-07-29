@@ -7,6 +7,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #efefef;
 }
 
 /* Perso
@@ -30,24 +31,47 @@ footer {
     box-shadow: 0px -1px 9px 0px rgba(50, 50, 50, 0.75);
 }
 
-footer .separator {
-    color: #333;
-    margin-left: 8px;
-    margin-right: 8px;
+    footer .separator {
+        color: #333;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    footer a, footer a:visited {
+        color: #fff;
+        text-decoration: none;
+    }
+
+        footer a:hover, footer a:focus {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+    footer p {
+        margin-top: 6px;
+    }
+
+#rightMenu, #theContainer {
+    padding: 10px;
+    margin-bottom: 25px;
 }
 
-footer a,footer a:visited {
-    color: #fff;
-    text-decoration: none;
+    #rightMenu > div, .backgroundWhite {
+        background-color: #ffffff;
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.075);
+        -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.075);
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.075);
+        margin-bottom: 15px;
+    }
+
+.backgroundWhite {
+    margin: 0;
+    padding: 0;
 }
 
-footer a:hover,footer a:focus {
-    color: #fff;
-    text-decoration: underline;
-}
-
-footer p {
-    margin-top: 6px;
+#theContainer .row, #rightMenu .row {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 /*responsive design*/
@@ -55,6 +79,7 @@ footer p {
     .divider {
         display: none !important;
     }
+
     footer .separator {
         display: none !important;
     }

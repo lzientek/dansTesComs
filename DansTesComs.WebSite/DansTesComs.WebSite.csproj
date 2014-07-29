@@ -375,6 +375,7 @@
     <Content Include="Views\Commentaires\Create.cshtml" />
     <Content Include="Views\Commentaires\_PartialViewCommentaire.cshtml" />
     <Content Include="Views\Notes\Index.cshtml" />
+    <Content Include="Views\Shared\_MenuDroite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
