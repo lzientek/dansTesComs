@@ -1,9 +1,14 @@
 ﻿@model CommentairesExterneContent
 
-<div class="row commentaire-content col-md-offset-@Model.Niveau">
-    <div >
-        <span class="pseudo">@Model.Pseudo</span>
-        <span class="separation-pseudo-commentaire">:</span>
-        <span class="commentaire">@Model.Commentaire</span>
+<div class="commentaire-content col-md-offset-@Model.Niveau">
+    <div class="row">
+        <div class="pull-left">
+            <img class="" height="40" width="40" src="http://media-cache-ec0.pinimg.com/236x/db/d4/a7/dbd4a7ac8720ece2a8fc53561cad085f.jpg" />
+        </div>
+        <div class="col-md-8">
+            <span class="pseudo">@Model.Pseudo</span>
+            <span class="separation-pseudo-commentaire">:</span>
+            <span class="commentaire">@Model.Commentaire</span>
+        </div>
     </div>
 </div>

@@ -5,21 +5,30 @@
 
     @foreach (var com in Model)
     {
+
         <div class="row">
-            <h3>@Html.ActionLink(com.Titre, "Details", new { id = com.Id }) </h3>
-            <p class="commentaire-publication">@com.Publication</p>
-            @foreach (var coment in com.CommentairesExterneContents)
-            {
-                @Html.Partial("PartialView/_PartialCommentaireContentView", coment)
-            }
-            <p class="commentaire-poster">@CommentaireExterneRessources.PublierPar @com.User.Pseudo | @com.DatePost</p>
-            <div id="NoteCommentaireExterne-@com.Id">
-                @Html.Action("Index", "Notes", new { commentaireExterneId = com.Id })
+            <div class="borderCom">
+                <h3>@Html.ActionLink(com.Titre, "Details", new { id = com.Id }) </h3>
+                <p class="commentaire-publication">@com.Publication</p>
+                <div class="commentaire-commentaires">
+                    @foreach (var coment in com.CommentairesExterneContents)
+                    {
+                        @Html.Partial("PartialView/_PartialCommentaireContentView", coment)
+                    }
+                </div>
+                <div class="footerComment">
+                    <div class="row">
+                        <div class="noteComment col-md-3" id="NoteCommentaireExterne-@com.Id">
+                            @Html.Action("Index", "Notes", new { commentaireExterneId = com.Id })
+                        </div>
+                        <div class="commentaire-poster col-md-6">@CommentaireExterneRessources.PublierPar @com.User.Pseudo | @com.DatePost</div>
+                        <div class="nbCommentaire col-md-3">@com.Commentaires.Count @CommentaireExterneRessources.Title</div>
+                    </div>
+                </div>
             </div>
-            <div class="nbCommentaire">@com.Commentaires.Count @CommentaireExterneRessources.Title</div>
         </div>
     }
-    
+
 
     <div class="pageList">
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
