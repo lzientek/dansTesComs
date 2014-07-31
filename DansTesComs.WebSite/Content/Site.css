@@ -63,6 +63,21 @@ footer {
         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.075);
         margin-bottom: 15px;
     }
+    .pageList {
+        text-align: center;
+    }
+    #rightMenu h3, #rightMenu h4 {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 25px;
+        padding-left: 18px;
+        border-bottom: solid 2px #3FD0C3;
+    }
+
+    #rightMenu h4 {
+        padding-left: 10px;
+        margin-left: 15px;
+    }
 
 .backgroundWhite {
     margin: 0;
@@ -73,49 +88,62 @@ footer {
     margin-left: 0;
     margin-right: 0;
 }
+
 .borderCom {
     margin-top: 63px;
     margin-left: 8px;
     /*border-bottom: 1px solid #3FD0C3;*/
 }
+
 .footerComment {
     /*border-color:  #3fd0c3;
     border-color:  rgba(63, 208, 195, 1);*/
-    border-color:  #e4e4e4;
+    border-color: #e4e4e4;
     border-style: solid;
     border-width: 0px 0px 1px 0px;
     padding-top: 5px;
 }
+
 .commentaire-commentaires {
     margin-left: 30px;
-    border-left: 3px solid #3FD0C3;
-    padding-left: 4px;
 }
-.commentaire-content .col-md-8 {
+
+.commentaire-content .col-md-6 {
     padding: 0px;
 }
+
 .commentaire-content .pull-left {
     margin-right: 4px;
 }
+
 .commentaire-content {
     margin-bottom: 7px;
 }
+
+    .commentaire-content .pseudo {
+        color: #3fd0c3;
+        text-decoration: underline;
+    }
+
 .commentaire-publication {
     margin-left: 30px;
     font-size: 16px;
 }
+
 .footerComment .nbCommentaire {
     text-align: right;
 }
+
 .footerComment .commentaire-poster {
     margin-top: 4px;
     text-align: center;
     font-size: 11px;
 }
 /*title*/
-h1, h2{
+h1, h2 {
     color: #838383;
 }
+
 h3 {
     color: #676767;
 }
@@ -130,15 +158,30 @@ h1 {
 h3 {
     margin-left: 15px;
 }
-h3 a {
+
+a {
     color: inherit;
 }
 
-h3 a:hover,h3 a:active {
-    color: #16C7B7;
-
+    a:hover, h3 a:active {
+        color: #16C7B7;
+    }
+/*margin de pour niveau de commentaires*/
+.margin-1 {
+    margin-left: 45px;
 }
 
+.margin-2 {
+    margin-left: 90px;
+}
+
+.margin-3 {
+    margin-left: 135px;
+}
+
+.margin-4 {
+    margin-left: 180px;
+}
 
 /*responsive design*/
 @media (max-width: 750px) {

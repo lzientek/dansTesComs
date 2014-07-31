@@ -1,4 +1,5 @@
-﻿@model IPagedList<CommentaireExterne>
+﻿@using System.Web.Mvc.Html
+@model IPagedList<CommentaireExterne>
 
 <div id="commentairesExtBlock">
 
@@ -22,7 +23,9 @@
                             @Html.Action("Index", "Notes", new { commentaireExterneId = com.Id })
                         </div>
                         <div class="commentaire-poster col-md-6">@CommentaireExterneRessources.PublierPar @com.User.Pseudo | @com.DatePost</div>
-                        <div class="nbCommentaire col-md-3">@com.Commentaires.Count @CommentaireExterneRessources.Title</div>
+                        <div class="nbCommentaire col-md-3">
+                            @Html.ActionLink(string.Format("{0} {1}", com.Commentaires.Count, CommentaireExterneRessources.Title), "Details", new { id = com.Id })
+                        </div>
                     </div>
                 </div>
             </div>
