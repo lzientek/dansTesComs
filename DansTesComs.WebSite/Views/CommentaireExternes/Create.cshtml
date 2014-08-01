@@ -11,7 +11,7 @@
     @Scripts.Render("~/bundles/com/add")
 }
 
-<h2>Create</h2>
+<h1>@CommentaireExterneRessources.AddNewTitle</h1>
 
 
 @using (Html.BeginForm())
@@ -19,29 +19,28 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>CommentaireExterne</h4>
-        <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Titre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Titre, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.Titre, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Titre, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Lien, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Lien, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.Lien, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Lien, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Publication, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Publication, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.Publication, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Publication, "", new { @class = "text-danger" })
             </div>
@@ -50,7 +49,7 @@
         <div class="form-group">
             @Html.Partial("PartialView/_PartialCommentaireContentEdit", Model.CommentairesExterneContents)
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <span class="text-danger">@ViewBag.ErreurCommentaireContent</span>
             </div>
         </div>
@@ -58,8 +57,8 @@
 
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-offset-3 col-md-8">
+                <input type="submit" value="@GeneralRessources.Ajouter" class="btn  " />
             </div>
         </div>
     </div>

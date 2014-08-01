@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.RegularExpressions;
 using DansTesComs.Core.Attribute.CollectionValidator;
+using DansTesComs.Core.Enums;
 using DansTesComs.Core.Models;
 using DansTesComs.Ressources.CommentaireExterne;
 
@@ -13,10 +14,17 @@ namespace DansTesComs.Core.Models
     [MetadataType(typeof(CommentaireExterneMetaData))]
     public partial class CommentaireExterne
     {
+
+        public IEnumerable<Categorie> CategorieEnum
+        {
+            get { return Categories.StringToCategories(); }
+            set { Categories = value.EnumToSaveString(); }
+        }
+
         public void RemoveEmptyComs()
         {
             //on parcours a l'envers normal on supprime! si tu sais pas pourquoi google
-            for (int i = CommentairesExterneContents.Count - 1; i >=0; i--)
+            for (int i = CommentairesExterneContents.Count - 1; i >= 0; i--)
             {
                 var item = CommentairesExterneContents.ElementAt(i);
                 if (string.IsNullOrWhiteSpace(item.Commentaire) || string.IsNullOrWhiteSpace(item.Pseudo))
@@ -30,9 +38,9 @@ namespace DansTesComs.Core.Models
 
     public class CommentaireExterneMetaData
     {
-        [MaxLength(50, ErrorMessageResourceType = typeof(CommentaireExterneRessources),ErrorMessageResourceName = "LongueurMax50")]
+        [MaxLength(50, ErrorMessageResourceType = typeof(CommentaireExterneRessources), ErrorMessageResourceName = "LongueurMax50")]
         [Required(ErrorMessageResourceType = typeof(CommentaireExterneRessources), ErrorMessageResourceName = "TitreObligatoire")]
-        [Display(ResourceType = typeof(CommentaireExterneRessources) ,Name ="TitreLabel")]
+        [Display(ResourceType = typeof(CommentaireExterneRessources), Name = "TitreLabel")]
         public string Titre { get; set; }
 
         [MaxLength(500, ErrorMessageResourceType = typeof(CommentaireExterneRessources), ErrorMessageResourceName = "LongueurMax500")]

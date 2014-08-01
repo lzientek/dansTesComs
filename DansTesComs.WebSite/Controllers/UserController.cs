@@ -4,9 +4,11 @@
 
 using System;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using DansTesComs.Ressources.User;
 using DansTesComs.WebSite.Filters;
 using DansTesComs.Core.Models;
 using WebMatrix.WebData;
@@ -59,7 +61,7 @@ namespace DansTesComs.WebSite.Controllers
             return View(user);
         }
 
-        // GET: User/Edit
+        [Authorize]
         public ActionResult Edit()
         {
             User user = db.Users.Find(WebSecurity.CurrentUserId);
@@ -70,20 +72,32 @@ namespace DansTesComs.WebSite.Controllers
             return View(user);
         }
 
-        // POST: User/Edit/5
-        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(
-            [Bind(Include = "id,mail,nom,prenom,Anniversaire")] User user)
+            [Bind(Include = "Mail,Nom,Prenom,Anniversaire")] User user)
         {
-            if (ModelState.IsValid)
+            var userinDb = db.Users.First(u => u.Id == WebSecurity.CurrentUserId);
+            userinDb.Mail = user.Mail;
+            userinDb.Nom = user.Nom;
+            userinDb.Prenom = user.Prenom;
+            userinDb.Anniversaire = user.Anniversaire;
+
+            //todo: un modele herité pour avoir classe uniquement pour inscription voir connexion
+            userinDb.Pass = "passbidoncarsinoncaplantejecroisqueje vais changer le modele";
+            try
             {
-                db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.IsEnregistrer = UserRessources.ModifSave;
             }
+            catch (DbEntityValidationException exception)
+            {
+                ViewBag.IsEnregistrer = exception.Message;
+            }
+
+
             return View(user);
         }
 
@@ -101,8 +115,8 @@ namespace DansTesComs.WebSite.Controllers
         public ActionResult Connexion([Bind(Include = "Mail,Pass,RememberMe")] User user)
         {
             var userToConnect = db.Users.First(u => u.Mail == user.Mail).Pseudo;
-            if(userToConnect != null && WebSecurity.Login(userToConnect,user.Pass,user.RememberMe))
-                return RedirectToAction("Index","Home");
+            if (userToConnect != null && WebSecurity.Login(userToConnect, user.Pass, user.RememberMe))
+                return RedirectToAction("Index", "Home");
             return RedirectToAction("Connexion");
         }
 

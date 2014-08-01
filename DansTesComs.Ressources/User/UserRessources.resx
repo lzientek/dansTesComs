@@ -121,13 +121,13 @@
     <value>Date de naissance</value>
   </data>
   <data name="AnnivObligatoire" xml:space="preserve">
-    <value>Date de naissance obligatoire.</value>
+    <value>Date de naissance doit etre valide.</value>
   </data>
   <data name="EmailError" xml:space="preserve">
     <value>Adresse mail non valide.</value>
   </data>
   <data name="EmailLabel" xml:space="preserve">
-    <value>Email</value>
+    <value>Email *</value>
   </data>
   <data name="EmailObligatoire" xml:space="preserve">
     <value>Email obligatoire.</value>
@@ -145,7 +145,7 @@
     <value>Nom obligatoire.</value>
   </data>
   <data name="PassLabel" xml:space="preserve">
-    <value>Mot de passe</value>
+    <value>Mot de passe *</value>
   </data>
   <data name="PassObligatoire" xml:space="preserve">
     <value>Mot de passe obligatoire.</value>
@@ -157,7 +157,7 @@
     <value>Prenom obligatoire.</value>
   </data>
   <data name="PseudoLabel" xml:space="preserve">
-    <value>Pseudo</value>
+    <value>Pseudo *</value>
   </data>
   <data name="PseudoObligatoire" xml:space="preserve">
     <value>Pseudo obligatoire.</value>
@@ -167,5 +167,11 @@
   </data>
   <data name="RememberMeLabel" xml:space="preserve">
     <value>Se souvenir de moi</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Parametre compte</value>
+  </data>
+  <data name="ModifSave" xml:space="preserve">
+    <value>Modifications enregistrés</value>
   </data>
 </root>

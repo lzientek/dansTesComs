@@ -49,10 +49,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CommentaireExterneRessources.resx</DependentUpon>
     </Compile>
-    <Compile Include="General\GeneralResource.Designer.cs">
+    <Compile Include="General\GeneralRessources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GeneralResource.resx</DependentUpon>
+      <DependentUpon>GeneralRessources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\UserRessources.Designer.cs">
@@ -70,9 +70,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CommentaireExterneRessources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="General\GeneralResource.resx">
+    <EmbeddedResource Include="General\GeneralRessources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>GeneralResource.Designer.cs</LastGenOutput>
+      <LastGenOutput>GeneralRessources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="User\UserRessources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

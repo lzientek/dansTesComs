@@ -70,11 +70,20 @@ namespace DansTesComs.Ressources.User {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Date de naissance obligatoire..
+        ///   Recherche une chaîne localisée semblable à Date de naissance doit etre valide..
         /// </summary>
         public static string AnnivObligatoire {
             get {
                 return ResourceManager.GetString("AnnivObligatoire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Parametre compte.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
             }
         }
         
@@ -88,7 +97,7 @@ namespace DansTesComs.Ressources.User {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Email.
+        ///   Recherche une chaîne localisée semblable à Email *.
         /// </summary>
         public static string EmailLabel {
             get {
@@ -124,6 +133,15 @@ namespace DansTesComs.Ressources.User {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Modifications enregistrés.
+        /// </summary>
+        public static string ModifSave {
+            get {
+                return ResourceManager.GetString("ModifSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Nom.
         /// </summary>
         public static string NomLabel {
@@ -142,7 +160,7 @@ namespace DansTesComs.Ressources.User {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Mot de passe.
+        ///   Recherche une chaîne localisée semblable à Mot de passe *.
         /// </summary>
         public static string PassLabel {
             get {
@@ -178,7 +196,7 @@ namespace DansTesComs.Ressources.User {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Pseudo.
+        ///   Recherche une chaîne localisée semblable à Pseudo *.
         /// </summary>
         public static string PseudoLabel {
             get {

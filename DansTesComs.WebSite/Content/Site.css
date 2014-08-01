@@ -9,7 +9,9 @@ body {
     padding: 0;
     background-color: #efefef;
 }
-
+p {
+    margin-left: 15px;
+}
 /* Perso
     -------------------------------------------------------*/
 #ajoutdecoms .row {
@@ -66,6 +68,7 @@ footer {
     .pageList {
         text-align: center;
     }
+
     #rightMenu h3, #rightMenu h4 {
         margin-left: 0;
         margin-right: 0;
@@ -120,7 +123,7 @@ footer {
     margin-bottom: 7px;
 }
 
-    .commentaire-content .pseudo {
+ .pseudo {
         color: #3fd0c3;
         text-decoration: underline;
     }
@@ -138,6 +141,11 @@ footer {
     margin-top: 4px;
     text-align: center;
     font-size: 11px;
+}
+
+.new-commentaire-ajax {
+    margin-left: -4px;
+    border-left: 4px solid #3fd0c3;
 }
 /*title*/
 h1, h2 {
@@ -166,6 +174,13 @@ a {
     a:hover, h3 a:active {
         color: #16C7B7;
     }
+
+/*style overide formulaire*/
+input,textarea,.form-control,.btn {
+    -ms-border-radius: 0;
+    border-radius: 0;
+}
+
 /*margin de pour niveau de commentaires*/
 .margin-1 {
     margin-left: 45px;
@@ -182,7 +197,9 @@ a {
 .margin-4 {
     margin-left: 180px;
 }
-
+.form-horizontal {
+    margin-top: 30px;
+}
 /*responsive design*/
 @media (max-width: 750px) {
     .divider {

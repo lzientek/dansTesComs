@@ -1,14 +1,13 @@
 ﻿@model Commentaire
 
-<div class="row">
-
-    @Html.DisplayFor(model => model.Texte)
-
-
-    @Html.DisplayFor(model => model.DatePost)
-
-
-    @Html.DisplayFor(model => model.User.Pseudo)
-
-
+<div class="row col-md-8">
+<div class="pull-left @if (IsPost){<text>new-commentaire-ajax </text>}">
+        <img src="@Model.User.GetGravatarLink()" height="40" width="40" alt="user logo" />
+    </div>
+    <div class="col-md-10">
+        <span class="pseudo">@Model.User.Pseudo</span>
+        <span class="separation-pseudo-commentaire">:</span>
+        <span class="commentaire">@Model.Texte</span>
+    </div>
+    <div class="pull-left">@Html.DisplayFor(model => model.DatePost)</div>
 </div>

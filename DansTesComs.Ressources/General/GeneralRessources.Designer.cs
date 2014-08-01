@@ -22,14 +22,14 @@ namespace DansTesComs.Ressources.General {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class GeneralResource {
+    public class GeneralRessources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal GeneralResource() {
+        internal GeneralRessources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace DansTesComs.Ressources.General {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DansTesComs.Ressources.General.GeneralResource", typeof(GeneralResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DansTesComs.Ressources.General.GeneralRessources", typeof(GeneralRessources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -79,6 +79,15 @@ namespace DansTesComs.Ressources.General {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ajouter.
+        /// </summary>
+        public static string Ajouter {
+            get {
+                return ResourceManager.GetString("Ajouter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Nous contacter.
         /// </summary>
         public static string Contact {
@@ -93,6 +102,24 @@ namespace DansTesComs.Ressources.General {
         public static string DansTesComs {
             get {
                 return ResourceManager.GetString("DansTesComs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Enregistrer.
+        /// </summary>
+        public static string Enregistrer {
+            get {
+                return ResourceManager.GetString("Enregistrer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Publier.
+        /// </summary>
+        public static string Publier {
+            get {
+                return ResourceManager.GetString("Publier", resourceCulture);
             }
         }
     }

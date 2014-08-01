@@ -20,7 +20,7 @@ namespace DansTesComs.WebSite.Controllers
 
         public ActionResult Index(int extCommentId, int page = 1)
         {
-            var commentaires = db.Commentaires.Where(c => c.PostId == extCommentId).ToList().ToPagedList(page, 3);
+            var commentaires = db.Commentaires.Where(c => c.PostId == extCommentId).OrderByDescending(c=>c.DatePost).ToList().ToPagedList(page, 10);
             ViewBag.commentid = extCommentId;
             return PartialView(commentaires);
         }
@@ -49,6 +49,7 @@ namespace DansTesComs.WebSite.Controllers
             {
                 db.Commentaires.Add(commentaire);
                 db.SaveChanges();
+                commentaire.User = db.Users.Find(commentaire.UserId);
                 return PartialView("_PartialViewCommentaire",commentaire);
             }
 

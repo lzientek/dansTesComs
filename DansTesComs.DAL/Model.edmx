@@ -15,6 +15,9 @@
           <Property Name="Titre" Type="nvarchar" MaxLength="50" />
           <Property Name="lien" Type="nvarchar" MaxLength="200" />
           <Property Name="Publication" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsValide" Type="bit" Nullable="false" />
+          <Property Name="lang" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Categories" Type="nvarchar" MaxLength="11" />
         </EntityType>
         <EntityType Name="Commentaires">
           <Key>
@@ -22,7 +25,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="Texte" Type="text" Nullable="false" />
+          <Property Name="Texte" Type="nvarchar" MaxLength="600" Nullable="false" />
           <Property Name="DatePost" Type="datetime" Nullable="false" />
           <Property Name="PostId" Type="int" Nullable="false" />
         </EntityType>
@@ -179,6 +182,9 @@
           <NavigationProperty Name="Notes" Relationship="DansTesComsModel.FK_Note_CommentairesExterne" FromRole="CommentaireExterne" ToRole="Note" />
           <Property Name="Publication" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Commentaires" Relationship="DansTesComsModel.FK_Commentaires_CommentaireExterne" FromRole="CommentaireExterne" ToRole="Commentaire" />
+          <Property Name="IsValide" Type="Boolean" Nullable="false" />
+          <Property Name="lang" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Categories" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -303,7 +309,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="Texte" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Texte" Type="String" Nullable="false" MaxLength="600" FixedLength="false" Unicode="true" />
           <Property Name="DatePost" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="User" Relationship="DansTesComsModel.FK_Commentaires_User" FromRole="Commentaire" ToRole="User" />
           <Property Name="PostId" Type="Int32" Nullable="false" />
@@ -342,6 +348,9 @@
           <EntitySetMapping Name="CommentaireExternes">
             <EntityTypeMapping TypeName="DansTesComsModel.CommentaireExterne">
               <MappingFragment StoreEntitySet="CommentaireExterne">
+                <ScalarProperty Name="Categories" ColumnName="Categories" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+                <ScalarProperty Name="IsValide" ColumnName="IsValide" />
                 <ScalarProperty Name="Publication" ColumnName="Publication" />
                 <ScalarProperty Name="Lien" ColumnName="lien" />
                 <ScalarProperty Name="Titre" ColumnName="Titre" />

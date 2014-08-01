@@ -11,6 +11,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", false)
     @RenderSection("AddToHead", required: false)
 
 </head>
@@ -60,15 +61,13 @@
             <div class="text-center">
                 <p>
                     &copy; @DateTime.Now.Year - Dans tes coms <span class="separator">|</span>
-                    @Html.ActionLink(GeneralResource.Accueil, "Index", "CommentaireExternes") <span class="separator">|</span>
-                    @Html.ActionLink(GeneralResource.About, "About", "Home") <span class="separator">|</span>
-                    @Html.ActionLink(GeneralResource.Contact, "Contact", "Home")
+                    @Html.ActionLink(GeneralRessources.Accueil, "Index", "CommentaireExternes") <span class="separator">|</span>
+                    @Html.ActionLink(GeneralRessources.About, "About", "Home") <span class="separator">|</span>
+                    @Html.ActionLink(GeneralRessources.Contact, "Contact", "Home")
                 </p>
             </div>
         </div>
     </footer>
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", false)
 </body>
 </html>

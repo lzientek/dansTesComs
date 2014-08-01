@@ -61,6 +61,15 @@ namespace DansTesComs.Ressources.CommentaireExterne {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ajouter un nouveau commentaire.
+        /// </summary>
+        public static string AddNewTitle {
+            get {
+                return ResourceManager.GetString("AddNewTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à +.
         /// </summary>
         public static string Ajouter {

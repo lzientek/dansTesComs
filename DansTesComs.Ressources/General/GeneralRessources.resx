@@ -123,10 +123,19 @@
   <data name="Accueil" xml:space="preserve">
     <value>Accueil</value>
   </data>
+  <data name="Ajouter" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Nous contacter</value>
   </data>
   <data name="DansTesComs" xml:space="preserve">
     <value>Dans tes coms</value>
+  </data>
+  <data name="Enregistrer" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="Publier" xml:space="preserve">
+    <value>Publier</value>
   </data>
 </root>

@@ -5,6 +5,8 @@
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography;
+using System.Text;
 using DansTesComs.Core.Attribute.DateValidator;
 using DansTesComs.Ressources.User;
 
@@ -15,6 +17,21 @@ namespace DansTesComs.Core.Models
     {
         public bool RememberMe { get; set; }
         public string Pass { get; set; }
+
+        public string GetGravatarLink()
+        {
+            //on transforme le mail en hash
+            var h = MD5.Create();
+            byte[] data = h.ComputeHash(Encoding.UTF8.GetBytes(this.Mail));
+            StringBuilder sBuilder = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+
+            const string defaultUrl = "https://m1.behance.net/rendition/modules/79984489/disp/361c94db5ab26c0584806ea0a5e14807.png";
+            return string.Format("http://www.gravatar.com/avatar.php?gravatar_id={0}&default={1}&s={2}", sBuilder,defaultUrl,40);
+        }
     }
 
 
@@ -27,12 +44,10 @@ namespace DansTesComs.Core.Models
 
         [MaxLength(80, ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "LongueurMax80")]
         [Display(ResourceType = typeof(UserRessources), Name = "NomLabel")]
-        [Required(ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "NomObligatoire")]
         public string Nom { get; set; }
 
         [MaxLength(80, ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "LongueurMax80")]
         [Display(ResourceType = typeof(UserRessources), Name = "PrenomLabel")]
-        [Required(ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "PrenomObligatoire")]
         public string Prenom { get; set; }
 
         [DataType(DataType.Password)]
@@ -43,7 +58,6 @@ namespace DansTesComs.Core.Models
         [Display(ResourceType = typeof(UserRessources), Name = "AnniversaireLabel")]
         [DataType(DataType.Date)]
         [AgeMinimum(13,ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "MinAgeError")]
-        [Required(ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "AnnivObligatoire")]
         public DateTime Anniversaire { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "PseudoObligatoire")]
