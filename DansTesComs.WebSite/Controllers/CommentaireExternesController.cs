@@ -21,10 +21,10 @@ namespace DansTesComs.WebSite.Controllers
         private DansTesComsEntities db = new DansTesComsEntities();
 
 
-        public ActionResult Index(int page =1)
+        public ActionResult Index(int page = 1)
         {
             var commentaireExternes = db.CommentaireExternes.ToList()
-                .OrderByDescending(com=>com.DatePost).ToPagedList(page,5);
+                .OrderByDescending(com => com.DatePost).ToPagedList(page, 5);
 
             return View(commentaireExternes);
         }
@@ -56,14 +56,13 @@ namespace DansTesComs.WebSite.Controllers
         public ActionResult Create()
         {
             var com = new CommentaireExterne();
-            com.CommentairesExterneContents.Add(new CommentairesExterneContent{Commentaire = string.Empty,Pseudo = string.Empty,Niveau = 0});
+            com.CommentairesExterneContents.Add(new CommentairesExterneContent { Commentaire = string.Empty, Pseudo = string.Empty, Niveau = 0 });
             return View(com);
         }
 
-
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         //[Authorize(Roles = "Modo")]
-        [Authorize]        
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CommentairesExterneContents,Lien,Titre,Publication")] CommentaireExterne commentaireExterne)
         {
@@ -84,7 +83,7 @@ namespace DansTesComs.WebSite.Controllers
 
                 return RedirectToAction("Index");
             }
-            
+
             if (commentaireExterne.CommentairesExterneContents.Count == 0)
             {
                 ViewBag.ErreurCommentaireContent = CommentaireExterneRessources.CommentairesContentMin;

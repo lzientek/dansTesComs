@@ -31,5 +31,22 @@ namespace DansTesComs.Core.Tests
                 Assert.AreEqual(tuple.Item2, Regex.IsMatch(tuple.Item1, RegexPattern.PseudoValidRegex));
             }
         }
+
+        [TestMethod]
+        public void TestYoutubeRegex()
+        {
+            var list = new List<Tuple<string, string>>()
+            {
+                new Tuple<string, string>("https://www.youtube.com/watch?v=yLLlW1vWqZ8", "yLLlW1vWqZ8"),
+                new Tuple<string, string>("https://www.youtube.com/watch?v=keiPSPR8MFY", "keiPSPR8MFY"),
+                new Tuple<string, string>("http://youtu.be/keiPSPR8MFY?t=32s", "http://youtu.be/keiPSPR8MFY?t=32s"),
+                new Tuple<string, string>("https://www.youtube.com/watch?v=keiPSPR8MFY&feature=youtu.be&t=49s", "keiPSPR8MFY"),
+
+            };
+            foreach (var tuple in list)
+            {
+                Assert.AreEqual(tuple.Item2, Regex.Replace(tuple.Item1, RegexPattern.YoutubeRegex,"$1"));
+            }
+        }
     }
 }

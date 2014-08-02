@@ -1,18 +1,28 @@
-﻿<div class="row pull-right">
-    <h3>Test titre 1</h3>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dictum rhoncus nisl, ut facilisis metus tincidunt ut. Vivamus ipsum tortor, elementum at egestas sit amet, semper in lectus. Aliquam ac neque nisl. Nam quis orci tellus. Pellentesque elementum tincidunt turpis et dictum. Vestibulum eget lorem sed nisi blandit euismod. Mauris faucibus diam sit amet lorem bibendum varius rhoncus ut felis. Morbi congue congue quam, eget venenatis dui laoreet aliquam. Donec eget tempor dolor, non aliquet diam. Maecenas quis lacus arcu.
+﻿
 
-    Aliquam vitae felis venenatis, tristique risus et, malesuada risus. Nunc vehicula, elit a tristique consectetur, diam felis auctor nulla, non posuere nisl massa quis nisl. Nulla ultrices fermentum ligula. Suspendisse et facilisis nibh, ac imperdiet nulla. Donec ullamcorper quis augue in iaculis. Curabitur laoreet aliquet magna, in mollis metus posuere sit amet. Phasellus posuere ante vel elementum pretium.
+@if (!Request.IsAuthenticated)
+{
+    <div class="row ">
+        <h3>@GeneralRessources.TitlePQsinscrire</h3>
+        <p>
+            @GeneralRessources.TxtPQsinscire
+            @Html.ActionLink(GeneralRessources.Sinscrire,"Index","User")
+        </p>
+        <h4>@GeneralRessources.SeConnecter</h4>
+        <hr class="empty-hr row" />
+
+        @Html.Partial("../User/ConnexionFormPartial",new User())
+    </div>
+}
+
+<div class="row ">
+
+
+    <h4>Video</h4>
+    <p>
+        <iframe width="350" height="197" src="//www.youtube.com/embed/_QyYaPWasos" frameborder="0"></iframe>
+        College humor video.
+    </p>
     <h3>Test titre 1</h3>
-    Sed tincidunt, lacus suscipit semper bibendum, sem urna auctor tellus, vel consectetur mi nunc sit amet leo. Aenean eu libero facilisis arcu ultrices pulvinar ut non sapien. Etiam sollicitudin rutrum magna a faucibus. Nulla rhoncus nulla vitae tincidunt lacinia. Nullam dui ipsum, egestas et mollis eu, adipiscing a neque. Pellentesque fringilla arcu diam, eget volutpat felis dictum at. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec rutrum metus. Fusce placerat tincidunt nisl tincidunt facilisis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum nunc purus, placerat sit amet sagittis ac, tincidunt quis metus. Phasellus ultrices dui eget convallis iaculis. Nunc auctor quis dui nec rutrum. Vivamus auctor sodales risus.
 </div>
 
-<div class="row pull-right">
-    <h3>Test titre 1</h3>
-    <h4>Test titre 1</h4>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dictum rhoncus nisl, ut facilisis metus tincidunt ut. Vivamus ipsum tortor, elementum at egestas sit amet, semper in lectus. Aliquam ac neque nisl. Nam quis orci tellus. Pellentesque elementum tincidunt turpis et dictum. Vestibulum eget lorem sed nisi blandit euismod. Mauris faucibus diam sit amet lorem bibendum varius rhoncus ut felis. Morbi congue congue quam, eget venenatis dui laoreet aliquam. Donec eget tempor dolor, non aliquet diam. Maecenas quis lacus arcu.
-    <h4>Test titre 1</h4>
-    Aliquam vitae felis venenatis, tristique risus et, malesuada risus. Nunc vehicula, elit a tristique consectetur, diam felis auctor nulla, non posuere nisl massa quis nisl. Nulla ultrices fermentum ligula. Suspendisse et facilisis nibh, ac imperdiet nulla. Donec ullamcorper quis augue in iaculis. Curabitur laoreet aliquet magna, in mollis metus posuere sit amet. Phasellus posuere ante vel elementum pretium.
-    <h4>Test titre 1</h4>
-    Sed tincidunt, lacus suscipit semper bibendum, sem urna auctor tellus, vel consectetur mi nunc sit amet leo. Aenean eu libero facilisis arcu ultrices pulvinar ut non sapien. Etiam sollicitudin rutrum magna a faucibus. Nulla rhoncus nulla vitae tincidunt lacinia. Nullam dui ipsum, egestas et mollis eu, adipiscing a neque. Pellentesque fringilla arcu diam, eget volutpat felis dictum at. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec rutrum metus. Fusce placerat tincidunt nisl tincidunt facilisis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum nunc purus, placerat sit amet sagittis ac, tincidunt quis metus. Phasellus ultrices dui eget convallis iaculis. Nunc auctor quis dui nec rutrum. Vivamus auctor sodales risus.
-</div>

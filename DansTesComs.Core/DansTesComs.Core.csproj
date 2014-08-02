@@ -55,6 +55,8 @@
     <Compile Include="Attribute\DateValidator\AgeMinimumAttribute.cs" />
     <Compile Include="Attribute\DateValidator\DateMinAttribute.cs" />
     <Compile Include="Enums\Categorie.cs" />
+    <Compile Include="Helpers\EmbedWebSite.cs" />
+    <Compile Include="Helpers\LinkHelper.cs" />
     <Compile Include="Models\Commentaire.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>

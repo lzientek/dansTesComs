@@ -124,6 +124,51 @@ namespace DansTesComs.Ressources.General {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Chercher.
+        /// </summary>
+        public static string Recherche {
+            get {
+                return ResourceManager.GetString("Recherche", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Se connecter.
+        /// </summary>
+        public static string SeConnecter {
+            get {
+                return ResourceManager.GetString("SeConnecter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à S&apos;incrire.
+        /// </summary>
+        public static string Sinscrire {
+            get {
+                return ResourceManager.GetString("Sinscrire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Pourquoi s&apos;inscrire?.
+        /// </summary>
+        public static string TitlePQsinscrire {
+            get {
+                return ResourceManager.GetString("TitlePQsinscrire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Pour pouvoir noter et commenter les commentaires poster. Et en proposer des nouveaux. C&apos;est quand meme utltra fun..
+        /// </summary>
+        public static string TxtPQsinscire {
+            get {
+                return ResourceManager.GetString("TxtPQsinscire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Voir plus....
         /// </summary>
         public static string VoirPlus {

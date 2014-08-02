@@ -193,7 +193,10 @@ input,textarea,.form-control,.btn {
 .margin-3 {
     margin-left: 135px;
 }
-
+.empty-hr {
+    width: 100%;
+    border-top: none;
+}
 .margin-4 {
     margin-left: 180px;
 }

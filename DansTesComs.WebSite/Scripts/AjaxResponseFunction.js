@@ -11,3 +11,7 @@ function changeIdForMoreCom() {
     divtoShow.hide(0);
     divtoShow.fadeIn(900);
 }
+
+function errorAjax() {
+    alert("Une erreur est aparu!");
+}

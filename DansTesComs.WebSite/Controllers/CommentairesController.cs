@@ -38,7 +38,7 @@ namespace DansTesComs.WebSite.Controllers
         // POST: Commentaires/Create
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         [Authorize]
         public ActionResult Create([Bind(Include = "Texte,PostId")] Commentaire commentaire)
         {

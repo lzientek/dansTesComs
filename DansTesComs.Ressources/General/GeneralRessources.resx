@@ -138,6 +138,21 @@
   <data name="Publier" xml:space="preserve">
     <value>Publier</value>
   </data>
+  <data name="Recherche" xml:space="preserve">
+    <value>Chercher</value>
+  </data>
+  <data name="SeConnecter" xml:space="preserve">
+    <value>Se connecter</value>
+  </data>
+  <data name="Sinscrire" xml:space="preserve">
+    <value>S'incrire</value>
+  </data>
+  <data name="TitlePQsinscrire" xml:space="preserve">
+    <value>Pourquoi s'inscrire?</value>
+  </data>
+  <data name="TxtPQsinscire" xml:space="preserve">
+    <value>Pour pouvoir noter et commenter les commentaires poster. Et en proposer des nouveaux. C'est quand meme utltra fun.</value>
+  </data>
   <data name="VoirPlus" xml:space="preserve">
     <value>Voir plus...</value>
   </data>

@@ -1,6 +1,6 @@
 ﻿@model IPagedList<Commentaire>
 
-@if (!IsAjax)
+@if (!IsAjax && Request.IsAuthenticated)
 { 
     @Html.Partial("Create", new Commentaire { PostId = ViewBag.commentid })
 
