@@ -13,6 +13,7 @@ namespace DansTesComs.WebSite.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
         public void Index()
         {
             // Arrange
@@ -20,9 +21,9 @@ namespace DansTesComs.WebSite.Tests.Controllers
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
-
+            ViewResult expected = new CommentaireExternesController().Index() as ViewResult;
             // Assert
-            Assert.AreEqual("Modify this template to jump-start your ASP.NET MVC application.", result.ViewBag.Message);
+            Assert.AreEqual(expected.ViewBag.Title,result.ViewBag);
         }
 
         [TestMethod]

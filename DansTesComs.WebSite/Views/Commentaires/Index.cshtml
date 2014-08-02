@@ -1,18 +1,30 @@
 ﻿@model IPagedList<Commentaire>
-
-@Html.Partial("Create", new Commentaire { PostId = ViewBag.commentid })
-
+@if (!IsAjax)
+{
+    Html.Partial("Create", new Commentaire { PostId = ViewBag.commentid });
+}
 
 
 
 <div class="comment-block">
     @foreach (var com in Model)
     {
-        @Html.Partial("_PartialViewCommentaire",com)
+        @Html.Partial("_PartialViewCommentaire", com)
     }
-    <div id="more comments">
-    @{
-        //todo: implémenter le voir plus en ajax
-    }
+    <div id="morecomments" class="row col-md-12 text-center">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { extCommentId = ViewBag.commentid, page = page }),
+                                           PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions()
+                                           {
+                                               DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                                               DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                                               DisplayLinkToPreviousPage = PagedListDisplayMode.Never,
+                                               DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+                                               DisplayLinkToIndividualPages = false,
+                                               DisplayItemSliceAndTotal = false,
+                                               ContainerDivClasses = null,
+				       		UlElementClasses = new[] {"pager"},
+				       		ClassToApplyToFirstListItemInPager = null,
+                                               LinkToNextPageFormat = "Show more"
+                                           }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "morecomments", OnBegin = "", OnSuccess = "changeIdForMoreCom" }))
     </div>
 </div>
