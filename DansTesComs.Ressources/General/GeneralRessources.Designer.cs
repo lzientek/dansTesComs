@@ -122,5 +122,14 @@ namespace DansTesComs.Ressources.General {
                 return ResourceManager.GetString("Publier", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Voir plus....
+        /// </summary>
+        public static string VoirPlus {
+            get {
+                return ResourceManager.GetString("VoirPlus", resourceCulture);
+            }
+        }
     }
 }

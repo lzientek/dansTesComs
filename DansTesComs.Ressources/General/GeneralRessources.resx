@@ -138,4 +138,7 @@
   <data name="Publier" xml:space="preserve">
     <value>Publier</value>
   </data>
+  <data name="VoirPlus" xml:space="preserve">
+    <value>Voir plus...</value>
+  </data>
 </root>

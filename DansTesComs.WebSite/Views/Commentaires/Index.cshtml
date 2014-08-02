@@ -1,9 +1,10 @@
 ﻿@model IPagedList<Commentaire>
-@if (!IsAjax)
-{
-    Html.Partial("Create", new Commentaire { PostId = ViewBag.commentid });
-}
 
+@if (!IsAjax)
+{ 
+    @Html.Partial("Create", new Commentaire { PostId = ViewBag.commentid })
+
+}
 
 
 <div class="comment-block">
@@ -12,19 +13,21 @@
         @Html.Partial("_PartialViewCommentaire", com)
     }
     <div id="morecomments" class="row col-md-12 text-center">
+        @*jolie bouton voir pls avec les options pager pour qu'on est bien le resultat voulu 
+                + laison js AjaxResponseFunction.js pour un affichage correcte et le changement d'id*@
         @Html.PagedListPager(Model, page => Url.Action("Index", new { extCommentId = ViewBag.commentid, page = page }),
-                                           PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions()
-                                           {
-                                               DisplayLinkToFirstPage = PagedListDisplayMode.Never,
-                                               DisplayLinkToLastPage = PagedListDisplayMode.Never,
-                                               DisplayLinkToPreviousPage = PagedListDisplayMode.Never,
-                                               DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
-                                               DisplayLinkToIndividualPages = false,
-                                               DisplayItemSliceAndTotal = false,
-                                               ContainerDivClasses = null,
-				       		UlElementClasses = new[] {"pager"},
-				       		ClassToApplyToFirstListItemInPager = null,
-                                               LinkToNextPageFormat = "Show more"
-                                           }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "morecomments", OnBegin = "", OnSuccess = "changeIdForMoreCom" }))
+            PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions()
+            {
+                DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.Never,
+                DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToIndividualPages = false,
+                DisplayItemSliceAndTotal = false,
+                ContainerDivClasses = null,
+                UlElementClasses = new[] {"pager"},
+                ClassToApplyToFirstListItemInPager = null,
+                LinkToNextPageFormat = GeneralRessources.VoirPlus
+            }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "morecomments", OnSuccess = "changeIdForMoreCom" }))
     </div>
 </div>
