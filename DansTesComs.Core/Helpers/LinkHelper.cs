@@ -11,7 +11,11 @@ namespace DansTesComs.Core.Helpers
         public const int LargeurFrame = 500;
         public const int HauteurFrame = 300;
 
-        private static readonly EmbedWebSite[] AvailableSite = { new EmbedWebSite { DommainName = "www.youtube.com", GetEmbed = YoutubeFunction }, };
+        private static readonly EmbedWebSite[] AvailableSite = { 
+                                                                   new EmbedWebSite { DommainName = "www.youtube.com", GetEmbed = YoutubeFunction },
+                                                                   new EmbedWebSite { DommainName = "www.dailymotion.com", GetEmbed = DailyMotionFunction },
+                                                                   new EmbedWebSite { DommainName = "vimeo.com", GetEmbed = VimeoFunction },
+                                                               };
 
         public static bool IsLinkEmbedEnable(this string link)
         {
@@ -43,6 +47,7 @@ namespace DansTesComs.Core.Helpers
         }
 
         #region delegate function
+
         private static string YoutubeFunction(string link)
         {
             string videoId = Regex.Replace(link, RegexPattern.YoutubeRegex, "$1");
@@ -52,6 +57,27 @@ namespace DansTesComs.Core.Helpers
             }
             return link;
         }
+
+        private static string DailyMotionFunction(string link)
+        {
+            string videoId = Regex.Replace(link, RegexPattern.DailyMotionRegex, "$1");
+            if (Regex.IsMatch(videoId,RegexPattern.ValidYoutubeId))
+            {
+                return string.Format("<iframe frameborder=\"0\" width=\"{1}\" height=\"{2}\" src=\"//www.dailymotion.com/embed/video/{0}\" ></iframe>", videoId, LargeurFrame, HauteurFrame);                
+            }
+            return link;
+        }
+        private static string VimeoFunction(string link)
+        {
+            string videoId = Regex.Replace(link, RegexPattern.VimeoRegex, "$2");
+            if (Regex.IsMatch(videoId,RegexPattern.ValidVimeoId))
+            {
+                return string.Format("<iframe src=\"//player.vimeo.com/video/{0}\" width=\"{1}\" height=\"{2}\" frameborder=\"0\"></iframe>", videoId, LargeurFrame, HauteurFrame);                
+            }
+            return link;
+        }
         #endregion
     }
-}
+}            
+
+        

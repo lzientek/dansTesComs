@@ -1,4 +1,5 @@
-﻿@model CommentaireExterne
+﻿@using DansTesComs.Core.Helpers
+@model CommentaireExterne
 
 @{
     ViewBag.Title = Model.Titre;
@@ -7,6 +8,17 @@
 
 <div class="row">
     <h1>@Model.Titre </h1>
+    <p>@{//on vérifie si notre lien peut embed
+           var embed = LinkHelper.LinkGetEmbedVideo(Model.Lien);
+           if (embed != Model.Lien)
+           {
+               @Html.Raw(embed)
+           }
+           else
+           {
+                <a href="@Model.Lien">@Model.Lien</a>
+           }
+       }</p>
     <p class="commentaire-publication">@Model.Publication</p>
     <div class="commentaire-commentaires">
         @foreach (var coment in Model.CommentairesExterneContents)

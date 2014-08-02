@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -69,6 +71,7 @@ namespace DansTesComs.WebSite.Controllers
             commentaireExterne.RemoveEmptyComs();
             commentaireExterne.DatePost = DateTime.Now;
             commentaireExterne.PosterUserId = WebSecurity.CurrentUserId;
+            commentaireExterne.lang = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName ;
             if (ModelState.IsValid)
             {
                 try
@@ -76,9 +79,16 @@ namespace DansTesComs.WebSite.Controllers
                     db.CommentaireExternes.Add(commentaireExterne);
                     db.SaveChanges();
                 }
-                catch (Exception ex)
+                catch (DbEntityValidationException ex)
                 {
+                    ViewBag.ErreurCommentaireContent = string.Join("|",
+                        ex.EntityValidationErrors.Select(
+                            e => string.Join("-", e.ValidationErrors.Select(x => x.ErrorMessage).ToArray())));
                     return View(commentaireExterne);
+                }
+                catch (Exception exception)
+                {
+                    return View(commentaireExterne);                    
                 }
 
                 return RedirectToAction("Index");
