@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Threading;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 using DansTesComs.Ressources.CommentaireExterne;
 using DansTesComs.WebSite.Filters;
 using DansTesComs.Core.Models;
@@ -22,7 +18,11 @@ namespace DansTesComs.WebSite.Controllers
     {
         private DansTesComsEntities db = new DansTesComsEntities();
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
         public ActionResult Index(int page = 1)
         {
             var commentaireExternes = db.CommentaireExternes.ToList()
@@ -31,14 +31,22 @@ namespace DansTesComs.WebSite.Controllers
             return View(commentaireExternes);
         }
 
-        [Authorize]
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         public ActionResult Admin()
         {
             var commentaireExternes = db.CommentaireExternes;
             return View(commentaireExternes.ToList());
         }
 
-        //[Authorize(Roles = "Modo")]
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -53,7 +61,10 @@ namespace DansTesComs.WebSite.Controllers
             return View(commentaireExterne);
         }
 
-        //[Authorize(Roles = "Modo")]
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         public ActionResult Create()
         {
@@ -62,8 +73,12 @@ namespace DansTesComs.WebSite.Controllers
             return View(com);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="commentaireExterne"></param>
+        /// <returns></returns>
         [HttpPost, ValidateInput(false)]
-        //[Authorize(Roles = "Modo")]
         [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CommentairesExterneContents,Lien,Titre,Publication")] CommentaireExterne commentaireExterne)
@@ -71,7 +86,7 @@ namespace DansTesComs.WebSite.Controllers
             commentaireExterne.RemoveEmptyComs();
             commentaireExterne.DatePost = DateTime.Now;
             commentaireExterne.PosterUserId = WebSecurity.CurrentUserId;
-            commentaireExterne.lang = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName ;
+            commentaireExterne.lang = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
             if (ModelState.IsValid)
             {
                 try
@@ -88,7 +103,7 @@ namespace DansTesComs.WebSite.Controllers
                 }
                 catch (Exception exception)
                 {
-                    return View(commentaireExterne);                    
+                    return View(commentaireExterne);
                 }
 
                 return RedirectToAction("Index");
@@ -102,7 +117,12 @@ namespace DansTesComs.WebSite.Controllers
             return View(commentaireExterne);
         }
 
-        // GET: CommentaireExternes/Edit/5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin,Modo")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -118,24 +138,38 @@ namespace DansTesComs.WebSite.Controllers
             return View(commentaireExterne);
         }
 
-        // POST: CommentaireExternes/Edit/5
-        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="commentaireExterne"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Contenu,PosterUserId,DatePost")] CommentaireExterne commentaireExterne)
+        [Authorize(Roles = "Admin,Modo")]
+        public ActionResult Edit([Bind(Include = "Id,Titre,Lien,Publication,CommentairesExterneContents,IsValide")] CommentaireExterne commentaireExterne)
         {
+            commentaireExterne.RemoveEmptyComs();
+
             if (ModelState.IsValid)
             {
-                db.Entry(commentaireExterne).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                var com  = db.CommentaireExternes.Find(commentaireExterne.Id);
+                com.Titre = commentaireExterne.Titre;
+                com.Lien = commentaireExterne.Lien;
+                com.IsValide = commentaireExterne.IsValide;
+                com.Publication = commentaireExterne.Publication;
+
+                //on supprime les ancien com et on ajoute les nouveau
+                db.CommentairesExterneContents.RemoveRange(com.CommentairesExterneContents);
+                com.CommentairesExterneContents = commentaireExterne.CommentairesExterneContents;
+                
+                db.SaveChanges(); 
+                return RedirectToAction("Details", new {id = com.Id});
             }
-            ViewBag.PosterUserId = new SelectList(db.Users, "Id", "Mail", commentaireExterne.PosterUserId);
             return View(commentaireExterne);
         }
 
-        // GET: CommentaireExternes/Delete/5
+        [Authorize(Roles = "Admin,Modo")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -150,9 +184,9 @@ namespace DansTesComs.WebSite.Controllers
             return View(commentaireExterne);
         }
 
-        // POST: CommentaireExternes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Modo")]
         public ActionResult DeleteConfirmed(int id)
         {
             CommentaireExterne commentaireExterne = db.CommentaireExternes.Find(id);

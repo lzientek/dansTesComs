@@ -8,6 +8,7 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using System.Web.Security;
 using DansTesComs.Ressources.User;
 using DansTesComs.WebSite.Filters;
 using DansTesComs.Core.Models;
@@ -15,7 +16,6 @@ using WebMatrix.WebData;
 
 namespace DansTesComs.WebSite.Controllers
 {
-    [Authorize]
     [InitializeSimpleMembership]
     public class UserController : Controller
     {
@@ -49,12 +49,22 @@ namespace DansTesComs.WebSite.Controllers
             [Bind(Include = "Mail,Nom,Prenom,Anniversaire,Pseudo,Pass")] User user)
         {
             user.InscriptionDate = DateTime.Now;
-            user.IsAdmin = false;
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && !WebSecurity.UserExists(user.Pseudo))
             {
-                WebSecurity.CreateAccount(user.Pseudo, user.Pass);
-                db.Users.Add(user);
-                db.SaveChanges();
+
+                try
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    WebSecurity.CreateAccount(user.Pseudo, user.Pass);
+
+                }
+                catch (Exception ex)
+                {
+                    
+                    throw ex;
+                }
+                
                 return RedirectToAction("Index");
             }
 

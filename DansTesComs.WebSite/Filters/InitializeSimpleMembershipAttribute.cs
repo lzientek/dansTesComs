@@ -26,15 +26,15 @@ namespace DansTesComs.WebSite.Filters
             {
                 Database.SetInitializer<DansTesComsEntities>(null);
 
-                try
-                {
+                //try
+                //{
 
-                    WebSecurity.InitializeDatabaseConnection("DansTesComsSqlServeur", "Users", "id", "Pseudo", true);
-                }
-                catch (Exception ex)
-                {
-                    throw new InvalidOperationException("Impossible d'initialiser la base de données ASP.NET Simple Membership. Pour plus d'informations, consultez la page http://go.microsoft.com/fwlink/?LinkId=256588", ex);
-                }
+                //    WebSecurity.InitializeDatabaseConnection("DansTesComsSqlServeur", "Users", "id", "Pseudo", true);
+                //}
+                //catch (Exception ex)
+                //{
+                //    throw new InvalidOperationException("Impossible d'initialiser la base de données ASP.NET Simple Membership. Pour plus d'informations, consultez la page http://go.microsoft.com/fwlink/?LinkId=256588", ex);
+                //}
             }
         }
     }

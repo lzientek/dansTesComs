@@ -84,6 +84,9 @@
     <Compile Include="Models\Note.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>

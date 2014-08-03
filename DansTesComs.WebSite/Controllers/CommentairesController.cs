@@ -45,6 +45,7 @@ namespace DansTesComs.WebSite.Controllers
             
             commentaire.DatePost = DateTime.Now;
             commentaire.UserId = WebSecurity.CurrentUserId;
+            commentaire.Texte = WebUtility.HtmlEncode(commentaire.Texte);
             if (ModelState.IsValid)
             {
                 db.Commentaires.Add(commentaire);

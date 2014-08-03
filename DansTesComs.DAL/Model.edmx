@@ -58,8 +58,22 @@
           <Property Name="prenom" Type="nvarchar" MaxLength="80" />
           <Property Name="Anniversaire" Type="date" />
           <Property Name="InscriptionDate" Type="datetime" Nullable="false" />
-          <Property Name="isAdmin" Type="bit" Nullable="false" />
           <Property Name="Pseudo" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_CommentaireExterne_ToUser">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
@@ -133,12 +147,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_RoleId">
+          <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DansTesComsModelStoreContainer">
           <EntitySet Name="CommentaireExterne" EntityType="Self.CommentaireExterne" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Commentaires" EntityType="Self.Commentaires" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommentairesExterneContent" EntityType="Self.CommentairesExterneContent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Note" EntityType="Self.Note" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="Self.webpages_UsersInRoles" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CommentaireExterne_ToUser" Association="Self.FK_CommentaireExterne_ToUser">
             <End Role="Users" EntitySet="Users" />
             <End Role="CommentaireExterne" EntitySet="CommentaireExterne" />
@@ -162,6 +202,14 @@
           <AssociationSet Name="FK_Note_ToUser" Association="Self.FK_Note_ToUser">
             <End Role="Users" EntitySet="Users" />
             <End Role="Note" EntitySet="Note" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RoleId" Association="Self.fk_RoleId">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserId" Association="Self.fk_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -196,11 +244,11 @@
           <Property Name="Prenom" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="Anniversaire" Type="DateTime" Precision="0" />
           <Property Name="InscriptionDate" Type="DateTime" Precision="3" Nullable="false" />
-          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
           <Property Name="Pseudo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CommentaireExternes" Relationship="DansTesComsModel.FK_CommentaireExterne_ToUser" FromRole="User" ToRole="CommentaireExterne" />
           <NavigationProperty Name="Notes" Relationship="DansTesComsModel.FK_Note_ToUser" FromRole="User" ToRole="Note" />
           <NavigationProperty Name="Commentaires" Relationship="DansTesComsModel.FK_Commentaires_User" FromRole="User" ToRole="Commentaire" />
+          <NavigationProperty Name="Roles" Relationship="DansTesComsModel.webpages_UsersInRoles" FromRole="User" ToRole="webpages_Roles" />
         </EntityType>
         <EntityContainer Name="DansTesComsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CommentaireExternes" EntityType="Self.CommentaireExterne" />
@@ -231,6 +279,11 @@
           <AssociationSet Name="FK_Commentaires_CommentaireExterne" Association="DansTesComsModel.FK_Commentaires_CommentaireExterne">
             <End Role="CommentaireExterne" EntitySet="CommentaireExternes" />
             <End Role="Commentaire" EntitySet="Commentaires" />
+          </AssociationSet>
+          <EntitySet Name="Roles1" EntityType="DansTesComsModel.Role" />
+          <AssociationSet Name="webpages_UsersInRoles" Association="DansTesComsModel.webpages_UsersInRoles">
+            <End Role="webpages_Roles" EntitySet="Roles1" />
+            <End Role="User" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
         <Association Name="FK_CommentaireExterne_ToUser">
@@ -339,6 +392,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="DansTesComsModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="User" />
+        </EntityType>
+        <Association Name="webpages_UsersInRoles">
+          <End Type="DansTesComsModel.Role" Role="webpages_Roles" Multiplicity="*" />
+          <End Type="DansTesComsModel.User" Role="User" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -370,7 +435,6 @@
                 <ScalarProperty Name="Prenom" ColumnName="prenom" />
                 <ScalarProperty Name="Anniversaire" ColumnName="Anniversaire" />
                 <ScalarProperty Name="InscriptionDate" ColumnName="InscriptionDate" />
-                <ScalarProperty Name="IsAdmin" ColumnName="isAdmin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -406,6 +470,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Roles1">
+            <EntityTypeMapping TypeName="DansTesComsModel.Role">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="DansTesComsModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

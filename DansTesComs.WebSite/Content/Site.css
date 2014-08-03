@@ -138,14 +138,21 @@ footer {
 }
 
 .footerComment .commentaire-poster {
-    margin-top: 4px;
     text-align: center;
+}
+ .commentaire-poster {
+    margin-top: 4px;
     font-size: 11px;
 }
-
 .new-commentaire-ajax {
     margin-left: -4px;
     border-left: 4px solid #3fd0c3;
+}
+.commentaireDeComExt {
+    margin-top: 10px;
+}
+.commentaireDeComExt > .col-md-10 {
+    padding-left: 4px;
 }
 /*title*/
 h1, h2 {

@@ -1,13 +1,17 @@
-﻿@model Commentaire
+﻿@using DansTesComs.Core.Helpers
+@model Commentaire
 
-<div class="row col-md-8">
+<div class="row col-md-10 commentaireDeComExt">
 <div class="pull-left @if (IsPost){<text>new-commentaire-ajax </text>}">
-        <img src="@Model.User.GetGravatarLink()" height="40" width="40" alt="user logo" />
+        <img  src="@Model.User.GetGravatarLink()" height="40" width="40" alt="user logo" />
     </div>
     <div class="col-md-10">
         <span class="pseudo">@Model.User.Pseudo</span>
         <span class="separation-pseudo-commentaire">:</span>
-        <span class="commentaire">@Model.Texte</span>
+        <span class="commentaire">@Html.Raw(Model.Texte.TextToTextLink())</span>
+        <div class="row">
+            <div class="commentaire-poster">@Html.DisplayFor(model => model.DatePost)</div>
+        </div>
     </div>
-    <div class="pull-left">@Html.DisplayFor(model => model.DatePost)</div>
+
 </div>

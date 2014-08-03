@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace DansTesComs.Core.Helpers
 {
@@ -16,7 +13,11 @@ namespace DansTesComs.Core.Helpers
                                                                    new EmbedWebSite { DommainName = "www.dailymotion.com", GetEmbed = DailyMotionFunction },
                                                                    new EmbedWebSite { DommainName = "vimeo.com", GetEmbed = VimeoFunction },
                                                                };
-
+        /// <summary>
+        /// verifi si le lien est valide pour avoir un champ embed
+        /// </summary>
+        /// <param name="link"></param>
+        /// <returns></returns>
         public static bool IsLinkEmbedEnable(this string link)
         {
             if (AvailableSite.Any(s => link.Contains(s.DommainName)))
@@ -26,6 +27,11 @@ namespace DansTesComs.Core.Helpers
             return false;
         }
 
+        /// <summary>
+        /// recupere le champ embed d'un lien
+        /// </summary>
+        /// <param name="link"></param>
+        /// <returns></returns>
         public static string LinkGetEmbedVideo(string link)
         {
             if (link.IsLinkEmbedEnable())
@@ -46,7 +52,18 @@ namespace DansTesComs.Core.Helpers
             return Regex.Replace(link, RegexPattern.DomainNameRegex, "$1");
         }
 
-        #region delegate function
+        /// <summary>
+        /// transforme les liens d'un text en lien clicable
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="nouvelleOnglet">si on doit ouvrir dans un nouvel onglet</param>
+        /// <returns></returns>
+        public static string TextToTextLink(this string text,bool nouvelleOnglet = true)
+        {
+            return Regex.Replace(text, RegexPattern.UrlRegex, string.Format("<a href=\"$0\" {0} >$0</a>",nouvelleOnglet?" target=\"_blank\"":string.Empty));
+        }
+
+        #region delegate embed function
 
         private static string YoutubeFunction(string link)
         {

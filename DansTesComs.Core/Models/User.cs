@@ -19,6 +19,7 @@ namespace DansTesComs.Core.Models
             this.CommentaireExternes = new HashSet<CommentaireExterne>();
             this.Notes = new HashSet<Note>();
             this.Commentaires = new HashSet<Commentaire>();
+            this.Roles = new HashSet<Role>();
         }
     
         public int Id { get; set; }
@@ -27,11 +28,11 @@ namespace DansTesComs.Core.Models
         public string Prenom { get; set; }
         public Nullable<System.DateTime> Anniversaire { get; set; }
         public System.DateTime InscriptionDate { get; set; }
-        public bool IsAdmin { get; set; }
         public string Pseudo { get; set; }
     
         public virtual ICollection<CommentaireExterne> CommentaireExternes { get; set; }
         public virtual ICollection<Note> Notes { get; set; }
         public virtual ICollection<Commentaire> Commentaires { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }
