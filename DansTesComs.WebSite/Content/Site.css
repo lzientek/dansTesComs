@@ -12,6 +12,17 @@ body {
 p {
     margin-left: 15px;
 }
+.btn:hover {
+    background: #efefef;
+    outline: none;
+}
+.btn:active,.btn:focus,.btn:active:focus {
+        outline: none;
+}
+.petitChampNiveau {
+    width: 50px;
+    float: left;
+}
 /* Perso
     -------------------------------------------------------*/
 #ajoutdecoms .row {

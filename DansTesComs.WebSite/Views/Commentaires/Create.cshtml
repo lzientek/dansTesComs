@@ -8,7 +8,8 @@
         Url = "/Commentaires/create",
         InsertionMode = InsertionMode.Replace,
         UpdateTargetId = "supercompliquepourmettrenotrecom",
-        OnSuccess = "successAddComm"
+        OnSuccess = "successAddComm",
+        OnBegin = "onStartDisableComment"
     }))
     {
         @Html.HiddenFor(c => c.PostId, new { @value = ViewBag.commentid })
@@ -19,7 +20,7 @@
                 @Html.ValidationMessageFor(model => model.Texte, "", new { @class = "text-danger" })
             </div>
             <div class="col-md-2">
-                <input type="submit" value="@GeneralRessources.Publier" class="btn  " />
+                <input type="submit" value="@GeneralRessources.Publier" class="btn  " id="boutonajoutcom" />
             </div>
         </div>
 

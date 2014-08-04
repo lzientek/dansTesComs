@@ -16,3 +16,11 @@ function changeIdForMoreCom() {
 function errorAjax() {
     alert("Une erreur est aparu!");
 }
+
+function onStartDisableComment() {
+    $("#boutonajoutcom").attr("disabled", "disabled");
+}
+
+function onStartHideShowMore() {
+    $(".PagedList-skipToNext").hide(0);
+}

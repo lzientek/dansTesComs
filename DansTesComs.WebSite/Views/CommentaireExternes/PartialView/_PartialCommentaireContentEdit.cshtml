@@ -10,7 +10,11 @@
             <div class="col-md-4">
                 <input class="form-control" id="CommentairesExterneContents_@(i)__Pseudo" value="@elem.Pseudo" name="CommentairesExterneContents[@i].Pseudo" type="text" placeholder="@CommentaireExterneRessources.Pseudo">
                 @{/*todo: ajouter l'indentation*/}
-                <input id="CommentairesExterneContents_@(i)__Niveau" name="CommentairesExterneContents[@i].Niveau" value="@elem.Niveau" type="hidden" >
+                <input title="@CommentaireExterneRessources.Indentation" 
+                       class="form-control petitChampNiveau" id="CommentairesExterneContents_@(i)__Niveau" 
+                       name="CommentairesExterneContents[@i].Niveau" value="@elem.Niveau" type="number" disabled="disabled">
+                <button type="button" class="btn" onclick="addNiveau(this);">+</button>
+                <button type="button" class="btn" onclick="moinsNiveau(this);">-</button>
             </div>
             <div class="col-md-8">
                 <textarea class="form-control" id="CommentairesExterneContents_@(i)__Commentaire" name="CommentairesExterneContents[@i].Commentaire" placeholder="@CommentaireExterneRessources.Title">@elem.Commentaire</textarea>

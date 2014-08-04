@@ -28,6 +28,6 @@
                 UlElementClasses = new[] {"pager"},
                 ClassToApplyToFirstListItemInPager = null,
                 LinkToNextPageFormat = GeneralRessources.VoirPlus
-            }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "morecomments", OnSuccess = "changeIdForMoreCom" }))
+            }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "morecomments", OnBegin = "onStartHideShowMore", OnSuccess = "changeIdForMoreCom" }))
     </div>
 </div>

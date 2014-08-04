@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace DansTesComs.Core.Helpers
@@ -34,16 +35,24 @@ namespace DansTesComs.Core.Helpers
         /// <returns></returns>
         public static string LinkGetEmbedVideo(string link)
         {
-            if (link.IsLinkEmbedEnable())
+            try
             {
-                foreach (var embedWebSite in AvailableSite)
+                if (link.IsLinkEmbedEnable())
                 {
-                    if (embedWebSite.DommainName == link.GetDomainName())
+                    foreach (var embedWebSite in AvailableSite)
                     {
-                        return embedWebSite.GetEmbed(link);
+                        if (embedWebSite.DommainName == link.GetDomainName())
+                        {
+                            return embedWebSite.GetEmbed(link);
+                        }
                     }
                 }
             }
+            catch
+            {
+                return string.Empty;                
+            }
+
             return link;
         }
 
@@ -58,9 +67,17 @@ namespace DansTesComs.Core.Helpers
         /// <param name="text"></param>
         /// <param name="nouvelleOnglet">si on doit ouvrir dans un nouvel onglet</param>
         /// <returns></returns>
-        public static string TextToTextLink(this string text,bool nouvelleOnglet = true)
+        public static string TextToTextLink(this string text, bool nouvelleOnglet = true)
         {
-            return Regex.Replace(text, RegexPattern.UrlRegex, string.Format("<a href=\"$0\" {0} >$0</a>",nouvelleOnglet?" target=\"_blank\"":string.Empty));
+            try
+            {
+                return Regex.Replace(text, RegexPattern.UrlRegex,
+                    string.Format("<a href=\"$0\" {0} >$0</a>", nouvelleOnglet ? " target=\"_blank\"" : string.Empty));
+            }
+            catch 
+            {
+                return string.Empty;
+            }
         }
 
         #region delegate embed function
@@ -68,9 +85,9 @@ namespace DansTesComs.Core.Helpers
         private static string YoutubeFunction(string link)
         {
             string videoId = Regex.Replace(link, RegexPattern.YoutubeRegex, "$1");
-            if (Regex.IsMatch(videoId,RegexPattern.ValidYoutubeId))
+            if (Regex.IsMatch(videoId, RegexPattern.ValidYoutubeId))
             {
-                return string.Format("<iframe width=\"{1}\" height=\"{2}\" src=\"//www.youtube.com/embed/{0}\" frameborder=\"0\" ></iframe>", videoId, LargeurFrame, HauteurFrame);                
+                return string.Format("<iframe width=\"{1}\" height=\"{2}\" src=\"//www.youtube.com/embed/{0}\" frameborder=\"0\" ></iframe>", videoId, LargeurFrame, HauteurFrame);
             }
             return link;
         }
@@ -78,23 +95,23 @@ namespace DansTesComs.Core.Helpers
         private static string DailyMotionFunction(string link)
         {
             string videoId = Regex.Replace(link, RegexPattern.DailyMotionRegex, "$1");
-            if (Regex.IsMatch(videoId,RegexPattern.ValidYoutubeId))
+            if (Regex.IsMatch(videoId, RegexPattern.ValidYoutubeId))
             {
-                return string.Format("<iframe frameborder=\"0\" width=\"{1}\" height=\"{2}\" src=\"//www.dailymotion.com/embed/video/{0}\" ></iframe>", videoId, LargeurFrame, HauteurFrame);                
+                return string.Format("<iframe frameborder=\"0\" width=\"{1}\" height=\"{2}\" src=\"//www.dailymotion.com/embed/video/{0}\" ></iframe>", videoId, LargeurFrame, HauteurFrame);
             }
             return link;
         }
         private static string VimeoFunction(string link)
         {
             string videoId = Regex.Replace(link, RegexPattern.VimeoRegex, "$2");
-            if (Regex.IsMatch(videoId,RegexPattern.ValidVimeoId))
+            if (Regex.IsMatch(videoId, RegexPattern.ValidVimeoId))
             {
-                return string.Format("<iframe src=\"//player.vimeo.com/video/{0}\" width=\"{1}\" height=\"{2}\" frameborder=\"0\"></iframe>", videoId, LargeurFrame, HauteurFrame);                
+                return string.Format("<iframe src=\"//player.vimeo.com/video/{0}\" width=\"{1}\" height=\"{2}\" frameborder=\"0\"></iframe>", videoId, LargeurFrame, HauteurFrame);
             }
             return link;
         }
         #endregion
     }
-}            
+}
 
-        
+

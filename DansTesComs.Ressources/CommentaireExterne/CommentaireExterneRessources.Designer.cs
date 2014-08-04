@@ -115,6 +115,15 @@ namespace DansTesComs.Ressources.CommentaireExterne {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Indentation du commentaire..
+        /// </summary>
+        public static string Indentation {
+            get {
+                return ResourceManager.GetString("Indentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Lien.
         /// </summary>
         public static string LienLabel {

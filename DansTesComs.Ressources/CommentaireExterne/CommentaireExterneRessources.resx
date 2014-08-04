@@ -135,6 +135,9 @@
   <data name="DoitEtreUnLien" xml:space="preserve">
     <value>"Doit etre sous forme d'un lien..."</value>
   </data>
+  <data name="Indentation" xml:space="preserve">
+    <value>Indentation du commentaire.</value>
+  </data>
   <data name="LienLabel" xml:space="preserve">
     <value>Lien</value>
   </data>
