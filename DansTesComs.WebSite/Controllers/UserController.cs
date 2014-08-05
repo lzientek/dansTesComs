@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using System.Web.Security;
+using DansTesComs.Core.Models.ModelsExtentions;
 using DansTesComs.Ressources.User;
 using DansTesComs.WebSite.Filters;
 using DansTesComs.Core.Models;
@@ -46,15 +47,15 @@ namespace DansTesComs.WebSite.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Index(
-            [Bind(Include = "Mail,Nom,Prenom,Anniversaire,Pseudo,Pass")] User user)
+            [Bind(Include = "Mail,Nom,Prenom,Anniversaire,Pseudo,Pass")] UserPass user)
         {
             user.InscriptionDate = DateTime.Now;
             if (ModelState.IsValid && !WebSecurity.UserExists(user.Pseudo))
             {
-
+                User usr = user.ToUser();
                 try
                 {
-                    db.Users.Add(user);
+                    db.Users.Add(usr);
                     db.SaveChanges();
                     WebSecurity.CreateAccount(user.Pseudo, user.Pass);
 
@@ -95,8 +96,6 @@ namespace DansTesComs.WebSite.Controllers
             userinDb.Prenom = user.Prenom;
             userinDb.Anniversaire = user.Anniversaire;
 
-            //todo: un modele herité pour avoir classe uniquement pour inscription voir connexion
-            userinDb.Pass = "passbidoncarsinoncaplantejecroisqueje vais changer le modele";
             try
             {
                 db.SaveChanges();
@@ -122,7 +121,7 @@ namespace DansTesComs.WebSite.Controllers
         [HttpPost, ActionName("Connexion")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Connexion([Bind(Include = "Mail,Pass,RememberMe")] User user)
+        public ActionResult Connexion([Bind(Include = "Mail,Pass,RememberMe")] UserPass user)
         {
             var userToConnect = db.Users.First(u => u.Mail == user.Mail).Pseudo;
             if (userToConnect != null && WebSecurity.Login(userToConnect, user.Pass, user.RememberMe))

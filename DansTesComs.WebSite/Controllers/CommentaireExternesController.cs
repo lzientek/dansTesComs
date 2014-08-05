@@ -70,6 +70,7 @@ namespace DansTesComs.WebSite.Controllers
         {
             var com = new CommentaireExterne();
             com.CommentairesExterneContents.Add(new CommentairesExterneContent { Commentaire = string.Empty, Pseudo = string.Empty, Niveau = 0 });
+            ViewBag.Categories = new SelectList(db.Categories, "Id", "Name", com.Categories);
             return View(com);
         }
 
@@ -81,7 +82,7 @@ namespace DansTesComs.WebSite.Controllers
         [HttpPost, ValidateInput(false)]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentairesExterneContents,Lien,Titre,Publication")] CommentaireExterne commentaireExterne)
+        public ActionResult Create([Bind(Include = "CommentairesExterneContents,Lien,Titre,Publication,Categories")] CommentaireExterne commentaireExterne)
         {
             commentaireExterne.RemoveEmptyComs();
             commentaireExterne.DatePost = DateTime.Now;

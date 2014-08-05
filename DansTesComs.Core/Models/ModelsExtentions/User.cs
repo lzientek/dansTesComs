@@ -3,7 +3,6 @@
 // par lucas zientek ( lucas )
 
 using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 using System.Text;
@@ -16,7 +15,6 @@ namespace DansTesComs.Core.Models
     public partial class User
     {
         public bool RememberMe { get; set; }
-        public string Pass { get; set; }
 
         public string GetGravatarLink()
         {
@@ -50,10 +48,6 @@ namespace DansTesComs.Core.Models
         [Display(ResourceType = typeof(UserRessources), Name = "PrenomLabel")]
         public string Prenom { get; set; }
 
-        [DataType(DataType.Password)]
-        [Required(ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "PassObligatoire")]
-        [Display(ResourceType = typeof(UserRessources), Name = "PassLabel")]
-        public string Pass { get; set; }
 
         [Display(ResourceType = typeof(UserRessources), Name = "AnniversaireLabel")]
         [DataType(DataType.Date)]

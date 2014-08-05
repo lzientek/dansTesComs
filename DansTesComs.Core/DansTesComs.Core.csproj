@@ -54,9 +54,11 @@
     <Compile Include="Attribute\CollectionValidator\CollectionMinValueAttribute.cs" />
     <Compile Include="Attribute\DateValidator\AgeMinimumAttribute.cs" />
     <Compile Include="Attribute\DateValidator\DateMinAttribute.cs" />
-    <Compile Include="Enums\Categorie.cs" />
     <Compile Include="Helpers\EmbedWebSite.cs" />
     <Compile Include="Helpers\LinkHelper.cs" />
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Commentaire.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -81,6 +83,7 @@
     <Compile Include="Models\ModelsExtentions\CommentairesExterneContent.cs" />
     <Compile Include="Models\ModelsExtentions\Note.cs" />
     <Compile Include="Models\ModelsExtentions\User.cs" />
+    <Compile Include="Models\ModelsExtentions\UserPass.cs" />
     <Compile Include="Models\Note.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -129,7 +132,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Enums\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

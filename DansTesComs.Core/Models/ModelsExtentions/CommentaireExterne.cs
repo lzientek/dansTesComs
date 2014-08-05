@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text.RegularExpressions;
-using DansTesComs.Core.Attribute.CollectionValidator;
-using DansTesComs.Core.Enums;
-using DansTesComs.Core.Models;
 using DansTesComs.Ressources.CommentaireExterne;
 
 namespace DansTesComs.Core.Models
@@ -14,12 +8,6 @@ namespace DansTesComs.Core.Models
     [MetadataType(typeof(CommentaireExterneMetaData))]
     public partial class CommentaireExterne
     {
-
-        public IEnumerable<Categorie> CategorieEnum
-        {
-            get { return Categories.StringToCategories(); }
-            set { Categories = value.EnumToSaveString(); }
-        }
 
         public void RemoveEmptyComs()
         {

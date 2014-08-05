@@ -29,11 +29,12 @@ namespace DansTesComs.Core.Models
         public string Publication { get; set; }
         public bool IsValide { get; set; }
         public string lang { get; set; }
-        public string Categories { get; set; }
+        public Nullable<int> Categories { get; set; }
     
         public virtual User User { get; set; }
         public virtual ICollection<CommentairesExterneContent> CommentairesExterneContents { get; set; }
         public virtual ICollection<Note> Notes { get; set; }
         public virtual ICollection<Commentaire> Commentaires { get; set; }
+        public virtual Category Category { get; set; }
     }
 }
