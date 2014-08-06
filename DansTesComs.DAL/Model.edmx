@@ -55,6 +55,15 @@
           <Property Name="IdCommentaire" Type="int" Nullable="false" />
           <Property Name="IdUser" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="NotesCommentaire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CommentaireId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="id" />
@@ -166,6 +175,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_NotesCommentaire_ToCommentaire">
+          <End Role="Commentaires" Type="Self.Commentaires" Multiplicity="1" />
+          <End Role="NotesCommentaire" Type="Self.NotesCommentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Commentaires">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotesCommentaire">
+              <PropertyRef Name="CommentaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotesCommentaire_ToUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="NotesCommentaire" Type="Self.NotesCommentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NotesCommentaire">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_RoleId">
           <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
           <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
@@ -196,6 +229,7 @@
           <EntitySet Name="Commentaires" EntityType="Self.Commentaires" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommentairesExterneContent" EntityType="Self.CommentairesExterneContent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Note" EntityType="Self.Note" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotesCommentaire" EntityType="Self.NotesCommentaire" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="webpages_UsersInRoles" EntityType="Self.webpages_UsersInRoles" Schema="dbo" store:Type="Tables" />
@@ -226,6 +260,14 @@
           <AssociationSet Name="FK_Note_ToUser" Association="Self.FK_Note_ToUser">
             <End Role="Users" EntitySet="Users" />
             <End Role="Note" EntitySet="Note" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotesCommentaire_ToCommentaire" Association="Self.FK_NotesCommentaire_ToCommentaire">
+            <End Role="Commentaires" EntitySet="Commentaires" />
+            <End Role="NotesCommentaire" EntitySet="NotesCommentaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotesCommentaire_ToUser" Association="Self.FK_NotesCommentaire_ToUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="NotesCommentaire" EntitySet="NotesCommentaire" />
           </AssociationSet>
           <AssociationSet Name="fk_RoleId" Association="Self.fk_RoleId">
             <End Role="webpages_Roles" EntitySet="webpages_Roles" />
@@ -274,6 +316,7 @@
           <NavigationProperty Name="Notes" Relationship="DansTesComsModel.FK_Note_ToUser" FromRole="User" ToRole="Note" />
           <NavigationProperty Name="Commentaires" Relationship="DansTesComsModel.FK_Commentaires_User" FromRole="User" ToRole="Commentaire" />
           <NavigationProperty Name="Roles" Relationship="DansTesComsModel.webpages_UsersInRoles" FromRole="User" ToRole="webpages_Roles" />
+          <NavigationProperty Name="NotesCommentaires" Relationship="DansTesComsModel.FK_NotesCommentaire_ToUser" FromRole="User" ToRole="NotesCommentaire" />
         </EntityType>
         <EntityContainer Name="DansTesComsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CommentaireExternes" EntityType="Self.CommentaireExterne" />
@@ -314,6 +357,15 @@
           <AssociationSet Name="FK_CommentaireExterne_ToCategorie" Association="DansTesComsModel.FK_CommentaireExterne_ToCategorie">
             <End Role="Category" EntitySet="Categories" />
             <End Role="CommentaireExterne" EntitySet="CommentaireExternes" />
+          </AssociationSet>
+          <EntitySet Name="NotesCommentaires" EntityType="DansTesComsModel.NotesCommentaire" />
+          <AssociationSet Name="FK_NotesCommentaire_ToCommentaire" Association="DansTesComsModel.FK_NotesCommentaire_ToCommentaire">
+            <End Role="Commentaire" EntitySet="Commentaires" />
+            <End Role="NotesCommentaire" EntitySet="NotesCommentaires" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotesCommentaire_ToUser" Association="DansTesComsModel.FK_NotesCommentaire_ToUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NotesCommentaire" EntitySet="NotesCommentaires" />
           </AssociationSet>
         </EntityContainer>
         <Association Name="FK_CommentaireExterne_ToUser">
@@ -397,6 +449,7 @@
           <NavigationProperty Name="User" Relationship="DansTesComsModel.FK_Commentaires_User" FromRole="Commentaire" ToRole="User" />
           <Property Name="PostId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CommentaireExterne" Relationship="DansTesComsModel.FK_Commentaires_CommentaireExterne" FromRole="Commentaire" ToRole="CommentaireExterne" />
+          <NavigationProperty Name="NotesCommentaires" Relationship="DansTesComsModel.FK_NotesCommentaire_ToCommentaire" FromRole="Commentaire" ToRole="NotesCommentaire" />
         </EntityType>
         <Association Name="FK_Commentaires_User">
           <End Type="DansTesComsModel.User" Role="User" Multiplicity="1" />
@@ -451,6 +504,41 @@
             </Principal>
             <Dependent Role="CommentaireExterne">
               <PropertyRef Name="Categories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NotesCommentaire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CommentaireId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Commentaire" Relationship="DansTesComsModel.FK_NotesCommentaire_ToCommentaire" FromRole="NotesCommentaire" ToRole="Commentaire" />
+          <NavigationProperty Name="User" Relationship="DansTesComsModel.FK_NotesCommentaire_ToUser" FromRole="NotesCommentaire" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_NotesCommentaire_ToCommentaire">
+          <End Type="DansTesComsModel.Commentaire" Role="Commentaire" Multiplicity="1" />
+          <End Type="DansTesComsModel.NotesCommentaire" Role="NotesCommentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Commentaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotesCommentaire">
+              <PropertyRef Name="CommentaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotesCommentaire_ToUser">
+          <End Type="DansTesComsModel.User" Role="User" Multiplicity="1" />
+          <End Type="DansTesComsModel.NotesCommentaire" Role="NotesCommentaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotesCommentaire">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -540,6 +628,16 @@
             <EntityTypeMapping TypeName="DansTesComsModel.Category">
               <MappingFragment StoreEntitySet="Categories">
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotesCommentaires">
+            <EntityTypeMapping TypeName="DansTesComsModel.NotesCommentaire">
+              <MappingFragment StoreEntitySet="NotesCommentaire">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="CommentaireId" ColumnName="CommentaireId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

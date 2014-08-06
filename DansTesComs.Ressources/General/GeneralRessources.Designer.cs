@@ -115,6 +115,24 @@ namespace DansTesComs.Ressources.General {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Moins.
+        /// </summary>
+        public static string Moins {
+            get {
+                return ResourceManager.GetString("Moins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Plus.
+        /// </summary>
+        public static string Plus {
+            get {
+                return ResourceManager.GetString("Plus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Publier.
         /// </summary>
         public static string Publier {
@@ -138,6 +156,15 @@ namespace DansTesComs.Ressources.General {
         public static string SeConnecter {
             get {
                 return ResourceManager.GetString("SeConnecter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Signaler.
+        /// </summary>
+        public static string Signaler {
+            get {
+                return ResourceManager.GetString("Signaler", resourceCulture);
             }
         }
         

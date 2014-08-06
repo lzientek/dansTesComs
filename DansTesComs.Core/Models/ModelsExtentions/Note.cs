@@ -13,6 +13,7 @@ namespace DansTesComs.Core.Models
     {
         Moins = 0,
         Plus = 1,
+        Signaler = 9,
     }
 
     public class NoteMetaData

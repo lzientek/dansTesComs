@@ -20,6 +20,7 @@ namespace DansTesComs.Core.Models
             this.Notes = new HashSet<Note>();
             this.Commentaires = new HashSet<Commentaire>();
             this.Roles = new HashSet<Role>();
+            this.NotesCommentaires = new HashSet<NotesCommentaire>();
         }
     
         public int Id { get; set; }
@@ -34,5 +35,6 @@ namespace DansTesComs.Core.Models
         public virtual ICollection<Note> Notes { get; set; }
         public virtual ICollection<Commentaire> Commentaires { get; set; }
         public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<NotesCommentaire> NotesCommentaires { get; set; }
     }
 }

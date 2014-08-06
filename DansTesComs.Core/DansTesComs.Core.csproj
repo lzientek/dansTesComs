@@ -82,9 +82,13 @@
     <Compile Include="Models\ModelsExtentions\CommentaireExterne.cs" />
     <Compile Include="Models\ModelsExtentions\CommentairesExterneContent.cs" />
     <Compile Include="Models\ModelsExtentions\Note.cs" />
+    <Compile Include="Models\ModelsExtentions\NotesCommentaire.cs" />
     <Compile Include="Models\ModelsExtentions\User.cs" />
     <Compile Include="Models\ModelsExtentions\UserPass.cs" />
     <Compile Include="Models\Note.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NotesCommentaire.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">

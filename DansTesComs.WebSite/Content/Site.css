@@ -23,6 +23,9 @@ p {
     width: 50px;
     float: left;
 }
+.selectedNote {
+    color: #ffa500;
+}
 /* Perso
     -------------------------------------------------------*/
 #ajoutdecoms .row {

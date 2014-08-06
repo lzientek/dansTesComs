@@ -10,7 +10,10 @@
         <span class="separation-pseudo-commentaire">:</span>
         <span class="commentaire">@Html.Raw(Model.Texte.TextToTextLink())</span>
         <div class="row">
-            <div class="commentaire-poster">@Html.DisplayFor(model => model.DatePost)</div>
+            <div class="commentaire-poster pull-left">@Html.DisplayFor(model => model.DatePost)</div>
+            <div class="commentaire-poster pull-left margin-1" id="NoteCommentaire-@Model.Id">
+                @Html.Action("Index", "NotesCommentaire", new { commentaireId = Model.Id })
+            </div>
         </div>
     </div>
 

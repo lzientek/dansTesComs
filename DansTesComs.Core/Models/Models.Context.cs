@@ -32,5 +32,6 @@ namespace DansTesComs.Core.Models
         public virtual DbSet<Commentaire> Commentaires { get; set; }
         public virtual DbSet<Role> Roles1 { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<NotesCommentaire> NotesCommentaires { get; set; }
     }
 }

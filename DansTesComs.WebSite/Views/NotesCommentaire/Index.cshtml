@@ -1,0 +1,42 @@
+﻿@using System.Activities.Statements
+@model IEnumerable<NotesCommentaire>
+
+
+    @{ AjaxOptions opt = new AjaxOptions() {
+        AllowCache = false,
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "NoteCommentaire-" + ViewBag.commentaireId
+       }; }
+
+@if (Request.IsAuthenticated)
+{
+    @Ajax.ActionLink(string.Format("+ {0} ", Model.Count(n => n.NoteValue == NoteValue.Plus)), "Plus", new { commentaireId = ViewBag.commentaireId }, opt
+        , new { @class = Model.Any(n => n.CommentaireId == ViewBag.commentaireId && n.UserId == WebSecurity.CurrentUserId && n.NoteValue == NoteValue.Plus) ? "selectedNote" : string.Empty })
+}
+else
+{
+    @: + @Model.Count(n => n.NoteValue == NoteValue.Plus)
+}
+|
+@if (Request.IsAuthenticated)
+{
+    @Ajax.ActionLink(string.Format("- {0} ", Model.Count(n => n.NoteValue == NoteValue.Moins)), "Moins", new { commentaireId = ViewBag.commentaireId }, opt
+        , new { @class = Model.Any(n => n.CommentaireId == ViewBag.commentaireId && n.UserId == WebSecurity.CurrentUserId && n.NoteValue == NoteValue.Moins) ? "selectedNote" : string.Empty })
+}
+else
+{
+  @: - @Model.Count(n => n.NoteValue == NoteValue.Moins)
+}
+
+
+
+@if (Request.IsAuthenticated)
+{
+    @:|
+    @Ajax.ActionLink(GeneralRessources.Signaler, "Signaler", new { commentaireId = ViewBag.commentaireId },
+        opt,new{@class = Model.Any(n=>n.CommentaireId ==ViewBag.commentaireId && n.UserId == WebSecurity.CurrentUserId && n.NoteValue == NoteValue.Signaler)?"selectedNote":string.Empty})
+}
+
+
+

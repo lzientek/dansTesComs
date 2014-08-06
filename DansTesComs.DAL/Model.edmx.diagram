@@ -20,6 +20,9 @@
         <AssociationConnector Association="DansTesComsModel.webpages_UsersInRoles" />
         <EntityTypeShape EntityType="DansTesComsModel.Category" Width="1.5" PointX="7.875" PointY="1" />
         <AssociationConnector Association="DansTesComsModel.FK_CommentaireExterne_ToCategorie" />
+        <EntityTypeShape EntityType="DansTesComsModel.NotesCommentaire" Width="1.5" PointX="8.25" PointY="3.5" />
+        <AssociationConnector Association="DansTesComsModel.FK_NotesCommentaire_ToCommentaire" />
+        <AssociationConnector Association="DansTesComsModel.FK_NotesCommentaire_ToUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
