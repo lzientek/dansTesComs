@@ -50,7 +50,7 @@ namespace DansTesComs.WebSite.Controllers
             [Bind(Include = "Mail,Nom,Prenom,Anniversaire,Pseudo,Pass")] UserPass user)
         {
             user.InscriptionDate = DateTime.Now;
-            if (ModelState.IsValid && !WebSecurity.UserExists(user.Pseudo))
+            if (ModelState.IsValid)
             {
                 User usr = user.ToUser();
                 try
@@ -58,14 +58,12 @@ namespace DansTesComs.WebSite.Controllers
                     db.Users.Add(usr);
                     db.SaveChanges();
                     WebSecurity.CreateAccount(user.Pseudo, user.Pass);
-
                 }
                 catch (Exception ex)
                 {
-                    
                     throw ex;
                 }
-                
+
                 return RedirectToAction("Index");
             }
 
@@ -123,9 +121,14 @@ namespace DansTesComs.WebSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Connexion([Bind(Include = "Mail,Pass,RememberMe")] UserPass user)
         {
-            var userToConnect = db.Users.First(u => u.Mail == user.Mail).Pseudo;
-            if (userToConnect != null && WebSecurity.Login(userToConnect, user.Pass, user.RememberMe))
-                return RedirectToAction("Index", "Home");
+            if (db.Users.Any(u => u.Mail == user.Mail))
+            {
+                var userToConnect = db.Users.First(u => u.Mail == user.Mail);
+                if (userToConnect != null && WebSecurity.Login(userToConnect.Pseudo, user.Pass, user.RememberMe))
+                { return RedirectToAction("Index", "Home"); }
+            }
+
+
             return RedirectToAction("Connexion");
         }
 
@@ -134,6 +137,18 @@ namespace DansTesComs.WebSite.Controllers
         {
             WebSecurity.Logout();
             return RedirectToAction("Index");
+        }
+
+        [AllowAnonymous]
+        public JsonResult IsUserEmailAvailable(string Mail)
+        {
+            return Json(!db.Users.Any(u => u.Mail == Mail), JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        public JsonResult IsUserPseudoAvailable(string Pseudo)
+        {
+            return Json(!db.Users.Any(u => u.Pseudo == Pseudo), JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

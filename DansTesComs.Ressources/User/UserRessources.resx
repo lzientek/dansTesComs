@@ -174,4 +174,10 @@
   <data name="ModifSave" xml:space="preserve">
     <value>Modifications enregistrés</value>
   </data>
+  <data name="MailDejaUtilise" xml:space="preserve">
+    <value>Adresse e-mail déja utilisé.</value>
+  </data>
+  <data name="PseudoDejaUtilise" xml:space="preserve">
+    <value>Pseudo déja utilisé.</value>
+  </data>
 </root>

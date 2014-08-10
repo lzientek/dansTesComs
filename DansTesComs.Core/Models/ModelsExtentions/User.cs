@@ -38,6 +38,7 @@ namespace DansTesComs.Core.Models
         [Display(ResourceType = typeof(UserRessources), Name = "EmailLabel")]
         [EmailAddress(ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "EmailError",ErrorMessage = null)]
         [Required(ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "EmailObligatoire")]
+        [System.Web.Mvc.Remote("IsUserEmailAvailable", "User",ErrorMessageResourceType = typeof(UserRessources),ErrorMessageResourceName = "MailDejaUtilise")]
         public string Mail { get; set; }
 
         [MaxLength(80, ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "LongueurMax80")]
@@ -56,6 +57,7 @@ namespace DansTesComs.Core.Models
 
         [Required(ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "PseudoObligatoire")]
         [Display(ResourceType = typeof(UserRessources), Name = "PseudoLabel")]
+        [System.Web.Mvc.Remote("IsUserPseudoAvailable", "User", ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "PseudoDejaUtilise")]
         [RegularExpression(RegexPattern.PseudoValidRegex, ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "PseudoRegex")]
         public string Pseudo { get; set; }
 

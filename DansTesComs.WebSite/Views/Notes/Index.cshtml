@@ -10,7 +10,8 @@
 
 @if (Request.IsAuthenticated)
 {
-    @Ajax.ActionLink(string.Format("+ {0} ", Model.Count(n => n.NoteValue == NoteValue.Plus)), "Plus", new { commentaireExterneId = ViewBag.commentaireId }, opt)
+    @Ajax.ActionLink(string.Format("+ {0} ", Model.Count(n => n.NoteValue == NoteValue.Plus)), "Plus", new { commentaireExterneId = ViewBag.commentaireId }, opt,
+         new { @class = Model.Any(n => n.IdCommentaire == ViewBag.commentaireId && n.IdUser == WebSecurity.CurrentUserId && n.NoteValue == NoteValue.Plus) ? "selectedNote" : string.Empty })
 }
 else
 {
@@ -20,7 +21,8 @@ else
 
 @if (Request.IsAuthenticated)
 {
-    @Ajax.ActionLink(string.Format("- {0} ", Model.Count(n => n.NoteValue == NoteValue.Moins)), "Moins", new { commentaireExterneId = ViewBag.commentaireId }, opt)
+    @Ajax.ActionLink(string.Format("- {0} ", Model.Count(n => n.NoteValue == NoteValue.Moins)), "Moins", new { commentaireExterneId = ViewBag.commentaireId }, opt,
+         new { @class = Model.Any(n => n.IdCommentaire == ViewBag.commentaireId && n.IdUser == WebSecurity.CurrentUserId && n.NoteValue == NoteValue.Moins) ? "selectedNote" : string.Empty })
 }
 else
 {

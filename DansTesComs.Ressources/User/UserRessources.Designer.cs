@@ -124,6 +124,15 @@ namespace DansTesComs.Ressources.User {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Adresse e-mail déja utilisé..
+        /// </summary>
+        public static string MailDejaUtilise {
+            get {
+                return ResourceManager.GetString("MailDejaUtilise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Il faut avoir au moins 13 ans..
         /// </summary>
         public static string MinAgeError {
@@ -192,6 +201,15 @@ namespace DansTesComs.Ressources.User {
         public static string PrenomObligatoire {
             get {
                 return ResourceManager.GetString("PrenomObligatoire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Pseudo déja utilisé..
+        /// </summary>
+        public static string PseudoDejaUtilise {
+            get {
+                return ResourceManager.GetString("PseudoDejaUtilise", resourceCulture);
             }
         }
         
