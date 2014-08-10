@@ -126,6 +126,9 @@
   <data name="Ajouter" xml:space="preserve">
     <value>Ajouter</value>
   </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Nous contacter</value>
   </data>

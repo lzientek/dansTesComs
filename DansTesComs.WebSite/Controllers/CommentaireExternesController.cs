@@ -27,9 +27,10 @@ namespace DansTesComs.WebSite.Controllers
         {
             var commentaireExternes = db.CommentaireExternes.ToList()
                 .OrderByDescending(com => com.DatePost).ToPagedList(page, 5);
-
+            ViewBag.TitreContenu = CommentaireExterneRessources.NouveauCommentaires;
             return View(commentaireExternes);
         }
+
 
         /// <summary>
         /// 
@@ -194,6 +195,14 @@ namespace DansTesComs.WebSite.Controllers
             db.CommentaireExternes.Remove(commentaireExterne);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult GetByCategorie(string categorieName,int page)
+        {
+            var commentaireExternes = db.CommentaireExternes.Where(c=>c.Category.Name == categorieName).ToList()
+                .OrderByDescending(com => com.DatePost).ToPagedList(page, 5);
+            ViewBag.TitreContenu = categorieName;
+            return View("Index",commentaireExternes);
         }
 
         protected override void Dispose(bool disposing)

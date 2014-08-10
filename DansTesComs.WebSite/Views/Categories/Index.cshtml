@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Category>
+
+
+<ul>
+
+
+    @foreach (var item in Model)
+    {
+        
+            <li>@Html.ActionLink(item.Name, "GetByCategorie", "CommentaireExternes", new { page = 1, categorieName = item.Name },null)</li>
+        
+    }
+</ul>

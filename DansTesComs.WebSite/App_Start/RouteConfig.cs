@@ -16,6 +16,9 @@ namespace DansTesComs.WebSite
             routes.MapRoute("pageRoute", "{controller}/page/{page}",
                 new {action = "Index"});
 
+            routes.MapRoute("categorieRoute", "{controller}/{categorieName}/page/{page}",
+                new { action = "GetByCategorie" });
+
             routes.MapRoute("Default", "{controller}/{action}/{id}",
                 new { controller = "CommentaireExternes", action = "Index", id = UrlParameter.Optional }
                 );

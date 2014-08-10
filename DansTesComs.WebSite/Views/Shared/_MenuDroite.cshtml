@@ -1,4 +1,5 @@
-﻿@using DansTesComs.Core.Models.ModelsExtentions
+﻿@using System.Web.UI.HtmlControls
+@using DansTesComs.Core.Models.ModelsExtentions
 
 
 @if (!Request.IsAuthenticated)
@@ -15,6 +16,11 @@
         @Html.Partial("../User/ConnexionFormPartial",new UserPass())
     </div>
 }
+
+<div class="row">
+    <h3>@GeneralRessources.Categories</h3>
+    @Html.Action("Index","Categories")
+</div>
 
 <div class="row ">
 
