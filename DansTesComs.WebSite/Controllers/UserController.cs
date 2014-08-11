@@ -119,7 +119,7 @@ namespace DansTesComs.WebSite.Controllers
         [HttpPost, ActionName("Connexion")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Connexion([Bind(Include = "Mail,Pass,RememberMe")] UserPass user)
+        public ActionResult Connexion([Bind(Include = "Mail,Pass,RememberMe")] UserConnexion user)
         {
             if (db.Users.Any(u => u.Mail == user.Mail))
             {

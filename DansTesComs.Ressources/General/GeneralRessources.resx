@@ -141,6 +141,9 @@
   <data name="Moins" xml:space="preserve">
     <value>Moins</value>
   </data>
+  <data name="PartageNous" xml:space="preserve">
+    <value>Dis a tout tes amies que tu nous aimes.</value>
+  </data>
   <data name="Plus" xml:space="preserve">
     <value>Plus</value>
   </data>
@@ -161,6 +164,12 @@
   </data>
   <data name="TitlePQsinscrire" xml:space="preserve">
     <value>Pourquoi s'inscrire?</value>
+  </data>
+  <data name="TweeterTweet" xml:space="preserve">
+    <value>Dans tes coms tweet pas inspiré!</value>
+  </data>
+  <data name="TweetNous" xml:space="preserve">
+    <value>Tweet nous bien fort!</value>
   </data>
   <data name="TxtPQsinscire" xml:space="preserve">
     <value>Pour pouvoir noter et commenter les commentaires poster. Et en proposer des nouveaux. C'est quand meme utltra fun.</value>

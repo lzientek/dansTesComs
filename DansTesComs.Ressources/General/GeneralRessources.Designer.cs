@@ -133,6 +133,15 @@ namespace DansTesComs.Ressources.General {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Dis a tout tes amies que tu nous aimes..
+        /// </summary>
+        public static string PartageNous {
+            get {
+                return ResourceManager.GetString("PartageNous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Plus.
         /// </summary>
         public static string Plus {
@@ -192,6 +201,24 @@ namespace DansTesComs.Ressources.General {
         public static string TitlePQsinscrire {
             get {
                 return ResourceManager.GetString("TitlePQsinscrire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Dans tes coms tweet pas inspiré!.
+        /// </summary>
+        public static string TweeterTweet {
+            get {
+                return ResourceManager.GetString("TweeterTweet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Tweet nous bien fort!.
+        /// </summary>
+        public static string TweetNous {
+            get {
+                return ResourceManager.GetString("TweetNous", resourceCulture);
             }
         }
         

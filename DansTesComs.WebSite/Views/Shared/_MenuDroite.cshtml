@@ -2,7 +2,7 @@
 @using DansTesComs.Core.Models.ModelsExtentions
 
 
-@if (!Request.IsAuthenticated)
+@if (!Request.IsAuthenticated && !Request.RawUrl.Contains("User"))
 {
     <div class="row ">
         <h3>@GeneralRessources.TitlePQsinscrire</h3>
@@ -13,10 +13,16 @@
         <h4>@GeneralRessources.SeConnecter</h4>
         <hr class="empty-hr row" />
 
-        @Html.Partial("../User/ConnexionFormPartial",new UserPass())
+        @Html.Partial("../User/ConnexionFormPartial",new UserConnexion())
     </div>
 }
-
+<div class="row">
+    <h4>@GeneralRessources.PartageNous</h4>
+    <div class="fb-like margin-1" data-width="300" data-href="https://www.facebook.com/dansTcom" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+    <h4>@GeneralRessources.TweetNous</h4>
+    <a href="https://twitter.com/dansTcoms" data-size="large" class="twitter-follow-button margin-1" data-show-count="true" data-lang="en">Follow Dans Tes coms</a>
+    <a href="https://twitter.com/share" data-size="large" class="twitter-share-button margin-1" data-text="@GeneralRessources.TweeterTweet" data-url="http://@Request.Url.Authority" data-lang="fr">Tweet</a>
+</div>
 <div class="row">
     <h3>@GeneralRessources.Categories</h3>
     @Html.Action("Index","Categories")
