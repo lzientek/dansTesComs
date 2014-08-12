@@ -6,6 +6,7 @@ using System.Net;
 using System.Threading;
 using System.Web.Mvc;
 using DansTesComs.Ressources.CommentaireExterne;
+using DansTesComs.Ressources.General;
 using DansTesComs.WebSite.Filters;
 using DansTesComs.Core.Models;
 using PagedList;
@@ -197,12 +198,20 @@ namespace DansTesComs.WebSite.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult GetByCategorie(string categorieName,int page)
+        public ActionResult Random()
+        {
+            var commentaireExternes = db.CommentaireExternes.ToList()
+                .OrderBy(c=>Guid.NewGuid()).ToPagedList(page, 10);
+
+            return View( commentaireExternes);
+        }
+
+        public ActionResult Categorie(string categorieName,int page = 1)
         {
             var commentaireExternes = db.CommentaireExternes.Where(c=>c.Category.Name == categorieName).ToList()
                 .OrderByDescending(com => com.DatePost).ToPagedList(page, 5);
             ViewBag.TitreContenu = categorieName;
-            return View("Index",commentaireExternes);
+            return View(commentaireExternes);
         }
 
         protected override void Dispose(bool disposing)

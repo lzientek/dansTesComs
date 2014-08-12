@@ -7,7 +7,7 @@
     @foreach (var item in Model)
     {
         
-            <li>@Html.ActionLink(item.Name, "GetByCategorie", "CommentaireExternes", new { page = 1, categorieName = item.Name },null)</li>
+            <li>@Html.ActionLink(item.Name, "Categorie", "CommentaireExternes", new { page = 1, categorieName = item.Name },null)</li>
         
     }
 </ul>

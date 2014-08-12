@@ -12,7 +12,8 @@
 
 
     <div class="pageList">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+        @Html.PagedListPager(Model, page => Url.Action("Categorie", new { categorieName = ViewBag.TitreContenu, page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
     </div>
 </div>
+
 

@@ -88,6 +88,15 @@ namespace DansTesComs.Ressources.General {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Aléatoire.
+        /// </summary>
+        public static string aleatoire {
+            get {
+                return ResourceManager.GetString("aleatoire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Categories.
         /// </summary>
         public static string Categories {

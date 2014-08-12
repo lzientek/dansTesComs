@@ -1,0 +1,24 @@
+﻿@model IPagedList<CommentaireExterne>
+
+@{
+    ViewBag.Title = CommentaireExterneRessources.Title;
+}
+
+<h1>@GeneralRessources.aleatoire</h1>
+
+<div id="commentairesExtBlock">
+    @Html.Partial("PartialView/_PartialCommentairesExternes", Model)
+
+
+
+    <div class="pageList" style="margin-top: 20px;margin-bottom: 15px;">
+        <ul class="pager">
+            <li>
+               @Html.ActionLink(GeneralRessources.aleatoire, "Random")
+            </li>
+        </ul>
+            
+    </div>
+</div>
+
+

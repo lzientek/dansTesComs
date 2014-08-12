@@ -1,7 +1,6 @@
 ﻿@using System.Web.Mvc.Html
 @model IPagedList<CommentaireExterne>
 
-<div id="commentairesExtBlock">
 
 
     @foreach (var com in Model)
@@ -31,9 +30,3 @@
             </div>
         </div>
     }
-
-
-    <div class="pageList">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
-    </div>
-</div>

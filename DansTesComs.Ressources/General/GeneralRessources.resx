@@ -177,4 +177,7 @@
   <data name="VoirPlus" xml:space="preserve">
     <value>Voir plus...</value>
   </data>
+  <data name="aleatoire" xml:space="preserve">
+    <value>Aléatoire</value>
+  </data>
 </root>

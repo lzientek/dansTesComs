@@ -14,13 +14,16 @@ namespace DansTesComs.WebSite
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute("pageRoute", "{controller}/page/{page}",
-                new {action = "Index"});
+                new { action = "Index" });
 
-            routes.MapRoute("categorieRoute", "{controller}/{categorieName}/page/{page}",
-                new { action = "GetByCategorie" });
+            routes.MapRoute("pageActionRoute", "{controller}/{action}/page/{page}",
+                new { action = "Index" });
+
+            routes.MapRoute("pageCattegorieRoute", "{controller}/{action}/page/{page}/{categorieName}",
+                new { action = "Categorie" });
 
             routes.MapRoute("Default", "{controller}/{action}/{id}",
-                new { controller = "CommentaireExternes", action = "Index", id = UrlParameter.Optional }
+                new {  action = "Index", id = UrlParameter.Optional }
                 );
         }
     }
