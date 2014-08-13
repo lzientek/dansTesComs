@@ -200,8 +200,8 @@ namespace DansTesComs.WebSite.Controllers
 
         public ActionResult Random()
         {
-            var commentaireExternes = db.CommentaireExternes.ToList()
-                .OrderBy(c=>Guid.NewGuid()).ToPagedList(page, 10);
+            var commentaireExternes = db.CommentaireExternes
+                .OrderBy(c=>Guid.NewGuid()).ToList();
 
             return View( commentaireExternes);
         }

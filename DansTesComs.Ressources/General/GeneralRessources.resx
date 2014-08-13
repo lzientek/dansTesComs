@@ -180,4 +180,10 @@
   <data name="aleatoire" xml:space="preserve">
     <value>Aléatoire</value>
   </data>
+  <data name="Deconnecter" xml:space="preserve">
+    <value>Se déconnecter</value>
+  </data>
+  <data name="SincrireConnecter" xml:space="preserve">
+    <value>S'inscrire / Se connecter</value>
+  </data>
 </root>

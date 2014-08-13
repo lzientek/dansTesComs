@@ -26,13 +26,16 @@ namespace DansTesComs.WebSite.Controllers
         }
 
 
-        public ActionResult Create()
+        public ActionResult Create(int commentaireId)
         {
             if (Request.IsAuthenticated)
             {
-                return View();                
+                
+                var com = new Commentaire {User = db.Users.Find(WebSecurity.CurrentUserId)};
+                com.PostId = commentaireId;
+                return PartialView(com);                
             }
-            return new EmptyResult();;
+            return new EmptyResult();
         }
 
         // POST: Commentaires/Create

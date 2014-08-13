@@ -16,14 +16,15 @@ namespace DansTesComs.WebSite
             routes.MapRoute("pageRoute", "{controller}/page/{page}",
                 new { action = "Index" });
 
-            routes.MapRoute("pageActionRoute", "{controller}/{action}/page/{page}",
-                new { action = "Index" });
-
             routes.MapRoute("pageCattegorieRoute", "{controller}/{action}/page/{page}/{categorieName}",
                 new { action = "Categorie" });
 
+            routes.MapRoute("pageActionRoute", "{controller}/{action}/page/{page}",
+                new { action = "Index" });
+
+
             routes.MapRoute("Default", "{controller}/{action}/{id}",
-                new {  action = "Index", id = UrlParameter.Optional }
+                new { controller="CommentaireExternes", action = "Index", id = UrlParameter.Optional }
                 );
         }
     }

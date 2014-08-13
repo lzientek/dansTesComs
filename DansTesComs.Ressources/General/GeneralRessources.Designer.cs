@@ -124,6 +124,15 @@ namespace DansTesComs.Ressources.General {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Se déconnecter.
+        /// </summary>
+        public static string Deconnecter {
+            get {
+                return ResourceManager.GetString("Deconnecter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Enregistrer.
         /// </summary>
         public static string Enregistrer {
@@ -192,6 +201,15 @@ namespace DansTesComs.Ressources.General {
         public static string Signaler {
             get {
                 return ResourceManager.GetString("Signaler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à S&apos;inscrire / Se connecter.
+        /// </summary>
+        public static string SincrireConnecter {
+            get {
+                return ResourceManager.GetString("SincrireConnecter", resourceCulture);
             }
         }
         

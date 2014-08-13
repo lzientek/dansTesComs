@@ -26,6 +26,14 @@ p {
 .selectedNote {
     color: #ffa500;
 }
+.comment-block {
+    margin-top: 40px;
+    margin-left: 20px;
+}
+.comment-block h4 {
+    font-weight: lighter;
+    padding-left: 5px;
+}
 /* Perso
     -------------------------------------------------------*/
 #ajoutdecoms .row {
@@ -58,15 +66,34 @@ footer {
         text-decoration: none;
     }
 
-        footer a:hover, footer a:focus {
+        footer a:hover, footer a:focus,#addOneMoreComment {
             color: #fff;
             text-decoration: underline;
         }
-
+        #addOneMoreComment {
+            color: #3fd0c3;
+            font-size: 10px;
+            margin-right: 8px;
+            margin-bottom: 0px;
+            margin-top: 5px;
+            cursor: pointer;
+            display: none;
+        }
+        #supercompliquepourmettrenotrecom {
+            display: none;
+        }
     footer p {
         margin-top: 6px;
     }
-
+    .noteComExterneDetails {
+        margin-left: 20px;
+    }
+    .horizontal-separator,.comment-block h4 {
+            border-bottom: 1px #e2e2e2 solid;
+    }
+    .horizontal-separator {
+        margin-bottom: 16px;
+    }
 #rightMenu, #theContainer {
     padding: 10px;
     margin-bottom: 25px;
@@ -224,6 +251,10 @@ input,textarea,.form-control,.btn {
 .form-horizontal {
     margin-top: 30px;
 }
+#menu {
+    text-align: center;
+    margin-top: 15px;
+}
 /*responsive design*/
 @media (max-width: 750px) {
     .divider {
@@ -231,6 +262,9 @@ input,textarea,.form-control,.btn {
     }
 
     footer .separator {
+        display: none !important;
+    }
+    .hide-litle-screen {
         display: none !important;
     }
 }

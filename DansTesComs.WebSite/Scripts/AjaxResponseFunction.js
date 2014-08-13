@@ -1,8 +1,23 @@
 ﻿//reponse success truc
+var nbComsParChargementAjax = 10;
 function successAddComm() {
-    $('#supercompliquepourmettrenotrecom').hide(0);
-    $('#supercompliquepourmettrenotrecom').fadeIn(900);
-    $(".commentaireDeComExt").last().remove();
+    $("#formulaireCommentaire42xB").fadeOut(900);
+    var commentaire = $('#supercompliquepourmettrenotrecom').html();
+    $('#supercompliquepourmettrenotrecom').html("");
+     $("#supercompliquepourmettrenotrecom").after(commentaire);
+
+    $('#addOneMoreComment').click(function() {
+        $("#formulaireCommentaire42xB").fadeIn(400);
+        $("#boutonajoutcom").removeAttr("disabled");
+        $('#addOneMoreComment').fadeOut(300);
+        $('#Texte').val("");
+        document.getElementById("Texte").focus();
+    });
+    $(".commentaireDeComExt").first().fadeOut(0);
+    $(".commentaireDeComExt").first().fadeIn(900);
+    $('#addOneMoreComment').fadeIn(900);
+    if ($(".commentaireDeComExt").length >= nbComsParChargementAjax)
+        $(".commentaireDeComExt").last().remove();
 }
 
 function changeIdForMoreCom() {

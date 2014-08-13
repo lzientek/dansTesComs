@@ -1,21 +1,45 @@
-﻿@model IPagedList<Commentaire>
+﻿@using DansTesComs.Core.Models.ModelsExtentions
+@model IPagedList<Commentaire>
 
 @if (!IsAjax && Request.IsAuthenticated)
-{ 
-    @Html.Partial("Create", new Commentaire { PostId = ViewBag.commentid })
+{
+    @Html.Action("Create", new { commentaireId = ViewBag.commentid })
 
 }
 
 
-<div class="comment-block">
-    @foreach (var com in Model)
+
+@if (!IsAjax)
+{
+    <text><div class="comment-block">
+    </text>
+    <h4>@CommentaireExterneRessources.Title :<span class="pull-right" id="addOneMoreComment">@CommentaireExterneRessources.AddNewTitle</span></h4>
+    <div id="supercompliquepourmettrenotrecom"></div>
+}
+else
+{
+    <text><div>
+    </text>
+}
+@if (Model.Count > 0)
+{
+    foreach (var com in Model)
     {
         @Html.Partial("_PartialViewCommentaire", com)
     }
-    <div id="morecomments" class="row col-md-12 text-center">
-        @*jolie bouton voir pls avec les options pager pour qu'on est bien le resultat voulu 
-                + laison js AjaxResponseFunction.js pour un affichage correcte et le changement d'id*@
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { extCommentId = ViewBag.commentid, page = page }),
+}
+else
+{
+    <text><h3>@CommentaireExterneRessources.SoitLePremierCom</h3></text>
+    if (!Request.IsAuthenticated)
+    {
+@Html.ActionLink(GeneralRessources.SincrireConnecter, "Index", "User", null, new { id = "registerLink" })
+    }
+}
+<div id="morecomments" class="row col-md-12 text-center">
+    @*jolie bouton voir pls avec les options pager pour qu'on est bien le resultat voulu
+        + laison js AjaxResponseFunction.js pour un affichage correcte et le changement d'id*@
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { extCommentId = ViewBag.commentid, page = page }),
             PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions()
             {
                 DisplayLinkToFirstPage = PagedListDisplayMode.Never,
@@ -25,9 +49,10 @@
                 DisplayLinkToIndividualPages = false,
                 DisplayItemSliceAndTotal = false,
                 ContainerDivClasses = null,
-                UlElementClasses = new[] {"pager"},
+                UlElementClasses = new[] { "pager" },
                 ClassToApplyToFirstListItemInPager = null,
                 LinkToNextPageFormat = GeneralRessources.VoirPlus
             }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "morecomments", OnBegin = "onStartHideShowMore", OnSuccess = "changeIdForMoreCom" }))
-    </div>
 </div>
+</div>
+

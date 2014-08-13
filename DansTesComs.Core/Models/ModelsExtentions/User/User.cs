@@ -16,7 +16,7 @@ namespace DansTesComs.Core.Models
     {
         public bool RememberMe { get; set; }
 
-        public string GetGravatarLink()
+        public string GetGravatarLink(int size =40)
         {
             //on transforme le mail en hash
             var h = MD5.Create();
@@ -28,7 +28,7 @@ namespace DansTesComs.Core.Models
             }
 
             const string defaultUrl = "https://m1.behance.net/rendition/modules/79984489/disp/361c94db5ab26c0584806ea0a5e14807.png";
-            return string.Format("http://www.gravatar.com/avatar.php?gravatar_id={0}&default={1}&s={2}", sBuilder,defaultUrl,40);
+            return string.Format("http://www.gravatar.com/avatar.php?gravatar_id={0}&default={1}&s={2}", sBuilder, defaultUrl, size);
         }
     }
 

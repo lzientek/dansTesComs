@@ -26,11 +26,14 @@
             @Html.Partial("PartialView/_PartialCommentaireContentView", coment)
         }
     </div>
-    <div class="pull-left" id="NoteCommentaireExterne-@Model.Id">
+    
+    <div class="col-md-2 noteComExterneDetails" id="NoteCommentaireExterne-@Model.Id">
         @Html.Action("Index", "Notes", new { commentaireExterneId = Model.Id })
     </div>
-    <p class="pull-right">@CommentaireExterneRessources.PublierPar @Model.User.Pseudo | @Model.DatePost</p>
-
+    <div class="col-md-9">
+        <p class="pull-right">@CommentaireExterneRessources.PublierPar @Model.User.Pseudo | @Model.DatePost</p>
+    </div>
+    <div class="horizontal-separator row" style="margin-left: 20px;"></div>
 </div>
 
 

@@ -1,4 +1,4 @@
-﻿@model IPagedList<CommentaireExterne>
+﻿@model List<CommentaireExterne>
 
 @{
     ViewBag.Title = CommentaireExterneRessources.Title;
@@ -7,7 +7,7 @@
 <h1>@GeneralRessources.aleatoire</h1>
 
 <div id="commentairesExtBlock">
-    @Html.Partial("PartialView/_PartialCommentairesExternes", Model)
+    @Html.Partial("PartialView/_PartialCommentairesExternes", Model.ToPagedList(1,10))
 
 
 

@@ -205,6 +205,15 @@ namespace DansTesComs.Ressources.CommentaireExterne {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Be the one and First this post!.
+        /// </summary>
+        public static string SoitLePremierCom {
+            get {
+                return ResourceManager.GetString("SoitLePremierCom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Commentaires.
         /// </summary>
         public static string Title {
