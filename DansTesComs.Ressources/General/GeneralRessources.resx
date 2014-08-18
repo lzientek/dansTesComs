@@ -186,4 +186,22 @@
   <data name="SincrireConnecter" xml:space="preserve">
     <value>S'inscrire / Se connecter</value>
   </data>
+  <data name="EnAttenteDeValidation" xml:space="preserve">
+    <value>Coms en validations</value>
+  </data>
+  <data name="Flop" xml:space="preserve">
+    <value>Flop</value>
+  </data>
+  <data name="ProposerNewCommentaire" xml:space="preserve">
+    <value>Proposer un nouveau commentaire</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="Autres" xml:space="preserve">
+    <value>Autres</value>
+  </data>
+  <data name="PlusCommentés" xml:space="preserve">
+    <value>Les plus commentés</value>
+  </data>
 </root>

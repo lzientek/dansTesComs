@@ -56,6 +56,7 @@
     <Compile Include="Attribute\DateValidator\DateMinAttribute.cs" />
     <Compile Include="Helpers\EmbedWebSite.cs" />
     <Compile Include="Helpers\LinkHelper.cs" />
+    <Compile Include="Helpers\TriNote.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>

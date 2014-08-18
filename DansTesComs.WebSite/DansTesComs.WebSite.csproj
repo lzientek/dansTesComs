@@ -387,6 +387,10 @@
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\CommentaireExternes\Categorie.cshtml" />
     <Content Include="Views\CommentaireExternes\Random.cshtml" />
+    <Content Include="Views\CommentaireExternes\Flop.cshtml" />
+    <Content Include="Views\CommentaireExternes\Top.cshtml" />
+    <Content Include="Views\CommentaireExternes\Wait.cshtml" />
+    <Content Include="Views\CommentaireExternes\MostComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

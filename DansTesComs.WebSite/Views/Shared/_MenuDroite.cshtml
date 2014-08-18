@@ -4,19 +4,19 @@
 
 @if (!Request.IsAuthenticated && !Request.RawUrl.Contains("User"))
 {
-    <div class="row ">
+    <div class="row  hide-litle-screen">
         <h3>@GeneralRessources.TitlePQsinscrire</h3>
         <p>
             @GeneralRessources.TxtPQsinscire
-            @Html.ActionLink(GeneralRessources.Sinscrire,"Index","User")
+            @Html.ActionLink(GeneralRessources.Sinscrire, "Index", "User")
         </p>
         <h4>@GeneralRessources.SeConnecter</h4>
         <hr class="empty-hr row" />
 
-        @Html.Partial("../User/ConnexionFormPartial",new UserConnexion())
+        @Html.Partial("../User/ConnexionFormPartial", new UserConnexion())
     </div>
 }
-<div class="row">
+<div class="row hide-litle-screen">
     <h4>@GeneralRessources.PartageNous</h4>
     <div class="fb-like margin-1" data-width="300" data-href="https://www.facebook.com/dansTcom" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
     <h4>@GeneralRessources.TweetNous</h4>
@@ -25,10 +25,18 @@
 </div>
 <div class="row">
     <h3>@GeneralRessources.Categories</h3>
-    @Html.Action("Index","Categories")
+    @Html.Action("Index", "Categories")
+    <h4>@GeneralRessources.Autres</h4>
+
+    <ul>
+        <li>@Html.ActionLink(GeneralRessources.Top, "Top", "CommentaireExternes")</li>
+        <li>@Html.ActionLink(GeneralRessources.Flop, "Flop", "CommentaireExternes")</li>
+        <li>@Html.ActionLink(GeneralRessources.EnAttenteDeValidation, "Wait", "CommentaireExternes")</li>
+        <li>@Html.ActionLink(GeneralRessources.PlusCommentés, "MostComment", "CommentaireExternes")</li>
+    </ul>
 </div>
 
-<div class="row ">
+<div class="row hide-litle-screen">
 
 
     <h4>Video</h4>

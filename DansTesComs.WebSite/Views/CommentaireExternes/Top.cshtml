@@ -1,0 +1,18 @@
+﻿@model IPagedList<CommentaireExterne>
+
+@{
+    ViewBag.Title = GeneralRessources.Top;
+}
+
+<h1>@GeneralRessources.Top</h1>
+
+<div id="commentairesExtBlock">
+    @Html.Partial("PartialView/_PartialCommentairesExternes", Model)
+
+
+
+    <div class="pageList">
+        @Html.PagedListPager(Model, page => Url.Action("Top", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+    </div>
+</div>
+

@@ -97,6 +97,15 @@ namespace DansTesComs.Ressources.General {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Autres.
+        /// </summary>
+        public static string Autres {
+            get {
+                return ResourceManager.GetString("Autres", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Categories.
         /// </summary>
         public static string Categories {
@@ -133,11 +142,29 @@ namespace DansTesComs.Ressources.General {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Coms en validations.
+        /// </summary>
+        public static string EnAttenteDeValidation {
+            get {
+                return ResourceManager.GetString("EnAttenteDeValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Enregistrer.
         /// </summary>
         public static string Enregistrer {
             get {
                 return ResourceManager.GetString("Enregistrer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Flop.
+        /// </summary>
+        public static string Flop {
+            get {
+                return ResourceManager.GetString("Flop", resourceCulture);
             }
         }
         
@@ -165,6 +192,24 @@ namespace DansTesComs.Ressources.General {
         public static string Plus {
             get {
                 return ResourceManager.GetString("Plus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Les plus commentés.
+        /// </summary>
+        public static string PlusCommentés {
+            get {
+                return ResourceManager.GetString("PlusCommentés", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Proposer un nouveau commentaire.
+        /// </summary>
+        public static string ProposerNewCommentaire {
+            get {
+                return ResourceManager.GetString("ProposerNewCommentaire", resourceCulture);
             }
         }
         
@@ -228,6 +273,15 @@ namespace DansTesComs.Ressources.General {
         public static string TitlePQsinscrire {
             get {
                 return ResourceManager.GetString("TitlePQsinscrire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Top.
+        /// </summary>
+        public static string Top {
+            get {
+                return ResourceManager.GetString("Top", resourceCulture);
             }
         }
         

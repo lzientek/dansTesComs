@@ -34,13 +34,16 @@
                 </div>
                 <div class="col-md-6">
                     <ul id="menu" class="nav navbar-nav">
-                        <li>@Html.ActionLink("Add", "Create", "CommentaireExternes")</li>
-                        <li class="divider"><a>|</a></li>
+                        
                         <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
                         <li class="divider"><a>|</a></li>
                         <li>@Html.ActionLink(GeneralRessources.aleatoire, "Random", "CommentaireExternes")</li>
                         <li class="divider"><a>|</a></li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink(GeneralRessources.Top, "Top", "CommentaireExternes")</li>
+                        <li class="divider"><a>|</a></li>
+                        <li>@Html.ActionLink(GeneralRessources.Flop, "Flop", "CommentaireExternes")</li>
+                        <li class="divider"><a>|</a></li>
+                        <li>@Html.ActionLink(GeneralRessources.PlusCommentés, "MostComment", "CommentaireExternes")</li>
                     </ul>
                 </div>
                 <div class="col-md-3">
@@ -76,7 +79,9 @@
                     &copy; @DateTime.Now.Year - Dans tes coms <span class="separator">|</span>
                     @Html.ActionLink(GeneralRessources.Accueil, "Index", "CommentaireExternes") <span class="separator">|</span>
                     @Html.ActionLink(GeneralRessources.About, "About", "Home") <span class="separator">|</span>
-                    @Html.ActionLink(GeneralRessources.Contact, "Contact", "Home")
+                    @Html.ActionLink(GeneralRessources.Contact, "Contact", "Home") <span class="separator">|</span>
+                    @Html.ActionLink(GeneralRessources.ProposerNewCommentaire, "Create", "CommentaireExternes") <span class="separator">|</span>
+                    @Html.ActionLink(GeneralRessources.EnAttenteDeValidation, "Wait", "CommentaireExternes")
                 </p>
             </div>
         </div>

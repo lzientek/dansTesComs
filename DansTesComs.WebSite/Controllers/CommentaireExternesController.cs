@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Web.Mvc;
+using DansTesComs.Core.Helpers;
 using DansTesComs.Ressources.CommentaireExterne;
 using DansTesComs.Ressources.General;
 using DansTesComs.WebSite.Filters;
@@ -17,6 +18,7 @@ namespace DansTesComs.WebSite.Controllers
     [InitializeSimpleMembership]
     public class CommentaireExternesController : Controller
     {
+        public const int PageSize = 10;
         private DansTesComsEntities db = new DansTesComsEntities();
 
         /// <summary>
@@ -26,8 +28,8 @@ namespace DansTesComs.WebSite.Controllers
         /// <returns></returns>
         public ActionResult Index(int page = 1)
         {
-            var commentaireExternes = db.CommentaireExternes.ToList()
-                .OrderByDescending(com => com.DatePost).ToPagedList(page, 5);
+            var commentaireExternes = db.CommentaireExternes.Where(c => c.IsValide).ToList()
+                .OrderByDescending(com => com.DatePost).ToPagedList(page, PageSize);
             ViewBag.TitreContenu = CommentaireExterneRessources.NouveauCommentaires;
             return View(commentaireExternes);
         }
@@ -198,19 +200,81 @@ namespace DansTesComs.WebSite.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// affiche les commentaire de facon aléatoire
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Random()
         {
-            var commentaireExternes = db.CommentaireExternes
+            var commentaireExternes = db.CommentaireExternes.Where(c => c.IsValide)
                 .OrderBy(c=>Guid.NewGuid()).ToList();
 
             return View( commentaireExternes);
         }
 
+        /// <summary>
+        /// affiche les commentaire par categorie
+        /// </summary>
+        /// <param name="categorieName"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
         public ActionResult Categorie(string categorieName,int page = 1)
         {
-            var commentaireExternes = db.CommentaireExternes.Where(c=>c.Category.Name == categorieName).ToList()
-                .OrderByDescending(com => com.DatePost).ToPagedList(page, 5);
+            var commentaireExternes = db.CommentaireExternes.Where(c=>c.Category.Name == categorieName && c.IsValide ).ToList()
+                .OrderByDescending(com => com.DatePost).ToPagedList(page, PageSize);
             ViewBag.TitreContenu = categorieName;
+            return View(commentaireExternes);
+        }
+
+        /// <summary>
+        /// trier par mieux noté
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public ActionResult Top(int page = 1)
+        {
+            var commentaireExternes = db.CommentaireExternes.Where(c => c.IsValide)
+                .ToList().OrderByDescending(TriNote.CoefPlusMoins).ToPagedList(page, PageSize);
+
+            return View(commentaireExternes);
+        }
+
+        /// <summary>
+        /// trier par moins bien noté
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public ActionResult Flop(int page = 1)
+        {
+            var commentaireExternes = db.CommentaireExternes.Where(c=>c.IsValide)
+                .ToList().OrderBy(TriNote.CoefPlusMoins).ToPagedList(page, PageSize);
+
+            return View(commentaireExternes);
+        }
+        
+        /// <summary>
+        /// Les commentaire en attente de validation
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public ActionResult Wait(int page = 1)
+        {
+            var commentaireExternes = db.CommentaireExternes.Where(c => !c.IsValide)
+                .ToList().ToPagedList(page, PageSize);
+
+            return View(commentaireExternes);
+        }
+
+        /// <summary>
+        /// Les commentaire les plus commentés
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public ActionResult MostComment(int page = 1)
+        {
+            var commentaireExternes = db.CommentaireExternes.Where(c => c.IsValide)
+                .ToList().OrderByDescending(c=>c.Commentaires.Count).ToPagedList(page, PageSize);
+
             return View(commentaireExternes);
         }
 
