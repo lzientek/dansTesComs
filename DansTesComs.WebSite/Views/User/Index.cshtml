@@ -1,4 +1,5 @@
-﻿@model DansTesComs.Core.Models.ModelsExtentions.UserPass
+﻿@using DansTesComs.Core.Models.ModelsExtentions
+@model UserPass
 
 @{
     ViewBag.Title = "Connexion Inscription";
@@ -80,7 +81,7 @@
         <h2>@GeneralRessources.SeConnecter</h2>
         <hr />
 
-        @Html.Partial("ConnexionFormPartial")
+        @Html.Partial("ConnexionFormPartial",new UserConnexion())
 
     </section>
 

@@ -19,7 +19,6 @@
 
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-        @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Mail, htmlAttributes: new {@class = "control-label col-md-3"})
@@ -60,6 +59,13 @@
         </div>
     </div>
 }
+
+<div class="row">
+    <div class ="col-md-1 col-md-offset-1">
+        <img height="65" width="65" style="margin-bottom: 15px;" src="@Model.GetGravatarLink(65)" />
+    </div>
+        <p class ="col-md-8">@Html.Raw(UserRessources.TexteGravatar) <a href="https://en.gravatar.com/">@UserRessources.Ici</a>.</pclass>
+</div>
 
 
 @section Scripts {

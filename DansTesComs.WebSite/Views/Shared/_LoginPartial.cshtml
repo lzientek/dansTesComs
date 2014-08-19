@@ -7,7 +7,7 @@
         @using (Html.BeginForm("Deconnexion", "User", FormMethod.Post, new { id = "logoutForm", @class = "pull-left" }))
         {
             @Html.AntiForgeryToken()
-            <a href="javascript:document.getElementById('logoutForm').submit()">@GeneralRessources.Deconnecter</a>
+            <a href="javascript:document.getElementById('logoutForm').submit()"> @GeneralRessources.Deconnecter</a>
         }
     </span>
 }

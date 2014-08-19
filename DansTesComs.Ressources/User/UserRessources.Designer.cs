@@ -115,6 +115,15 @@ namespace DansTesComs.Ressources.User {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à ici.
+        /// </summary>
+        public static string Ici {
+            get {
+                return ResourceManager.GetString("Ici", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Ne peux pas dépasser 80 caractères..
         /// </summary>
         public static string LongueurMax80 {
@@ -147,6 +156,15 @@ namespace DansTesComs.Ressources.User {
         public static string ModifSave {
             get {
                 return ResourceManager.GetString("ModifSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Votre compte a été créé vous pouvez vous connecter..
+        /// </summary>
+        public static string NewUserAdd {
+            get {
+                return ResourceManager.GetString("NewUserAdd", resourceCulture);
             }
         }
         
@@ -246,6 +264,15 @@ namespace DansTesComs.Ressources.User {
         public static string RememberMeLabel {
             get {
                 return ResourceManager.GetString("RememberMeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Pour afficher votre avatar nous utilisons le service fournie par gravatar. &lt;br/&gt;Vous pouvez changer d&apos;avatar .
+        /// </summary>
+        public static string TexteGravatar {
+            get {
+                return ResourceManager.GetString("TexteGravatar", resourceCulture);
             }
         }
     }

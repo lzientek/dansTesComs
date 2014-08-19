@@ -9,26 +9,40 @@ body {
     padding: 0;
     background-color: #efefef;
 }
+
 p {
     margin-left: 15px;
 }
+
 .btn:hover {
     background: #efefef;
     outline: none;
 }
-.btn:active,.btn:focus,.btn:active:focus {
-        outline: none;
+
+.btn:active, .btn:focus, .btn:active:focus {
+    outline: none;
 }
+
 .petitChampNiveau {
     width: 50px;
     float: left;
 }
+
 .selectedNote {
     color: #ffa500;
 }
+
 .comment-block {
     margin-top: 40px;
     margin-left: 20px;
+}
+
+#login {
+    padding-top: 30px;
+    color: #777;
+}
+.borderCom:hover {
+    background-color: #fbfbfb;
 }
 .comment-block h4 {
     font-weight: lighter;
@@ -66,34 +80,41 @@ footer {
         text-decoration: none;
     }
 
-        footer a:hover, footer a:focus,#addOneMoreComment {
+        footer a:hover, footer a:focus, #addOneMoreComment {
             color: #fff;
             text-decoration: underline;
         }
-        #addOneMoreComment {
-            color: #3fd0c3;
-            font-size: 10px;
-            margin-right: 8px;
-            margin-bottom: 0px;
-            margin-top: 5px;
-            cursor: pointer;
-            display: none;
-        }
-        #supercompliquepourmettrenotrecom {
-            display: none;
-        }
-    footer p {
-        margin-top: 6px;
-    }
-    .noteComExterneDetails {
-        margin-left: 20px;
-    }
-    .horizontal-separator,.comment-block h4 {
-            border-bottom: 1px #e2e2e2 solid;
-    }
-    .horizontal-separator {
-        margin-bottom: 16px;
-    }
+
+#addOneMoreComment {
+    color: #3fd0c3;
+    font-size: 10px;
+    margin-right: 8px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+#supercompliquepourmettrenotrecom {
+    display: none;
+}
+
+footer p {
+    margin-top: 6px;
+}
+
+.noteComExterneDetails {
+    margin-left: 20px;
+}
+
+.horizontal-separator, .comment-block h4 {
+    border-bottom: 1px #e2e2e2 solid;
+}
+
+.horizontal-separator {
+    margin-bottom: 16px;
+}
+
 #rightMenu, #theContainer {
     padding: 10px;
     margin-bottom: 25px;
@@ -106,22 +127,23 @@ footer {
         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.075);
         margin-bottom: 15px;
     }
-    .pageList {
-        text-align: center;
-    }
 
-    #rightMenu h3, #rightMenu h4 {
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: 25px;
-        padding-left: 18px;
-        border-bottom: solid 2px #3FD0C3;
-    }
+.pageList {
+    text-align: center;
+}
 
-    #rightMenu h4 {
-        padding-left: 10px;
-        margin-left: 15px;
-    }
+#rightMenu h3, #rightMenu h4 {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 25px;
+    padding-left: 18px;
+    border-bottom: solid 2px #3FD0C3;
+}
+
+#rightMenu h4 {
+    padding-left: 10px;
+    margin-left: 15px;
+}
 
 .backgroundWhite {
     margin: 0;
@@ -134,8 +156,10 @@ footer {
 }
 
 .borderCom {
-    margin-top: 63px;
+    margin-top: 50px;
     margin-left: 8px;
+    padding-top: 13px;
+    cursor: default;
     /*border-bottom: 1px solid #3FD0C3;*/
 }
 
@@ -144,7 +168,7 @@ footer {
     border-color:  rgba(63, 208, 195, 1);*/
     border-color: #e4e4e4;
     border-style: solid;
-    border-width: 0px 0px 1px 0px;
+    border-width: 0 0 1px 0;
     padding-top: 5px;
 }
 
@@ -153,7 +177,7 @@ footer {
 }
 
 .commentaire-content .col-md-6 {
-    padding: 0px;
+    padding: 0;
 }
 
 .commentaire-content .pull-left {
@@ -164,10 +188,10 @@ footer {
     margin-bottom: 7px;
 }
 
- .pseudo {
-        color: #3fd0c3;
-        text-decoration: underline;
-    }
+.pseudo {
+    color: #3fd0c3;
+    text-decoration: underline;
+}
 
 .commentaire-publication {
     margin-left: 30px;
@@ -181,20 +205,24 @@ footer {
 .footerComment .commentaire-poster {
     text-align: center;
 }
- .commentaire-poster {
+
+.commentaire-poster {
     margin-top: 4px;
     font-size: 11px;
 }
+
 .new-commentaire-ajax {
     margin-left: -4px;
     border-left: 4px solid #3fd0c3;
 }
+
 .commentaireDeComExt {
     margin-top: 10px;
 }
-.commentaireDeComExt > .col-md-10 {
-    padding-left: 4px;
-}
+
+    .commentaireDeComExt > .col-md-10 {
+        padding-left: 4px;
+    }
 /*title*/
 h1, h2 {
     color: #838383;
@@ -224,7 +252,7 @@ a {
     }
 
 /*style overide formulaire*/
-input,textarea,.form-control,.btn {
+input, textarea, .form-control, .btn {
     -ms-border-radius: 0;
     border-radius: 0;
 }
@@ -241,16 +269,20 @@ input,textarea,.form-control,.btn {
 .margin-3 {
     margin-left: 135px;
 }
+
 .empty-hr {
     width: 100%;
     border-top: none;
 }
+
 .margin-4 {
     margin-left: 180px;
 }
+
 .form-horizontal {
     margin-top: 30px;
 }
+
 #menu {
     text-align: center;
     margin-top: 15px;
@@ -264,6 +296,7 @@ input,textarea,.form-control,.btn {
     footer .separator {
         display: none !important;
     }
+
     .hide-litle-screen {
         display: none !important;
     }

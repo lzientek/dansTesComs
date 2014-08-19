@@ -9,12 +9,14 @@
         <div class="row">
             <div class="borderCom">
                 <h3>@Html.ActionLink(com.Titre, "Details", new { id = com.Id }) </h3>
-                <p class="commentaire-publication">@com.Publication</p>
-                <div class="commentaire-commentaires">
-                    @foreach (var coment in com.CommentairesExterneContents)
-                    {
-                        @Html.Partial("PartialView/_PartialCommentaireContentView", coment)
-                    }
+                <div onclick="document.location = '@Url.Action( "Details", new { id = com.Id })';">
+                    <p class="commentaire-publication">@com.Publication</p>
+                    <div class="commentaire-commentaires">
+                        @foreach (var coment in com.CommentairesExterneContents)
+                        {
+                            @Html.Partial("PartialView/_PartialCommentaireContentView", coment)
+                        }
+                    </div>
                 </div>
                 <div class="footerComment">
                     <div class="row">

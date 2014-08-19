@@ -38,7 +38,6 @@ namespace DansTesComs.Core.Models
         [Display(ResourceType = typeof(UserRessources), Name = "EmailLabel")]
         [EmailAddress(ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "EmailError",ErrorMessage = null)]
         [Required(ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "EmailObligatoire")]
-        [System.Web.Mvc.Remote("IsUserEmailAvailable", "User",ErrorMessageResourceType = typeof(UserRessources),ErrorMessageResourceName = "MailDejaUtilise")]
         public string Mail { get; set; }
 
         [MaxLength(80, ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "LongueurMax80")]
@@ -52,7 +51,6 @@ namespace DansTesComs.Core.Models
 
         [Display(ResourceType = typeof(UserRessources), Name = "AnniversaireLabel")]
         [DataType(DataType.Date)]
-        [AgeMinimum(13,ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "MinAgeError")]
         public DateTime Anniversaire { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "PseudoObligatoire")]

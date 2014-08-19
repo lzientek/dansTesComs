@@ -180,4 +180,13 @@
   <data name="PseudoDejaUtilise" xml:space="preserve">
     <value>Pseudo déja utilisé.</value>
   </data>
+  <data name="Ici" xml:space="preserve">
+    <value>ici</value>
+  </data>
+  <data name="NewUserAdd" xml:space="preserve">
+    <value>Votre compte a été créé vous pouvez vous connecter.</value>
+  </data>
+  <data name="TexteGravatar" xml:space="preserve">
+    <value>Pour afficher votre avatar nous utilisons le service fournie par gravatar. &lt;br/&gt;Vous pouvez changer d'avatar </value>
+  </data>
 </root>

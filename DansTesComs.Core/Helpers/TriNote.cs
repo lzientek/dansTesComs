@@ -15,7 +15,7 @@ namespace DansTesComs.Core.Helpers
             {
                 if (nbPlus == 0)
                 {
-                    return 0;
+                    return -0.00000001;
                 }
                 nbMoins = 1;
             }
@@ -23,6 +23,7 @@ namespace DansTesComs.Core.Helpers
             //ratio -1 si plus de moins que de plus ca deviens négatif
             return (ratio - 1) * (nbMoins + nbPlus);
         }
+
         public static double CoefPlusMoins(CommentaireExterne commentaire)
         {
             return CoefPlusMoins(commentaire.Notes.Count(n => n.NoteValue == NoteValue.Moins),

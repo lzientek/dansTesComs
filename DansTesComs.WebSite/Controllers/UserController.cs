@@ -64,7 +64,7 @@ namespace DansTesComs.WebSite.Controllers
                     throw ex;
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Connexion", new { creationCompte = true});
             }
 
             return View(user);
@@ -92,7 +92,8 @@ namespace DansTesComs.WebSite.Controllers
             userinDb.Mail = user.Mail;
             userinDb.Nom = user.Nom;
             userinDb.Prenom = user.Prenom;
-            userinDb.Anniversaire = user.Anniversaire;
+            if (user.Anniversaire != null)
+                userinDb.Anniversaire = user.Anniversaire;
 
             try
             {
@@ -111,8 +112,12 @@ namespace DansTesComs.WebSite.Controllers
         //GET: User/Connexion
         [ActionName("Connexion")]
         [AllowAnonymous]
-        public ActionResult Connexion()
+        public ActionResult Connexion(bool creationCompte = false)
         {
+            if (creationCompte)
+            {
+                ViewBag.Creation = UserRessources.NewUserAdd;
+            }
             return View();
         }
 
