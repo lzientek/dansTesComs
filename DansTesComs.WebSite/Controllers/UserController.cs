@@ -27,15 +27,28 @@ namespace DansTesComs.WebSite.Controllers
 
         // GET: User
         [AllowAnonymous]
-        public ActionResult Index(string ReturnUrl = null)
+        public ActionResult Index(string ReturnUrl = null,int messageType = 1)
         {
             if (ReturnUrl != null)
             {
-                var cookie = new HttpCookie(returnUrlCookie, ReturnUrl);
-                ControllerContext.HttpContext.Response.Cookies.Add(cookie);
-                ViewBag.PageConnectionNeed = string.Format("{0} {1}{2}.", GeneralRessources.ConnectionPourPage, Request.Url.Host, ReturnUrl);
+                SetCookieReturnUrl(ReturnUrl);
+                switch (messageType)
+                {
+                    case 1:
+                        ViewBag.PageConnectionNeed = string.Format("{0} {1}{2}.", GeneralRessources.ConnectionPourPage, Request.Url.Host, ReturnUrl);
+                        break;
+                    default:
+                        ViewBag.PageConnectionNeed = string.Empty;
+                        break;
+                }
             }
             return View();
+        }
+
+        private void SetCookieReturnUrl(string ReturnUrl)
+        {
+            var cookie = new HttpCookie(returnUrlCookie, ReturnUrl);
+            ControllerContext.HttpContext.Response.Cookies.Add(cookie);
         }
 
         public ActionResult Details()
@@ -133,13 +146,18 @@ namespace DansTesComs.WebSite.Controllers
         [HttpPost, ActionName("Connexion")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Connexion([Bind(Include = "Mail,Pass,RememberMe")] UserConnexion user)
+        public ActionResult Connexion([Bind(Include = "Mail,Pass,RememberMe")] UserConnexion user, string ReturnUrl =null)
         {
+
             if (db.Users.Any(u => u.Mail == user.Mail))
             {
                 var userToConnect = db.Users.Single(u => u.Mail == user.Mail);
                 if (userToConnect != null && WebSecurity.Login(userToConnect.Pseudo, user.Pass, user.RememberMe))
                 {
+                    if (ReturnUrl != null)
+                    {
+                        return Redirect(ReturnUrl);
+                    }
                     HttpCookie cookie = ControllerContext.HttpContext.Request.Cookies[returnUrlCookie];
 
                     if (cookie != null)

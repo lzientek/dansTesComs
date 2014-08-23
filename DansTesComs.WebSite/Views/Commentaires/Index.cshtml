@@ -10,7 +10,7 @@
     else
     {
         <p>
-            @Html.ActionLink(GeneralRessources.SinscrireConnecterCommenter, "Index", "User", null, new { id = "registerLink" })
+            @Html.ActionLink(GeneralRessources.SinscrireConnecterCommenter, "Index", "User", new { ReturnUrl = Request.Url.LocalPath, messageType=42 }, null)
         </p>
     }
 

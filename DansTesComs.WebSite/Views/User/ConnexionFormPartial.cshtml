@@ -1,6 +1,6 @@
 ﻿@model DansTesComs.Core.Models.ModelsExtentions.UserConnexion
 
-@using (Html.BeginForm("Connexion", "User"))
+@using (Html.BeginForm("Connexion", "User",new{ReturnUrl = Request.Url.LocalPath}))
 {
     @Html.AntiForgeryToken()
     <div class="form-group row ">
