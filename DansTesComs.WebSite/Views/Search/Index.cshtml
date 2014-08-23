@@ -1,0 +1,19 @@
+﻿@model IPagedList<DansTesComs.Core.Models.SearchResult>
+@{
+    ViewBag.Title = SearchRessources.Rechercher;
+}
+<h1>@SearchRessources.Rechercher @ViewBag.Recherche</h1>
+
+@Html.Partial("FormulaireRecherche", new Search())
+
+@if (Model.Count <= 0)
+{
+    <p>@SearchRessources.NoResult</p>
+}
+else
+{
+    foreach (var result in Model)
+    {
+
+    }
+}

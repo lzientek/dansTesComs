@@ -54,6 +54,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GeneralRessources.resx</DependentUpon>
     </Compile>
+    <Compile Include="General\SearchRessources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SearchRessources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\UserRessources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -73,6 +78,10 @@
     <EmbeddedResource Include="General\GeneralRessources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GeneralRessources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General\SearchRessources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SearchRessources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="User\UserRessources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

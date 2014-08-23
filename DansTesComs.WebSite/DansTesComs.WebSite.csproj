@@ -221,6 +221,7 @@
     <Compile Include="Controllers\NewsLettersController.cs" />
     <Compile Include="Controllers\NotesCommentaireController.cs" />
     <Compile Include="Controllers\NotesController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -398,6 +399,8 @@
     <Content Include="Views\NewsLetters\Edit.cshtml" />
     <Content Include="Views\NewsLetters\Index.cshtml" />
     <Content Include="Views\NewsLetters\ValidNews.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Search\FormulaireRecherche.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

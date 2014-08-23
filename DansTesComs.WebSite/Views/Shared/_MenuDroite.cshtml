@@ -1,6 +1,12 @@
 ﻿@using System.Web.UI.HtmlControls
 @using DansTesComs.Core.Models.ModelsExtentions
 
+@if (!Request.RawUrl.Contains("/Search"))
+{
+    <div class="row">
+        @Html.Partial("../Search/FormulaireRecherche", new Search())
+    </div>
+}
 
 @if (!Request.IsAuthenticated && !Request.RawUrl.Contains("User"))
 {

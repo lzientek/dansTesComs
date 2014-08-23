@@ -34,5 +34,6 @@ namespace DansTesComs.Core.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<NotesCommentaire> NotesCommentaires { get; set; }
         public virtual DbSet<NewsLetter> NewsLetters { get; set; }
+        public virtual DbSet<Search> Searches { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DansTesComs.Core.Models;
+using DansTesComs.Ressources.General;
 using WebMatrix.WebData;
 
 namespace DansTesComs.WebSite.Controllers
@@ -36,9 +37,13 @@ namespace DansTesComs.WebSite.Controllers
             newsLetter.User = db.Users.SingleOrDefault(u => u.Mail == newsLetter.Mail);
             if (ModelState.IsValid)
             {
-                db.NewsLetters.Add(newsLetter);
-                db.SaveChanges();
-                return PartialView("ValidNews");
+                if (db.NewsLetters.Find(newsLetter.Mail) == null)
+                {
+                    db.NewsLetters.Add(newsLetter);
+                    db.SaveChanges();
+                    return PartialView("ValidNews");
+                }
+                return Content(GeneralRessources.DejaEnregistrerNewsletter, "text/html");
             }
             return PartialView(newsLetter);
         }

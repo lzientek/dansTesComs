@@ -151,6 +151,15 @@ namespace DansTesComs.Ressources.General {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à &lt;p&gt;Deja inscrit a la newsletter.&lt;/p&gt;.
+        /// </summary>
+        public static string DejaEnregistrerNewsletter {
+            get {
+                return ResourceManager.GetString("DejaEnregistrerNewsletter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Coms en validations.
         /// </summary>
         public static string EnAttenteDeValidation {
