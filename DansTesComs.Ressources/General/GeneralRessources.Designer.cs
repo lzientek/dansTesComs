@@ -115,6 +115,15 @@ namespace DansTesComs.Ressources.General {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Vous devez etre connecter pour accéder a la page .
+        /// </summary>
+        public static string ConnectionPourPage {
+            get {
+                return ResourceManager.GetString("ConnectionPourPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Nous contacter.
         /// </summary>
         public static string Contact {
@@ -268,11 +277,29 @@ namespace DansTesComs.Ressources.General {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à S&apos;inscrire a la newsletter.
+        /// </summary>
+        public static string SincrireNewsletter {
+            get {
+                return ResourceManager.GetString("SincrireNewsletter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à S&apos;incrire.
         /// </summary>
         public static string Sinscrire {
             get {
                 return ResourceManager.GetString("Sinscrire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à S&apos;inscrire ou se connecter pour commenter..
+        /// </summary>
+        public static string SinscrireConnecterCommenter {
+            get {
+                return ResourceManager.GetString("SinscrireConnecterCommenter", resourceCulture);
             }
         }
         

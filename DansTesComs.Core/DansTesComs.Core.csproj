@@ -82,6 +82,7 @@
     <Compile Include="Models\ModelsExtentions\Commentaire.cs" />
     <Compile Include="Models\ModelsExtentions\CommentaireExterne.cs" />
     <Compile Include="Models\ModelsExtentions\CommentairesExterneContent.cs" />
+    <Compile Include="Models\ModelsExtentions\NewsLetter.cs" />
     <Compile Include="Models\ModelsExtentions\Note.cs" />
     <Compile Include="Models\ModelsExtentions\NotesCommentaire.cs" />
     <Compile Include="Models\ModelsExtentions\User\User.cs" />

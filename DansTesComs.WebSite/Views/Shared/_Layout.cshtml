@@ -11,9 +11,9 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jqueryval")
+    
     @RenderSection("scripts", false)
-    @RenderSection("AddToHead", required: false)
-
+    @Scripts.Render("~/bundles/ajaxJsResponse")
 </head>
 <body>
     <div id="fb-root"></div>

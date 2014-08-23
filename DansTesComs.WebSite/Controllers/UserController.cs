@@ -7,9 +7,11 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using DansTesComs.Core.Models.ModelsExtentions;
+using DansTesComs.Ressources.General;
 using DansTesComs.Ressources.User;
 using DansTesComs.WebSite.Filters;
 using DansTesComs.Core.Models;
@@ -21,20 +23,27 @@ namespace DansTesComs.WebSite.Controllers
     public class UserController : Controller
     {
         private DansTesComsEntities db = new DansTesComsEntities();
+        private const string returnUrlCookie = "returnUrl";
 
         // GET: User
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Index(string ReturnUrl = null)
         {
+            if (ReturnUrl != null)
+            {
+                var cookie = new HttpCookie(returnUrlCookie, ReturnUrl);
+                ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                ViewBag.PageConnectionNeed = string.Format("{0} {1}{2}.", GeneralRessources.ConnectionPourPage, Request.Url.Host, ReturnUrl);
+            }
             return View();
         }
 
         public ActionResult Details()
         {
-            User user = db.Users.Find(WebSecurity.CurrentUserId);
+            var user = db.Users.Find(WebSecurity.CurrentUserId);
             if (user == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(user);
         }
@@ -52,7 +61,7 @@ namespace DansTesComs.WebSite.Controllers
             user.InscriptionDate = DateTime.Now;
             if (ModelState.IsValid)
             {
-                User usr = user.ToUser();
+                var usr = user.ToUser();
                 try
                 {
                     db.Users.Add(usr);
@@ -88,7 +97,7 @@ namespace DansTesComs.WebSite.Controllers
         public ActionResult Edit(
             [Bind(Include = "Mail,Nom,Prenom,Anniversaire")] User user)
         {
-            var userinDb = db.Users.First(u => u.Id == WebSecurity.CurrentUserId);
+            var userinDb = db.Users.Find(WebSecurity.CurrentUserId);
             userinDb.Mail = user.Mail;
             userinDb.Nom = user.Nom;
             userinDb.Prenom = user.Prenom;
@@ -128,11 +137,21 @@ namespace DansTesComs.WebSite.Controllers
         {
             if (db.Users.Any(u => u.Mail == user.Mail))
             {
-                var userToConnect = db.Users.First(u => u.Mail == user.Mail);
+                var userToConnect = db.Users.Single(u => u.Mail == user.Mail);
                 if (userToConnect != null && WebSecurity.Login(userToConnect.Pseudo, user.Pass, user.RememberMe))
-                { return RedirectToAction("Index", "Home"); }
-            }
+                {
+                    HttpCookie cookie = ControllerContext.HttpContext.Request.Cookies[returnUrlCookie];
 
+                    if (cookie != null)
+                    {
+                        string action = cookie.Value;
+                        cookie.Expires = DateTime.Now.AddDays(-1);
+                        this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                        return Redirect(action);
+                    }
+                    return RedirectToAction("Index", "Home");
+                }
+            }
 
             return RedirectToAction("Connexion");
         }

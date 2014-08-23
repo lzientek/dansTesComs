@@ -1,9 +1,18 @@
 ﻿@using DansTesComs.Core.Models.ModelsExtentions
 @model IPagedList<Commentaire>
 
-@if (!IsAjax && Request.IsAuthenticated)
+@if (!IsAjax)
 {
-    @Html.Action("Create", new { commentaireId = ViewBag.commentid })
+    if (WebSecurity.IsAuthenticated)
+    {
+        @Html.Action("Create", new { commentaireId = ViewBag.commentid })
+    }
+    else
+    {
+        <p>
+            @Html.ActionLink(GeneralRessources.SinscrireConnecterCommenter, "Index", "User", null, new { id = "registerLink" })
+        </p>
+    }
 
 }
 
@@ -30,11 +39,7 @@ else
 }
 else
 {
-    <text><h3>@CommentaireExterneRessources.SoitLePremierCom</h3></text>
-    if (!Request.IsAuthenticated)
-    {
-@Html.ActionLink(GeneralRessources.SincrireConnecter, "Index", "User", null, new { id = "registerLink" })
-    }
+    <text><h3 class="row">@CommentaireExterneRessources.SoitLePremierCom</h3></text>
 }
 <div id="morecomments" class="row col-md-12 text-center">
     @*jolie bouton voir pls avec les options pager pour qu'on est bien le resultat voulu

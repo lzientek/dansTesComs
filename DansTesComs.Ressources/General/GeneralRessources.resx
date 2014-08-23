@@ -210,4 +210,13 @@
   <data name="ValidNewsLetter" xml:space="preserve">
     <value>Vous avez été enregistrer a la newsletter.</value>
   </data>
+  <data name="SincrireNewsletter" xml:space="preserve">
+    <value>S'inscrire a la newsletter</value>
+  </data>
+  <data name="ConnectionPourPage" xml:space="preserve">
+    <value>Vous devez etre connecter pour accéder a la page </value>
+  </data>
+  <data name="SinscrireConnecterCommenter" xml:space="preserve">
+    <value>S'inscrire ou se connecter pour commenter.</value>
+  </data>
 </root>

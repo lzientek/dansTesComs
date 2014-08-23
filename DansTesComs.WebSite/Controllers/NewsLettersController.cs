@@ -33,6 +33,7 @@ namespace DansTesComs.WebSite.Controllers
         public ActionResult Create([Bind(Include = "Mail")] NewsLetter newsLetter)
         {
             newsLetter.InscriptionDate = DateTime.Now;
+            newsLetter.User = db.Users.SingleOrDefault(u => u.Mail == newsLetter.Mail);
             if (ModelState.IsValid)
             {
                 db.NewsLetters.Add(newsLetter);
@@ -55,6 +56,8 @@ namespace DansTesComs.WebSite.Controllers
             db.SaveChanges();
             return PartialView("ValidNews");
         }
+
+       
 
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(string id)
@@ -109,6 +112,15 @@ namespace DansTesComs.WebSite.Controllers
             db.NewsLetters.Remove(newsLetter);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public bool IsUserSubscribe()
+        {
+            if (WebSecurity.IsAuthenticated)
+            {
+                return db.Users.Find(WebSecurity.CurrentUserId).NewsLetters.Count > 0;                
+            }
+            return false;
         }
 
         protected override void Dispose(bool disposing)

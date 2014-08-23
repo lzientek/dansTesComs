@@ -35,7 +35,9 @@ function errorAjax() {
 function onStartDisableComment() {
     $("#boutonajoutcom").attr("disabled", "disabled");
 }
-
+function onStartDisableNewsLetter() {
+    $("#NewsLetterButon").attr("disabled", "disabled");
+}
 function onStartHideShowMore() {
     $(".PagedList-skipToNext").hide(0);
 }
