@@ -204,4 +204,10 @@
   <data name="PlusCommentés" xml:space="preserve">
     <value>Les plus commentés</value>
   </data>
+  <data name="NewsLetter" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
+  <data name="ValidNewsLetter" xml:space="preserve">
+    <value>Vous avez été enregistrer a la newsletter.</value>
+  </data>
 </root>

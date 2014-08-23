@@ -178,6 +178,15 @@ namespace DansTesComs.Ressources.General {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Newsletter.
+        /// </summary>
+        public static string NewsLetter {
+            get {
+                return ResourceManager.GetString("NewsLetter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Dis a tout tes amies que tu nous aimes..
         /// </summary>
         public static string PartageNous {
@@ -309,6 +318,15 @@ namespace DansTesComs.Ressources.General {
         public static string TxtPQsinscire {
             get {
                 return ResourceManager.GetString("TxtPQsinscire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Vous avez été enregistrer a la newsletter..
+        /// </summary>
+        public static string ValidNewsLetter {
+            get {
+                return ResourceManager.GetString("ValidNewsLetter", resourceCulture);
             }
         }
         

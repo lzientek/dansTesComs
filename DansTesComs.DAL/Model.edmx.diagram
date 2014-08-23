@@ -23,6 +23,8 @@
         <EntityTypeShape EntityType="DansTesComsModel.NotesCommentaire" Width="1.5" PointX="8.25" PointY="3.5" />
         <AssociationConnector Association="DansTesComsModel.FK_NotesCommentaire_ToCommentaire" />
         <AssociationConnector Association="DansTesComsModel.FK_NotesCommentaire_ToUser" />
+        <EntityTypeShape EntityType="DansTesComsModel.NewsLetter" Width="1.5" PointX="3" PointY="9" />
+        <AssociationConnector Association="DansTesComsModel.FK_NewsLetter_ToUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
