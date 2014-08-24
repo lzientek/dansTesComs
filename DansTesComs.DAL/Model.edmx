@@ -370,7 +370,6 @@
           <NavigationProperty Name="Roles" Relationship="DansTesComsModel.webpages_UsersInRoles" FromRole="User" ToRole="webpages_Roles" />
           <NavigationProperty Name="NotesCommentaires" Relationship="DansTesComsModel.FK_NotesCommentaire_ToUser" FromRole="User" ToRole="NotesCommentaire" />
           <NavigationProperty Name="NewsLetters" Relationship="DansTesComsModel.FK_NewsLetter_ToUser" FromRole="User" ToRole="NewsLetter" />
-          <NavigationProperty Name="Searches" Relationship="DansTesComsModel.FK_Search_ToUser" FromRole="User" ToRole="Search" />
         </EntityType>
         <EntityContainer Name="DansTesComsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CommentaireExternes" EntityType="Self.CommentaireExterne" />

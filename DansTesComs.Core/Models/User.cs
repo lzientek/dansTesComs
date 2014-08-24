@@ -22,7 +22,6 @@ namespace DansTesComs.Core.Models
             this.Roles = new HashSet<Role>();
             this.NotesCommentaires = new HashSet<NotesCommentaire>();
             this.NewsLetters = new HashSet<NewsLetter>();
-            this.Searches = new HashSet<Search>();
         }
     
         public int Id { get; set; }
@@ -39,6 +38,5 @@ namespace DansTesComs.Core.Models
         public virtual ICollection<Role> Roles { get; set; }
         public virtual ICollection<NotesCommentaire> NotesCommentaires { get; set; }
         public virtual ICollection<NewsLetter> NewsLetters { get; set; }
-        public virtual ICollection<Search> Searches { get; set; }
     }
 }
