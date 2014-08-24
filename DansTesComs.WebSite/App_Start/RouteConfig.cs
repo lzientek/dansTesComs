@@ -13,6 +13,12 @@ namespace DansTesComs.WebSite
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("searchRoutePage", "SearchAll/{SearchText}/{page}",
+                new { controller = "Search", action = "Index" });
+
+            routes.MapRoute("searchRoute", "SearchAll/{SearchText}",
+                new { controller = "Search", action = "Index"});
+
             routes.MapRoute("pageRoute", "{controller}/page/{page}",
                 new { action = "Index" });
 
@@ -21,7 +27,6 @@ namespace DansTesComs.WebSite
 
             routes.MapRoute("pageActionRoute", "{controller}/{action}/page/{page}",
                 new { action = "Index" });
-
 
             routes.MapRoute("Default", "{controller}/{action}/{id}",
                 new { controller="CommentaireExternes", action = "Index", id = UrlParameter.Optional }

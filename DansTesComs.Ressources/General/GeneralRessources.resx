@@ -204,4 +204,22 @@
   <data name="PlusCommentés" xml:space="preserve">
     <value>Les plus commentés</value>
   </data>
+  <data name="NewsLetter" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
+  <data name="ValidNewsLetter" xml:space="preserve">
+    <value>Vous avez été enregistrer a la newsletter.</value>
+  </data>
+  <data name="SincrireNewsletter" xml:space="preserve">
+    <value>S'inscrire a la newsletter</value>
+  </data>
+  <data name="ConnectionPourPage" xml:space="preserve">
+    <value>Vous devez etre connecter pour accéder a la page </value>
+  </data>
+  <data name="SinscrireConnecterCommenter" xml:space="preserve">
+    <value>S'inscrire ou se connecter pour commenter.</value>
+  </data>
+  <data name="DejaEnregistrerNewsletter" xml:space="preserve">
+    <value>&lt;p&gt;Deja inscrit a la newsletter.&lt;/p&gt;</value>
+  </data>
 </root>

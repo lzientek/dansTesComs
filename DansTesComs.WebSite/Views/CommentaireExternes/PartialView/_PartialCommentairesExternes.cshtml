@@ -9,7 +9,7 @@
         <div class="row">
             <div class="borderCom">
                 <h3>@Html.ActionLink(com.Titre, "Details", new { id = com.Id }) </h3>
-                <div onclick="document.location = '@Url.Action( "Details", new { id = com.Id })';">
+                <div style ="cursor: pointer;" onclick="document.location = '@Url.Action( "Details", new { id = com.Id })';">
                     <p class="commentaire-publication">@com.Publication</p>
                     <div class="commentaire-commentaires">
                         @foreach (var coment in com.CommentairesExterneContents)

@@ -46,6 +46,14 @@
           <Property Name="Niveau" Type="int" Nullable="false" />
           <Property Name="CommentaireExterneID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="NewsLetter">
+          <Key>
+            <PropertyRef Name="Mail" />
+          </Key>
+          <Property Name="Mail" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="InscriptionDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Note">
           <Key>
             <PropertyRef Name="Id" />
@@ -63,6 +71,16 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="CommentaireId" Type="int" Nullable="false" />
           <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Search">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Search" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateRecherche" Type="datetime" Nullable="false" />
+          <Property Name="NbResult" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -151,6 +169,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_NewsLetter_ToUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="NewsLetter" Type="Self.NewsLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NewsLetter">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Note_CommentairesExterne">
           <End Role="CommentaireExterne" Type="Self.CommentaireExterne" Multiplicity="1" />
           <End Role="Note" Type="Self.Note" Multiplicity="*" />
@@ -211,6 +241,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Search_ToUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Search" Type="Self.Search" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Search">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_UserId">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
@@ -228,8 +270,10 @@
           <EntitySet Name="CommentaireExterne" EntityType="Self.CommentaireExterne" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Commentaires" EntityType="Self.Commentaires" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommentairesExterneContent" EntityType="Self.CommentairesExterneContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsLetter" EntityType="Self.NewsLetter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Note" EntityType="Self.Note" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotesCommentaire" EntityType="Self.NotesCommentaire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Search" EntityType="Self.Search" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="webpages_UsersInRoles" EntityType="Self.webpages_UsersInRoles" Schema="dbo" store:Type="Tables" />
@@ -253,6 +297,10 @@
             <End Role="CommentaireExterne" EntitySet="CommentaireExterne" />
             <End Role="CommentairesExterneContent" EntitySet="CommentairesExterneContent" />
           </AssociationSet>
+          <AssociationSet Name="FK_NewsLetter_ToUser" Association="Self.FK_NewsLetter_ToUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="NewsLetter" EntitySet="NewsLetter" />
+          </AssociationSet>
           <AssociationSet Name="FK_Note_CommentairesExterne" Association="Self.FK_Note_CommentairesExterne">
             <End Role="CommentaireExterne" EntitySet="CommentaireExterne" />
             <End Role="Note" EntitySet="Note" />
@@ -272,6 +320,10 @@
           <AssociationSet Name="fk_RoleId" Association="Self.fk_RoleId">
             <End Role="webpages_Roles" EntitySet="webpages_Roles" />
             <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Search_ToUser" Association="Self.FK_Search_ToUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Search" EntitySet="Search" />
           </AssociationSet>
           <AssociationSet Name="fk_UserId" Association="Self.fk_UserId">
             <End Role="Users" EntitySet="Users" />
@@ -317,6 +369,7 @@
           <NavigationProperty Name="Commentaires" Relationship="DansTesComsModel.FK_Commentaires_User" FromRole="User" ToRole="Commentaire" />
           <NavigationProperty Name="Roles" Relationship="DansTesComsModel.webpages_UsersInRoles" FromRole="User" ToRole="webpages_Roles" />
           <NavigationProperty Name="NotesCommentaires" Relationship="DansTesComsModel.FK_NotesCommentaire_ToUser" FromRole="User" ToRole="NotesCommentaire" />
+          <NavigationProperty Name="NewsLetters" Relationship="DansTesComsModel.FK_NewsLetter_ToUser" FromRole="User" ToRole="NewsLetter" />
         </EntityType>
         <EntityContainer Name="DansTesComsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CommentaireExternes" EntityType="Self.CommentaireExterne" />
@@ -366,6 +419,16 @@
           <AssociationSet Name="FK_NotesCommentaire_ToUser" Association="DansTesComsModel.FK_NotesCommentaire_ToUser">
             <End Role="User" EntitySet="Users" />
             <End Role="NotesCommentaire" EntitySet="NotesCommentaires" />
+          </AssociationSet>
+          <EntitySet Name="NewsLetters" EntityType="DansTesComsModel.NewsLetter" />
+          <AssociationSet Name="FK_NewsLetter_ToUser" Association="DansTesComsModel.FK_NewsLetter_ToUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NewsLetter" EntitySet="NewsLetters" />
+          </AssociationSet>
+          <EntitySet Name="Searches" EntityType="DansTesComsModel.Search" />
+          <AssociationSet Name="FK_Search_ToUser" Association="DansTesComsModel.FK_Search_ToUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Search" EntitySet="Searches" />
           </AssociationSet>
         </EntityContainer>
         <Association Name="FK_CommentaireExterne_ToUser">
@@ -542,6 +605,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="NewsLetter">
+          <Key>
+            <PropertyRef Name="Mail" />
+          </Key>
+          <Property Name="Mail" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="DansTesComsModel.FK_NewsLetter_ToUser" FromRole="NewsLetter" ToRole="User" />
+          <Property Name="InscriptionDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_NewsLetter_ToUser">
+          <End Type="DansTesComsModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DansTesComsModel.NewsLetter" Role="NewsLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NewsLetter">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Search">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="SearchText" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateRecherche" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NbResult" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DansTesComsModel.FK_Search_ToUser" FromRole="Search" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Search_ToUser">
+          <End Type="DansTesComsModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DansTesComsModel.Search" Role="Search" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Search">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -637,6 +744,26 @@
               <MappingFragment StoreEntitySet="NotesCommentaire">
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="CommentaireId" ColumnName="CommentaireId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsLetters">
+            <EntityTypeMapping TypeName="DansTesComsModel.NewsLetter">
+              <MappingFragment StoreEntitySet="NewsLetter">
+                <ScalarProperty Name="InscriptionDate" ColumnName="InscriptionDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Searches">
+            <EntityTypeMapping TypeName="DansTesComsModel.Search">
+              <MappingFragment StoreEntitySet="Search">
+                <ScalarProperty Name="NbResult" ColumnName="NbResult" />
+                <ScalarProperty Name="DateRecherche" ColumnName="DateRecherche" />
+                <ScalarProperty Name="SearchText" ColumnName="Search" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

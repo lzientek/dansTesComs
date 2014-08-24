@@ -46,7 +46,7 @@ namespace DansTesComs.Core.Tests.Helpers
         {
             var list = new List<Tuple<string, string>>()
             {
-                new Tuple<string,string>("https://www.youtube.com/watch?v=g0ThdkbNyBs", string.Format("<iframe width=\"{0}\" height=\"{1}\" src=\"//www.youtube.com/embed/g0ThdkbNyBs\" frameborder=\"0\" ></iframe>", LinkHelper.LargeurFrame, LinkHelper.HauteurFrame)),
+                new Tuple<string,string>("https://www.youtube.com/watch?v=g0Th-dkbNyBs", string.Format("<iframe width=\"{0}\" height=\"{1}\" src=\"//www.youtube.com/embed/g0Th-dkbNyBs\" frameborder=\"0\" ></iframe>", LinkHelper.LargeurFrame, LinkHelper.HauteurFrame)),
                 new Tuple<string,string>("https://www.youtube.com/watch?v=VJ0I773sFbw", string.Format("<iframe width=\"{0}\" height=\"{1}\" src=\"//www.youtube.com/embed/VJ0I773sFbw\" frameborder=\"0\" ></iframe>", LinkHelper.LargeurFrame, LinkHelper.HauteurFrame)),
                 new Tuple<string,string>("https://www.youtube.com/watch?v=VJ0I773sFbw&feature=youtu.be&t=5s", string.Format("<iframe width=\"{0}\" height=\"{1}\" src=\"//www.youtube.com/embed/VJ0I773sFbw\" frameborder=\"0\" ></iframe>", LinkHelper.LargeurFrame, LinkHelper.HauteurFrame)),
                 new Tuple<string,string>("http://www.dailymotion.com/video/x162xu2_live-corobizar_videogames", string.Format("<iframe frameborder=\"0\" width=\"{0}\" height=\"{1}\" src=\"//www.dailymotion.com/embed/video/x162xu2\" ></iframe>",  LinkHelper.LargeurFrame, LinkHelper.HauteurFrame)),

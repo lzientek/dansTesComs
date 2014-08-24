@@ -5,6 +5,10 @@
     ViewBag.Title = "Connexion Inscription";
 }
 <div class="row">
+    @if (!string.IsNullOrEmpty(ViewBag.PageConnectionNeed))
+    {
+        <p class="text-danger" style="margin-top: 10px;">@ViewBag.PageConnectionNeed</p>
+    }
     <section id="loginForm" class="col-md-6">
 
         <h2>Inscription</h2>
@@ -86,8 +90,3 @@
     </section>
 
 </div>
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

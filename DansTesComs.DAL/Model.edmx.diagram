@@ -8,21 +8,25 @@
         <EntityTypeShape EntityType="DansTesComsModel.CommentaireExterne" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DansTesComsModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DansTesComsModel.FK_CommentaireExterne_ToUser" />
-        <EntityTypeShape EntityType="DansTesComsModel.CommentairesExterneContent" Width="1.5" PointX="5.25" PointY="1.375" />
+        <EntityTypeShape EntityType="DansTesComsModel.CommentairesExterneContent" Width="1.5" PointX="7.5" PointY="0.5" />
         <AssociationConnector Association="DansTesComsModel.FK_CommentairesExterneContent_ToCommentairesExternes" />
-        <EntityTypeShape EntityType="DansTesComsModel.Note" Width="1.5" PointX="5.25" PointY="4.375" />
+        <EntityTypeShape EntityType="DansTesComsModel.Note" Width="1.5" PointX="9.375" PointY="0.5" />
         <AssociationConnector Association="DansTesComsModel.FK_Note_CommentairesExterne" />
         <AssociationConnector Association="DansTesComsModel.FK_Note_ToUser" />
-        <EntityTypeShape EntityType="DansTesComsModel.Commentaire" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="DansTesComsModel.Commentaire" Width="1.5" PointX="6.75" PointY="3.625" />
         <AssociationConnector Association="DansTesComsModel.FK_Commentaires_User" />
         <AssociationConnector Association="DansTesComsModel.FK_Commentaires_CommentaireExterne" />
         <EntityTypeShape EntityType="DansTesComsModel.Role" Width="1.5" PointX="0.75" PointY="5.875" />
         <AssociationConnector Association="DansTesComsModel.webpages_UsersInRoles" />
-        <EntityTypeShape EntityType="DansTesComsModel.Category" Width="1.5" PointX="7.875" PointY="1" />
+        <EntityTypeShape EntityType="DansTesComsModel.Category" Width="1.5" PointX="5.75" PointY="0.5" />
         <AssociationConnector Association="DansTesComsModel.FK_CommentaireExterne_ToCategorie" />
-        <EntityTypeShape EntityType="DansTesComsModel.NotesCommentaire" Width="1.5" PointX="8.25" PointY="3.5" />
+        <EntityTypeShape EntityType="DansTesComsModel.NotesCommentaire" Width="1.5" PointX="8.625" PointY="3.625" />
         <AssociationConnector Association="DansTesComsModel.FK_NotesCommentaire_ToCommentaire" />
         <AssociationConnector Association="DansTesComsModel.FK_NotesCommentaire_ToUser" />
+        <EntityTypeShape EntityType="DansTesComsModel.NewsLetter" Width="1.5" PointX="0.75" PointY="7.625" />
+        <AssociationConnector Association="DansTesComsModel.FK_NewsLetter_ToUser" />
+        <EntityTypeShape EntityType="DansTesComsModel.Search" Width="1.5" PointX="2.625" PointY="6.75" />
+        <AssociationConnector Association="DansTesComsModel.FK_Search_ToUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

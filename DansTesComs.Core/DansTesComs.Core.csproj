@@ -82,11 +82,17 @@
     <Compile Include="Models\ModelsExtentions\Commentaire.cs" />
     <Compile Include="Models\ModelsExtentions\CommentaireExterne.cs" />
     <Compile Include="Models\ModelsExtentions\CommentairesExterneContent.cs" />
+    <Compile Include="Models\ModelsExtentions\NewsLetter.cs" />
     <Compile Include="Models\ModelsExtentions\Note.cs" />
     <Compile Include="Models\ModelsExtentions\NotesCommentaire.cs" />
+    <Compile Include="Models\ModelsExtentions\Search\Search.cs" />
+    <Compile Include="Models\ModelsExtentions\Search\SearchResult.cs" />
     <Compile Include="Models\ModelsExtentions\User\User.cs" />
     <Compile Include="Models\ModelsExtentions\User\UserConnexion.cs" />
     <Compile Include="Models\ModelsExtentions\User\UserPass.cs" />
+    <Compile Include="Models\NewsLetter.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Note.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -94,6 +100,9 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Search.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">

@@ -45,7 +45,6 @@ namespace DansTesComs.Core.Models.ModelsExtentions
 
         [Display(ResourceType = typeof(UserRessources), Name = "AnniversaireLabel")]
         [DataType(DataType.Date)]
-        [AgeMinimum(13, ErrorMessageResourceType = typeof(UserRessources), ErrorMessageResourceName = "MinAgeError")]
         public DateTime Anniversaire { get; set; }
     }
 }

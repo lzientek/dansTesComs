@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DansTesComs.Core.Models.NewsLetter>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InscriptionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Mail)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InscriptionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Mail)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Mail }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Mail })
+            </td>
+        </tr>
+    }
+    
+    </table>
+

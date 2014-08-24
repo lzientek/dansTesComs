@@ -1,0 +1,50 @@
+﻿@model IPagedList<DansTesComs.Core.Models.SearchResult>
+@{
+    ViewBag.Title = SearchRessources.Rechercher;
+}
+<h1>@SearchRessources.Rechercher @ViewBag.Recherche</h1>
+
+@Html.Partial("FormulaireRecherche", new Search())
+
+@if (Model.Count <= 0)
+{
+    <p>@SearchRessources.NoResult</p>
+}
+else
+{
+    foreach (var result in Model)
+    {
+        if (typeof(CommentaireExterne) == result.ResultObject.GetType().BaseType)
+        {
+            var com = (CommentaireExterne) result.ResultObject;
+            <div class="row">
+                <div class="borderCom">
+                    <h3>@Html.ActionLink(com.Titre, "Details", "CommentaireExternes", new { id = com.Id }) </h3>
+                    <div style="cursor: pointer;" onclick="document.location = '@Url.Action("Details", "CommentaireExternes", new { id = com.Id })';">
+                        <p class="commentaire-publication">@com.Publication</p>
+                        <div class="commentaire-commentaires">
+                            @foreach (var coment in com.CommentairesExterneContents)
+                            {
+                                @Html.Partial("../CommentaireExternes/PartialView/_PartialCommentaireContentView", coment);
+                            }
+                        </div>
+                    </div>
+                    <div class="footerComment">
+                        <div class="row">
+                            <div class="noteComment col-md-3" id="NoteCommentaireExterne-@com.Id">
+                                @Html.Action("Index", "Notes", new { commentaireExterneId = com.Id })
+                            </div>
+                            <div class="commentaire-poster col-md-6">@CommentaireExterneRessources.PublierPar @com.User.Pseudo | @com.DatePost</div>
+                            <div class="nbCommentaire col-md-3">
+                                @Html.ActionLink(string.Format("{0} {1}", com.Commentaires.Count, CommentaireExterneRessources.Title), "Details", new { id = com.Id })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    <div class="pageList">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { SearchText = ViewBag.Recherche, page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+    </div>
+}

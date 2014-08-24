@@ -1,0 +1,21 @@
+﻿@model DansTesComs.Core.Models.Search
+
+@using (Html.BeginForm("SearchPost", "Search"))
+{
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            
+            <div class="col-md-9 col-md-offset-1">
+                @Html.EditorFor(model => model.SearchText, new { htmlAttributes = new { @class = "form-control",placeholder=SearchRessources.Rechercher } })
+                @Html.ValidationMessageFor(model => model.SearchText, "", new { @class = "text-danger" })
+
+            </div>
+            <button type="submit" class="btn col-md-1 btn-search">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </div>
+    </div>
+}
+
+
