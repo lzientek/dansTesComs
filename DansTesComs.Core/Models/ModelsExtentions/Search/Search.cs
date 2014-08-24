@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DansTesComs.Ressources.CommentaireExterne;
+using DansTesComs.Ressources.General;
 
 namespace DansTesComs.Core.Models
 {
@@ -15,9 +16,9 @@ namespace DansTesComs.Core.Models
 
     public class SearchMetaData
     {
-        [MaxLength(100, ErrorMessageResourceType = typeof(CommentaireExterneRessources), ErrorMessageResourceName = "LongueurMax600")]
-        [Required(ErrorMessageResourceType = typeof(CommentaireExterneRessources), ErrorMessageResourceName = "CommentaireNonVide")]
-        [Display(ResourceType = typeof(CommentaireExterneRessources), Name = "CommentaireLabel")]
+        [MaxLength(100, ErrorMessageResourceType = typeof(SearchRessources), ErrorMessageResourceName = "SearchTextt100")]
+        [Required(ErrorMessageResourceType = typeof(SearchRessources), ErrorMessageResourceName = "SearchTextNotEmpty")]
+        [Display(ResourceType = typeof(SearchRessources), Name = "FaireUneRecherche")]
         public string SearchText { get; set; }
 
     }

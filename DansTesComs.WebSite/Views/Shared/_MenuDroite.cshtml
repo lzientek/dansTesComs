@@ -4,6 +4,7 @@
 @if (!Request.RawUrl.Contains("/Search"))
 {
     <div class="row">
+        <h4>@SearchRessources.FaireUneRecherche</h4>
         @Html.Partial("../Search/FormulaireRecherche", new Search())
     </div>
 }

@@ -61,6 +61,24 @@ namespace DansTesComs.Ressources.General {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Commentaire.
+        /// </summary>
+        public static string CatCommentaireExterne {
+            get {
+                return ResourceManager.GetString("CatCommentaireExterne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Faire une recherche.
+        /// </summary>
+        public static string FaireUneRecherche {
+            get {
+                return ResourceManager.GetString("FaireUneRecherche", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Aucun résultat... Essayer avec d&apos;autre mot clé..
         /// </summary>
         public static string NoResult {
@@ -75,6 +93,24 @@ namespace DansTesComs.Ressources.General {
         public static string Rechercher {
             get {
                 return ResourceManager.GetString("Rechercher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Il faut entrer au moins un mots clés..
+        /// </summary>
+        public static string SearchTextNotEmpty {
+            get {
+                return ResourceManager.GetString("SearchTextNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Votre recherche ne peut pas dépasser les 100 characteres..
+        /// </summary>
+        public static string SearchTextt100 {
+            get {
+                return ResourceManager.GetString("SearchTextt100", resourceCulture);
             }
         }
     }

@@ -13,11 +13,11 @@ namespace DansTesComs.WebSite
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute("searchRoute", "SearchAll/{SearchText}",
-                new { controller = "Search", action = "Index"});
-
             routes.MapRoute("searchRoutePage", "SearchAll/{SearchText}/{page}",
                 new { controller = "Search", action = "Index" });
+
+            routes.MapRoute("searchRoute", "SearchAll/{SearchText}",
+                new { controller = "Search", action = "Index"});
 
             routes.MapRoute("pageRoute", "{controller}/page/{page}",
                 new { action = "Index" });

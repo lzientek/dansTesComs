@@ -33,6 +33,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\DansTesComs.WebSite\bin\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core">
+      <HintPath>..\DansTesComs.WebSite\bin\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth">
+      <HintPath>..\DansTesComs.WebSite\bin\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty">
+      <HintPath>..\DansTesComs.WebSite\bin\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.resources">
+      <HintPath>..\packages\EntityFramework.fr.6.1.1\lib\net45\fr\EntityFramework.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\DansTesComs.WebSite\bin\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer.resources">
+      <HintPath>..\packages\EntityFramework.fr.6.1.1\lib\net45\fr\EntityFramework.SqlServer.resources.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -52,6 +73,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -131,6 +153,10 @@
     <ProjectReference Include="..\DansTesComs.Core\DansTesComs.Core.csproj">
       <Project>{A3255FE3-4DC6-44CF-B489-B7B7447797C4}</Project>
       <Name>DansTesComs.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DansTesComs.DAL\DansTesComs.DAL.csproj">
+      <Project>{657c227e-4b6e-4007-844a-cd21ed682aef}</Project>
+      <Name>DansTesComs.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\DansTesComs.WebSite\DansTesComs.WebSite.csproj">
       <Project>{5F44CA30-B150-4993-B5EF-8A9334F3A62A}</Project>
