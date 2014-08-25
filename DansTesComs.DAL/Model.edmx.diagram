@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="309263cd268047faa8f4e497615d22b4" Name="Diagram1" ZoomLevel="84">
-        <EntityTypeShape EntityType="DansTesComsModel.CommentaireExterne" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DansTesComsModel.CommentaireExterne" Width="1.5" PointX="3.125" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DansTesComsModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DansTesComsModel.FK_CommentaireExterne_ToUser" />
         <EntityTypeShape EntityType="DansTesComsModel.CommentairesExterneContent" Width="1.5" PointX="7.5" PointY="0.5" />
@@ -22,10 +22,18 @@
         <AssociationConnector Association="DansTesComsModel.FK_CommentaireExterne_ToCategorie" />
         <EntityTypeShape EntityType="DansTesComsModel.NotesCommentaire" Width="1.5" PointX="8.625" PointY="3.625" />
         <AssociationConnector Association="DansTesComsModel.FK_NotesCommentaire_ToCommentaire" />
-        <AssociationConnector Association="DansTesComsModel.FK_NotesCommentaire_ToUser" />
+        <AssociationConnector Association="DansTesComsModel.FK_NotesCommentaire_ToUser" ManuallyRouted="true" >
+          <ConnectorPoint PointX="2.25" PointY="3.6702754375" />
+          <ConnectorPoint PointX="2.875" PointY="3.6702754375" />
+          <ConnectorPoint PointX="2.875" PointY="4.8126857039622353" />
+          <ConnectorPoint PointX="6.5" PointY="4.8126857039622353" />
+          <ConnectorPoint PointX="6.5" PointY="3.375" />
+          <ConnectorPoint PointX="9.375" PointY="3.375" />
+          <ConnectorPoint PointX="9.375" PointY="3.625" />
+        </AssociationConnector>
         <EntityTypeShape EntityType="DansTesComsModel.NewsLetter" Width="1.5" PointX="0.75" PointY="7.625" />
         <AssociationConnector Association="DansTesComsModel.FK_NewsLetter_ToUser" />
-        <EntityTypeShape EntityType="DansTesComsModel.Search" Width="1.5" PointX="2.625" PointY="6.75" />
+        <EntityTypeShape EntityType="DansTesComsModel.Search" Width="1.5" PointX="3" PointY="5.875" />
         <AssociationConnector Association="DansTesComsModel.FK_Search_ToUser" />
       </Diagram>
     </edmx:Diagrams>

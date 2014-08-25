@@ -62,24 +62,6 @@ namespace DansTesComs.WebSite.Controllers
             return PartialView("ValidNews");
         }
 
-       
-
-        [Authorize(Roles = "Admin")]
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NewsLetter newsLetter = db.NewsLetters.Find(id);
-            if (newsLetter == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Mail", newsLetter.UserId);
-            return View(newsLetter);
-        }
-
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
