@@ -121,12 +121,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DansTesComs.WebAPI\DansTesComs.WebAPI.csproj">
-      <Project>{D67885A3-5B83-4E43-BC97-E8460D528BB6}</Project>
-      <Name>DansTesComs.WebAPI</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

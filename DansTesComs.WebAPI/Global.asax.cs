@@ -9,8 +9,6 @@ using System.Web.Routing;
 
 namespace DansTesComs.WebAPI
 {
-    // Remarque : pour obtenir des instructions sur l'activation du mode classique IIS6 ou IIS7, 
-    // visitez http://go.microsoft.com/?LinkId=9394801
 
     public class WebApiApplication : System.Web.HttpApplication
     {
@@ -20,8 +18,6 @@ namespace DansTesComs.WebAPI
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }
