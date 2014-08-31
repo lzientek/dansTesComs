@@ -59,6 +59,7 @@ namespace DansTesComs.WebSite.Controllers
             return View(commentaire);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -78,9 +79,18 @@ namespace DansTesComs.WebSite.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Commentaire commentaire = db.Commentaires.Find(id);
+            db.NotesCommentaires.RemoveRange(commentaire.NotesCommentaires);
             db.Commentaires.Remove(commentaire);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Admin");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Admin(int page = 1)
+        {
+            var commentaires =
+                db.Commentaires.Where(c => c.NotesCommentaires.Any(nc => nc.Value == 9)).OrderByDescending(cm=>cm.NotesCommentaires.Count(nc=>nc.Value == 9)).ToList().ToPagedList(page, 50);
+            return View(commentaires);
         }
 
         protected override void Dispose(bool disposing)

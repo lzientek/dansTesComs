@@ -160,7 +160,7 @@ namespace DansTesComs.WebSite.Controllers
                     }
                     HttpCookie cookie = ControllerContext.HttpContext.Request.Cookies[returnUrlCookie];
 
-                    if (cookie != null)
+                    if (cookie != null && !string.IsNullOrEmpty(cookie.Value))
                     {
                         string action = cookie.Value;
                         cookie.Expires = DateTime.Now.AddDays(-1);

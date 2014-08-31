@@ -1,0 +1,58 @@
+﻿@model IPagedList<DansTesComs.Core.Models.Commentaire>
+
+@{
+    ViewBag.Title = "Admin commentaires";
+}
+
+<h2>Admin</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            texte
+        </th>
+        <th>
+            date publication
+        </th>
+        <th>
+            user
+        </th>
+        <th>
+            commentaire externe
+        </th>
+        <th>
+            nb note
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Texte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatePost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Pseudo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentaireExterne.Titre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NotesCommentaires.Count)
+        </td>
+        <td>
+            @Html.ActionLink("Voir", "Details", "CommentaireExternes", new { id = item.CommentaireExterne.Id },null)|
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div class="pageList">
+    @Html.PagedListPager(Model, page => Url.Action("Admin", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+</div>

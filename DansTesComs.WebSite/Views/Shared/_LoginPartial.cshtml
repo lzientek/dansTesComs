@@ -9,9 +9,14 @@
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()"> @GeneralRessources.Deconnecter</a>
         }
+        @if (User.IsInRole("Admin"))
+        {
+            <text> | </text>
+            @Html.ActionLink("admin","Index","Admin")
+        }
     </span>
 }
 else
 {
-@Html.ActionLink(GeneralRessources.SincrireConnecter, "Index", "User")
+    @Html.ActionLink(GeneralRessources.SincrireConnecter, "Index", "User")
 }
